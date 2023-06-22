@@ -27,11 +27,7 @@ class LoginView extends GetView<LoginController> {
             "provide_account".tr,
             muted: true,
           ).center,
-          FxSpacing.height(20),
-          FxText.labelMedium(
-            "username".tr,
-          ),
-          FxSpacing.height(4),
+          FxSpacing.height(64),
           TextFormField(
             validator: controller.basicValidator.getValidation('email'),
             controller: controller.basicValidator.getController('email'),
@@ -43,50 +39,17 @@ class LoginView extends GetView<LoginController> {
                   Icons.email_outlined,
                   size: 20,
                 ),
-                contentPadding: FxSpacing.all(16),
-                isCollapsed: true,
-                floatingLabelBehavior: FloatingLabelBehavior.never),
+                contentPadding: FxSpacing.all(16)),
           ),
-          FxSpacing.height(16),
-          FxText.labelMedium(
-            "password".tr,
-          ),
-          FxSpacing.height(4),
-          TextFormField(
-            validator: controller.basicValidator.getValidation('password'),
-            controller: controller.basicValidator.getController('password'),
-            keyboardType: TextInputType.visiblePassword,
-            obscureText: !controller.showPassword,
-            decoration: InputDecoration(
-                labelText: "password".tr,
-                labelStyle: FxTextStyle.bodySmall(xMuted: true),
-                prefixIcon: Icon(
-                  Icons.lock_outline,
-                  size: 20,
-                ),
-                suffixIcon: InkWell(
-                  onTap: controller.onChangeShowPassword,
-                  child: Icon(
-                    controller.showPassword
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined,
-                    size: 20,
-                  ),
-                ),
-                contentPadding: FxSpacing.all(16),
-                isCollapsed: true,
-                floatingLabelBehavior: FloatingLabelBehavior.never),
-          ),
-          FxSpacing.height(28),
-          [
-            TextFormField(
-              validator: controller.basicValidator.getValidation('verify_code'),
-              controller:
-                  controller.basicValidator.getController('verify_code'),
+          FxSpacing.height(24),
+          Obx(
+            () => TextFormField(
+              validator: controller.basicValidator.getValidation('password'),
+              controller: controller.basicValidator.getController('password'),
               keyboardType: TextInputType.visiblePassword,
-              obscureText: !controller.showPassword,
+              obscureText: !controller.showPassword.value,
               decoration: InputDecoration(
-                  labelText: "verify_code".tr,
+                  labelText: "password".tr,
                   labelStyle: FxTextStyle.bodySmall(xMuted: true),
                   prefixIcon: Icon(
                     Icons.lock_outline,
@@ -95,15 +58,32 @@ class LoginView extends GetView<LoginController> {
                   suffixIcon: InkWell(
                     onTap: controller.onChangeShowPassword,
                     child: Icon(
-                      controller.showPassword
+                      controller.showPassword.value
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                       size: 20,
                     ),
                   ),
-                  contentPadding: FxSpacing.all(16),
-                  isCollapsed: true,
-                  floatingLabelBehavior: FloatingLabelBehavior.never),
+                  contentPadding: FxSpacing.all(16)),
+            ),
+          ),
+          FxSpacing.height(24),
+          [
+            TextFormField(
+              validator: controller.basicValidator.getValidation('verify_code'),
+              controller:
+                  controller.basicValidator.getController('verify_code'),
+              keyboardType: TextInputType.visiblePassword,
+              decoration: InputDecoration(
+                labelText: "verify_code".tr,
+                // hintText: "verify_code".tr,
+                labelStyle: FxTextStyle.bodySmall(xMuted: true),
+                prefixIcon: Icon(
+                  Icons.lock_outline,
+                  size: 20,
+                ),
+                contentPadding: FxSpacing.all(16),
+              ),
             ).flex(3),
             Obx(
               () => controller.capthcaData != null
@@ -128,14 +108,15 @@ class LoginView extends GetView<LoginController> {
               'login'.tr,
             ),
           ).center,
-          FxSpacing.height(14),
-          TextButton(
-            onPressed: controller.goToForgotPassword,
-            style: TextButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
-            child: Text(
-              'forgot_password'.tr,
-            ),
-          ).center,
+          // FxSpacing.height(14),
+          // TextButton(
+          //   onPressed: controller.goToForgotPassword,
+          //   style: TextButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
+          //   child: Text(
+          //     'forgot_password'.tr,
+          //   ),
+          // ).center,
+          FxSpacing.height(12),
           TextButton(
             onPressed: controller.gotoRegister,
             style: TextButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
@@ -144,7 +125,7 @@ class LoginView extends GetView<LoginController> {
             ),
           ).center,
         ].col(ca: CrossAxisAlignment.start),
-      ).paddingAll(flexSpacing),
+      ).paddingAll(32),
     );
   }
 }

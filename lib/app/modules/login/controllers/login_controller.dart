@@ -14,11 +14,11 @@ class LoginController extends GetxController {
   //Variables
   FxFormValidator basicValidator = FxFormValidator();
 
-  bool showPassword = false, loading = false;
+  final showPassword = false.obs;
 
   // UI
   void onChangeShowPassword() {
-    showPassword = !showPassword;
+    showPassword.value = !showPassword.value;
     update();
   }
 
@@ -35,7 +35,6 @@ class LoginController extends GetxController {
   // Services
   Future<void> onLogin() async {
     if (basicValidator.validateForm()) {
-      loading = true;
       await AuthService.to.login(basicValidator.getData());
       Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
               .currentPage!.parameters?['then'] ??
@@ -49,7 +48,6 @@ class LoginController extends GetxController {
       //           .currentPage!.parameters?['then'] ??
       //       Routes.HOME);
       // }
-      loading = false;
     }
   }
 
