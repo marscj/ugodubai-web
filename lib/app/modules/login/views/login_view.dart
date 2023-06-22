@@ -29,7 +29,7 @@ class LoginView extends GetView<LoginController> {
           ).center,
           FxSpacing.height(20),
           FxText.labelMedium(
-            "email_address".tr,
+            "username".tr,
           ),
           FxSpacing.height(4),
           TextFormField(
@@ -37,7 +37,7 @@ class LoginView extends GetView<LoginController> {
             controller: controller.basicValidator.getController('email'),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-                labelText: "email_address".tr,
+                labelText: "username".tr,
                 labelStyle: FxTextStyle.bodySmall(xMuted: true),
                 prefixIcon: Icon(
                   Icons.email_outlined,
@@ -80,12 +80,13 @@ class LoginView extends GetView<LoginController> {
           FxSpacing.height(28),
           [
             TextFormField(
-              validator: controller.basicValidator.getValidation('password'),
-              controller: controller.basicValidator.getController('password'),
+              validator: controller.basicValidator.getValidation('verify_code'),
+              controller:
+                  controller.basicValidator.getController('verify_code'),
               keyboardType: TextInputType.visiblePassword,
               obscureText: !controller.showPassword,
               decoration: InputDecoration(
-                  labelText: "password".tr,
+                  labelText: "verify_code".tr,
                   labelStyle: FxTextStyle.bodySmall(xMuted: true),
                   prefixIcon: Icon(
                     Icons.lock_outline,
@@ -120,7 +121,7 @@ class LoginView extends GetView<LoginController> {
                   : SizedBox.shrink(),
             ).flex(2)
           ].row(),
-          FxSpacing.height(14),
+          FxSpacing.height(46),
           FilledButton(
             onPressed: controller.onLogin,
             child: Text(

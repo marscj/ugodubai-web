@@ -19,6 +19,8 @@ class LocaleKeys {
   static const dashboard = 'dashboard';
   static const email_address = 'email_address';
   static const password = 'password';
+  static const username = 'username';
+  static const verify_code = 'verify_code';
   static const forgot_password = 'forgot_password';
   static const i_haven_t_account = 'i_haven_t_account';
   static const provide_account = 'provide_account';
@@ -61,9 +63,11 @@ class Locales {
     'dashboard': '工作台',
     'email_address': '邮件',
     'password': '密码',
+    'username': '用户名',
+    'verify_code': '密码',
     'forgot_password': '忘记密码?',
     'i_haven_t_account': '创建一个账号',
-    'provide_account': '请输入邮件地址和密码登录到后台管理.',
+    'provide_account': '请输入用户名和密码登录到账号.',
     'forgot_password_explain': '输入您的电子邮件地址，我们将向您发送一封电子邮件，其中包含重置密码的说明。',
     'send_email': '发送邮件',
     'back_to_log_in': '返回登录',
@@ -98,12 +102,13 @@ class Locales {
     'sign_in': 'Sign-in',
     'console': 'Console',
     'dashboard': 'Dashboard',
+    'username': 'Username',
+    'verify_code': 'Verify Code',
     'email_address': 'Email Address',
     'password': 'Password',
     'forgot_password': 'Forgot Password?',
     'i_haven_t_account': 'I haven\'t Account',
-    'provide_account':
-        'Enter your email address and password to access account.',
+    'provide_account': 'Enter your username and password to access account.',
     'forgot_password_explain':
         'Enter your email address and we\'ll send you an email with instructions to reset your password.',
     'send_email': 'Send Email',
