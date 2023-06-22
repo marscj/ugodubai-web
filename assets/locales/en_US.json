@@ -1,0 +1,43 @@
+{
+  "app_name": "UGODUBAI",
+  "login": "Login",
+  "sign_in": "Sign-in",
+  "console": "Console",
+  "dashboard": "Dashboard",
+  "email_address": "Email Address",
+  "password": "Password",
+  "forgot_password": "Forgot Password?",
+  "i_haven_t_account": "I haven't Account",
+  "provide_account": "Enter your email address and password to access account.",
+  "forgot_password_explain": "Enter your email address and we'll send you an email with instructions to reset your password.",
+  "send_email": "Send Email",
+  "back_to_log_in": "Back To Login",
+  "register": "register",
+  "already_have_account": "Already Have Account?",
+  "create_your_account": "Create Your Account",
+  "reset_password": "Reset Password",
+  "new_password": "New Password",
+  "your_password_will_be_reset": "Your password will be reset",
+  "confirm_password": "Confirm Password",
+  "confirm": "Confirm",
+
+  "order_management": "Orders",
+  "order_list": "All Orders",
+  "order_detail": "Order Detail",
+  
+  "product_management": "Products",
+  "product_list": "All Products",
+  "product_edit": "Product Edit",
+  "product_add": "Product Add",
+  "product_category": "Product Categories",
+  "product_tag": "Product Tags",
+  "product_attribute": "Product Attributes",
+
+  "auth_management": "Auth",
+  "user_list": "All User",
+  "user_edit": "User Edit",
+  "role_list": "Role List",
+  
+  "profile": "profile",
+  "setting": "Setting"
+}
