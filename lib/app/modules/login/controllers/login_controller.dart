@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:ugodubai/app/data/captcha_model.dart';
 import 'package:ugodubai/app/data/providers/auth_provider.dart';
 import 'package:ugodubai/app/routes/app_pages.dart';
-import 'package:ugodubai/services/auth_service.dart';
 
 class LoginController extends GetxController {
   Rx<CaptchaData?> capthca = Rx<CaptchaData?>(null);
@@ -35,10 +34,16 @@ class LoginController extends GetxController {
   // Services
   Future<void> onLogin() async {
     if (basicValidator.validateForm()) {
-      await AuthService.to.login(basicValidator.getData());
-      Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
-              .currentPage!.parameters?['then'] ??
-          Routes.HOME);
+      AuthProvider().login({
+        'username': 'demo',
+        'password': '123456',
+        'verifyCode': basicValidator.getData()['verifyCode'],
+        'verifyKey': capthca.value?.data?.key
+      }).then((value) {});
+      // await AuthService.to.login(basicValidator.getData());
+      // Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
+      //         .currentPage!.parameters?['then'] ??
+      //     Routes.HOME);
       // if (errors != null) {
       //   // basicValidator.addErrors(errors);
       //   // basicValidator.validateForm();
@@ -65,16 +70,16 @@ class LoginController extends GetxController {
     super.onInit();
 
     basicValidator.addField('username',
-        required: true,
+        // required: true,
         label: "Username",
-        validators: [FxEmailValidator()],
-        controller: TextEditingController(text: ''));
+        validators: [FxLengthValidator(min: 4, max: 10)],
+        controller: TextEditingController(text: 'demo'));
 
     basicValidator.addField('password',
-        required: true,
+        // required: true,
         label: "Password",
         validators: [FxLengthValidator(min: 6, max: 10)],
-        controller: TextEditingController(text: ''));
+        controller: TextEditingController(text: '123456'));
 
     basicValidator.addField('verifyCode',
         required: true,

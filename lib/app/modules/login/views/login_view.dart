@@ -29,8 +29,8 @@ class LoginView extends GetView<LoginController> {
           ).center,
           FxSpacing.height(64),
           TextFormField(
-            validator: controller.basicValidator.getValidation('email'),
-            controller: controller.basicValidator.getController('email'),
+            validator: controller.basicValidator.getValidation('username'),
+            controller: controller.basicValidator.getController('username'),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 labelText: "username".tr,
@@ -70,9 +70,8 @@ class LoginView extends GetView<LoginController> {
           FxSpacing.height(24),
           [
             TextFormField(
-              validator: controller.basicValidator.getValidation('verify_code'),
-              controller:
-                  controller.basicValidator.getController('verify_code'),
+              validator: controller.basicValidator.getValidation('verifyCode'),
+              controller: controller.basicValidator.getController('verifyCode'),
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
                 labelText: "verify_code".tr,

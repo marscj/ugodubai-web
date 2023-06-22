@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:ugodubai/app/data/providers/auth_provider.dart';
+import 'package:ugodubai/app/data/user_model.dart';
 
 class AuthService extends GetxService {
   static AuthService get to => Get.find();
@@ -8,6 +8,8 @@ class AuthService extends GetxService {
   GetStorage get storage => GetStorage();
 
   get token => ''.val('token', defVal: '', getBox: () => storage);
+
+  User? user;
 
   @override
   void onInit() {
