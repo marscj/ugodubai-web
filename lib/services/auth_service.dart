@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:ugodubai/app/data/user_model.dart';
+import 'package:ugodubai/app/data/login_model.dart';
 
 class AuthService extends GetxService {
   static AuthService get to => Get.find();
@@ -32,8 +32,13 @@ class AuthService extends GetxService {
     storage.remove('token');
   }
 
-  Future<dynamic?> login(data) async {
-    // return AuthProvider().login('username', 'password');
+  void setUser(data) {
+    user = data;
+  }
+
+  void login(data) async {
+    setUser(data.userInfo);
+    saveToken(data.token);
   }
 
   void logout() {

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../user_model.dart';
+import 'package:ugodubai/app/data/login_model.dart';
 
 class UserProvider extends GetConnect {
   @override

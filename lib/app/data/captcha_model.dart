@@ -1,11 +1,11 @@
-class CaptchaData {
+class CaptchaRes {
   int? code;
   String? message;
   Captcha? data;
 
-  CaptchaData({this.code, this.message, this.data});
+  CaptchaRes({this.code, this.message, this.data});
 
-  CaptchaData.fromJson(Map<String, dynamic> json) {
+  CaptchaRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
     data = json['data'] != null ? Captcha?.fromJson(json['data']) : null;

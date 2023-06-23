@@ -62,6 +62,7 @@ class LeftBar extends StatelessWidget {
                       Assets.logoIcon,
                       width: leftBarCondensed ? 40 : 70,
                       height: 60,
+                      fit: BoxFit.fill,
                     ),
                   ),
                   if (!leftBarCondensed)

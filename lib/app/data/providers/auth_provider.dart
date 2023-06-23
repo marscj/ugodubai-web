@@ -9,13 +9,14 @@ class AuthProvider extends HttpService {
     super.onInit();
   }
 
-  Future<CaptchaData> getCaptcha() async {
+  Future<CaptchaRes> getCaptcha() async {
     final response = await get('pub/captcha/get');
-    return CaptchaData.fromJson(response.body);
+    return CaptchaRes.fromJson(response.body);
   }
 
   Future<LoginRes> login(payload) async {
     final response = await post('system/login/', payload);
+    print(response.bodyString);
     return LoginRes.fromJson(response.body);
   }
 }

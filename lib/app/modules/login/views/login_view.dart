@@ -85,14 +85,14 @@ class LoginView extends GetView<LoginController> {
               ),
             ).flex(3),
             Obx(
-              () => controller.capthcaData != null
+              () => controller.capthcaImg64 != null
                   ? InkWell(
                       onTap: controller.getCaptcha,
                       child: Container(
                         margin: EdgeInsets.only(left: 20),
                         decoration: BoxDecoration(border: Border.all(width: 1)),
                         child: Image.memory(
-                          base64Decode(controller.capthcaData ?? ''),
+                          base64Decode(controller.capthcaImg64 ?? ''),
                           fit: BoxFit.fill,
                         ),
                       ),

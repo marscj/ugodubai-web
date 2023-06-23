@@ -5,10 +5,12 @@ import 'package:get/get.dart';
 import 'package:ugodubai/app/data/captcha_model.dart';
 import 'package:ugodubai/app/data/providers/auth_provider.dart';
 import 'package:ugodubai/app/routes/app_pages.dart';
+import 'package:ugodubai/services/auth_service.dart';
 
 class LoginController extends GetxController {
-  Rx<CaptchaData?> capthca = Rx<CaptchaData?>(null);
-  String? get capthcaData => capthca.value?.data?.img?.substring(22);
+  Rx<CaptchaRes?> capthca = Rx<CaptchaRes?>(null);
+  String? get capthcaImg64 => capthca.value?.data?.img?.substring(22);
+  String? get capthcaKey => capthca.value?.data?.key;
 
   //Variables
   FxFormValidator basicValidator = FxFormValidator();
@@ -34,12 +36,20 @@ class LoginController extends GetxController {
   // Services
   Future<void> onLogin() async {
     if (basicValidator.validateForm()) {
-      AuthProvider().login({
-        'username': 'demo',
-        'password': '123456',
-        'verifyCode': basicValidator.getData()['verifyCode'],
-        'verifyKey': capthca.value?.data?.key
-      }).then((value) {});
+      AuthProvider()
+          .login(basicValidator.getData()..addAll({"verifyKey": capthcaKey}))
+          .then((value) {
+        if (value.code == 0) {
+          AuthService.to.login(value.data);
+          Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
+                  .currentPage!.parameters?['then'] ??
+              Routes.HOME);
+        } else {
+          basicValidator.addError('verifyCode', value.message);
+          basicValidator.validateForm();
+          basicValidator.clearErrors();
+        }
+      });
       // await AuthService.to.login(basicValidator.getData());
       // Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
       //         .currentPage!.parameters?['then'] ??
@@ -70,13 +80,13 @@ class LoginController extends GetxController {
     super.onInit();
 
     basicValidator.addField('username',
-        // required: true,
+        required: true,
         label: "Username",
         validators: [FxLengthValidator(min: 4, max: 10)],
         controller: TextEditingController(text: 'demo'));
 
     basicValidator.addField('password',
-        // required: true,
+        required: true,
         label: "Password",
         validators: [FxLengthValidator(min: 6, max: 10)],
         controller: TextEditingController(text: '123456'));

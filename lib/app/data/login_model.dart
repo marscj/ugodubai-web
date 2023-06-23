@@ -23,7 +23,7 @@ class LoginRes {
 }
 
 class UserData {
-  UserInfo? userInfo;
+  User? userInfo;
   String? token;
   List<MenuList>? menuList;
 
@@ -31,7 +31,7 @@ class UserData {
 
   UserData.fromJson(Map<String, dynamic> json) {
     userInfo =
-        json['userInfo'] != null ? UserInfo?.fromJson(json['userInfo']) : null;
+        json['userInfo'] != null ? User?.fromJson(json['userInfo']) : null;
     token = json['token'];
     if (json['menuList'] != null) {
       menuList = <MenuList>[];
@@ -55,7 +55,7 @@ class UserData {
   }
 }
 
-class UserInfo {
+class User {
   int? id;
   String? userName;
   String? userNickname;
@@ -66,7 +66,7 @@ class UserInfo {
   String? avatar;
   int? deptId;
 
-  UserInfo(
+  User(
       {this.id,
       this.userName,
       this.userNickname,
@@ -77,7 +77,7 @@ class UserInfo {
       this.avatar,
       this.deptId});
 
-  UserInfo.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userName = json['userName'];
     userNickname = json['userNickname'];
