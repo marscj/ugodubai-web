@@ -69,19 +69,24 @@ class LoginView extends GetView<LoginController> {
           ),
           FxSpacing.height(24),
           [
-            TextFormField(
-              validator: controller.basicValidator.getValidation('verifyCode'),
-              controller: controller.basicValidator.getController('verifyCode'),
-              keyboardType: TextInputType.visiblePassword,
-              decoration: InputDecoration(
-                labelText: "verify_code".tr,
-                // hintText: "verify_code".tr,
-                labelStyle: FxTextStyle.bodySmall(xMuted: true),
-                prefixIcon: Icon(
-                  Icons.lock_outline,
-                  size: 20,
-                ),
-                contentPadding: FxSpacing.all(16),
+            Container(
+              color: Colors.green,
+              child: TextFormField(
+                validator:
+                    controller.basicValidator.getValidation('verifyCode'),
+                controller:
+                    controller.basicValidator.getController('verifyCode'),
+                keyboardType: TextInputType.visiblePassword,
+                decoration: InputDecoration(
+                    labelText: "verify_code".tr,
+                    labelStyle: FxTextStyle.bodySmall(xMuted: true),
+                    prefixIcon: Icon(
+                      Icons.lock_outline,
+                      size: 20,
+                    ),
+                    contentPadding: FxSpacing.all(16),
+                    isCollapsed: true,
+                    floatingLabelBehavior: FloatingLabelBehavior.never),
               ),
             ).flex(3),
             Obx(
@@ -90,7 +95,10 @@ class LoginView extends GetView<LoginController> {
                       onTap: controller.getCaptcha,
                       child: Container(
                         margin: EdgeInsets.only(left: 20),
-                        decoration: BoxDecoration(border: Border.all(width: 1)),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          border: Border.all(width: 1),
+                        ),
                         child: Image.memory(
                           base64Decode(controller.capthcaImg64 ?? ''),
                           fit: BoxFit.fill,
@@ -99,7 +107,8 @@ class LoginView extends GetView<LoginController> {
                     )
                   : SizedBox.shrink(),
             ).flex(2)
-          ].row(),
+          ].row(ca: CrossAxisAlignment.start),
+
           FxSpacing.height(46),
           FilledButton(
             onPressed: controller.onLogin,

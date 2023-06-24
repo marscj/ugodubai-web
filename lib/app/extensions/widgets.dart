@@ -31,12 +31,14 @@ extension ExtensionListWidget on List<Widget> {
   Widget row({MainAxisAlignment? ma, CrossAxisAlignment? ca}) => Row(
         mainAxisAlignment: ma ?? MainAxisAlignment.start,
         crossAxisAlignment: ca ?? CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: this,
       );
 
   Widget col({MainAxisAlignment? ma, CrossAxisAlignment? ca}) => Column(
         mainAxisAlignment: ma ?? MainAxisAlignment.start,
         crossAxisAlignment: ca ?? CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: this,
       );
 

@@ -118,15 +118,16 @@ extension ExtensionWidget on Widget {
   Widget inkWell({GestureTapCallback? onPressed}) =>
       InkWell(onTap: onPressed, child: this);
 
-  Widget get expanded => Expanded(flex: 1, child: this);
-
   Widget get list => SingleChildScrollView(child: this);
 
   Widget get sliver => SliverToBoxAdapter(child: this);
 
   Widget get center => Center(child: this);
 
-  Widget flex(flex) => Flexible(flex: flex, child: this);
+  Widget get expanded => Expanded(child: this);
+
+  Widget flex(flex, [fit = FlexFit.loose]) =>
+      Flexible(flex: flex, fit: fit, child: this);
 
   Widget align(alignment) => Align(alignment: alignment, child: this);
 

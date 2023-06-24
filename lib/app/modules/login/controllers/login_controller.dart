@@ -35,6 +35,7 @@ class LoginController extends GetxController {
 
   // Services
   Future<void> onLogin() async {
+    basicValidator.clearErrors();
     if (basicValidator.validateForm()) {
       AuthProvider()
           .login(basicValidator.getData()..addAll({"verifyKey": capthcaKey}))
@@ -45,24 +46,12 @@ class LoginController extends GetxController {
                   .currentPage!.parameters?['then'] ??
               Routes.HOME);
         } else {
-          basicValidator.addError('verifyCode', value.message);
+          basicValidator.addError('password', value.message);
           basicValidator.validateForm();
           basicValidator.clearErrors();
+          return getCaptcha();
         }
       });
-      // await AuthService.to.login(basicValidator.getData());
-      // Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
-      //         .currentPage!.parameters?['then'] ??
-      //     Routes.HOME);
-      // if (errors != null) {
-      //   // basicValidator.addErrors(errors);
-      //   // basicValidator.validateForm();
-      //   // basicValidator.clearErrors();
-      // } else {
-      //   Get.rootDelegate.offNamed(Get.rootDelegate.currentConfiguration!
-      //           .currentPage!.parameters?['then'] ??
-      //       Routes.HOME);
-      // }
     }
   }
 
