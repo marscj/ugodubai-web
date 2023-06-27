@@ -46,9 +46,6 @@ class LoginController extends GetxController {
                   .currentPage!.parameters?['then'] ??
               Routes.HOME);
         } else {
-          basicValidator.addError('password', value.message);
-          basicValidator.validateForm();
-          basicValidator.clearErrors();
           return getCaptcha();
         }
       });

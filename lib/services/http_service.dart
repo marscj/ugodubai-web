@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:html';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:ugodubai/config.dart';
@@ -27,15 +26,30 @@ class HttpService extends GetConnect {
       Request request, Response response) async {
     if (response.statusCode == 200) {
       if (response.body != null) {
-        var data = jsonDecode(response.body);
+        var data = response.body;
         if (data['code'] != 0) {
-          Get.showSnackbar(
-            GetSnackBar(
-              message: data['message'],
-              duration: Duration(seconds: 2),
-              snackPosition: SnackPosition.TOP,
+          GetSnackBar(
+            backgroundColor: Get.theme.colorScheme.background,
+            userInputForm: Form(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.error,
+                    color: Get.theme.colorScheme.error,
+                  ),
+                  Text(
+                    data['message'],
+                    style: Get.theme.textTheme.labelLarge
+                        ?.copyWith(color: Get.theme.colorScheme.error),
+                  ).paddingSymmetric(horizontal: 10)
+                ],
+              ),
             ),
-          );
+            duration: Duration(seconds: 2),
+            snackPosition: SnackPosition.TOP,
+          ).show();
         }
       }
     }

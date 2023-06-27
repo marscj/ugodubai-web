@@ -22,11 +22,12 @@ class LeftBarTheme {
 
   static LeftBarTheme of(BuildContext context) {
     return LeftBarTheme(
-      labelColor: Theme.of(context).colorScheme.onPrimary,
-      background: Theme.of(context).colorScheme.primary,
-      onBackground: Theme.of(context).colorScheme.onPrimary.withOpacity(0.46),
-      activeItemColor: Theme.of(context).colorScheme.onPrimary,
-      activeItemBackground: Colors.transparent,
+      labelColor: Theme.of(context).colorScheme.onBackground,
+      background: Theme.of(context).colorScheme.onPrimary,
+      onBackground: Theme.of(context).colorScheme.onBackground,
+      activeItemColor: Theme.of(context).colorScheme.primary,
+      activeItemBackground:
+          Theme.of(context).colorScheme.primary.withOpacity(0.22),
     );
   }
 }

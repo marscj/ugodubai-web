@@ -17,7 +17,16 @@ import 'package:ugodubai/generated/locales.g.dart';
 import 'package:ugodubai/services/auth_service.dart';
 
 ThemeData get lightTheme => FlexThemeData.light(
-      scheme: FlexScheme.brandBlue,
+      colors: const FlexSchemeColor(
+        primary: Color(0xff00296b),
+        primaryContainer: Color(0xffa0c2ed),
+        secondary: Color(0xffd26900),
+        secondaryContainer: Color(0xffffd270),
+        tertiary: Color(0xff5c5c95),
+        tertiaryContainer: Color(0xffc8dbf8),
+        appBarColor: Color(0xffc8dcf8),
+        error: null,
+      ),
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 7,
       subThemesData: const FlexSubThemesData(
@@ -30,6 +39,7 @@ ThemeData get lightTheme => FlexThemeData.light(
         elevatedButtonRadius: 8.0,
         outlinedButtonRadius: 9.0,
         inputDecoratorIsFilled: false,
+        inputDecoratorBorderSchemeColor: SchemeColor.primary,
         inputDecoratorUnfocusedBorderIsColored: false,
         inputDecoratorFocusedBorderWidth: 1.0,
       ),
@@ -41,7 +51,16 @@ ThemeData get lightTheme => FlexThemeData.light(
     );
 
 ThemeData get darkTheme => FlexThemeData.dark(
-      scheme: FlexScheme.brandBlue,
+      colors: const FlexSchemeColor(
+        primary: Color(0xffb1cff5),
+        primaryContainer: Color(0xff3873ba),
+        secondary: Color(0xffffd270),
+        secondaryContainer: Color(0xffd26900),
+        tertiary: Color(0xffc9cbfc),
+        tertiaryContainer: Color(0xff535393),
+        appBarColor: Color(0xff00102b),
+        error: null,
+      ),
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 13,
       subThemesData: const FlexSubThemesData(

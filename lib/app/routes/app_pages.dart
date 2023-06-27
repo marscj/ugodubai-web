@@ -186,6 +186,7 @@ class AppPages {
             GetPageMenu(
               name: _Paths.PRODUCT_EDIT,
               label: 'product_edit'.tr,
+              hide: true,
               page: () => DeferredWidget(product_edit_view.loadLibrary,
                   () => product_edit_view.ProductEditView()),
               binding: ProductEditBinding(),

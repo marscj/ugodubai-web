@@ -81,7 +81,7 @@ class _ColorPalettesScreenState extends State<ColorPalettesScreen> {
     // TODO: implement initState
     super.initState();
 
-    theme = lightTheme;
+    // theme = lightTheme;
   }
 
   void changeTheme() {
