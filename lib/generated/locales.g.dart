@@ -30,6 +30,7 @@ class LocaleKeys {
   static const register = 'register';
   static const already_have_account = 'already_have_account';
   static const create_your_account = 'create_your_account';
+  static const contact_amdin = 'contact_amdin';
   static const reset_password = 'reset_password';
   static const new_password = 'new_password';
   static const your_password_will_be_reset = 'your_password_will_be_reset';
@@ -74,6 +75,7 @@ class Locales {
     'register': '注册',
     'already_have_account': '已有账户?',
     'create_your_account': '创建你的账户',
+    'contact_amdin': '请联系管理员为您添加账号  微信号：57670279',
     'reset_password': '重置密码',
     'new_password': '新密码',
     'your_password_will_be_reset': '你的密码将被重置',
@@ -116,6 +118,8 @@ class Locales {
     'register': 'Register',
     'already_have_account': 'Already Have Account?',
     'create_your_account': 'Create Your Account?',
+    'contact_amdin':
+        'Please contact admin create account for you. wechat:57670279',
     'reset_password': 'Reset Password',
     'new_password': 'New Password',
     'your_password_will_be_reset': 'Your password will be reset',

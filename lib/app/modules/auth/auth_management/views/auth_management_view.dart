@@ -11,8 +11,8 @@ class AuthManagementView extends StatelessWidget {
       builder: (context, delegate, current) {
         return GetRouterOutlet(
           delegate: delegate,
-          initialRoute: Routes.AUTH,
-          anchorRoute: Routes.USER_LIST,
+          initialRoute: Routes.USER_LIST,
+          anchorRoute: Routes.AUTH,
           filterPages: (afterAnchor) => afterAnchor.take(1),
         );
       },

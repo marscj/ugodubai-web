@@ -34,10 +34,13 @@ dev_dependencies:
 
 flutter: 
   assets: 
-    - assets/locales/
+   
+    - assets/images/
     - assets/images/logo/
     - assets/images/dummy/
+
     - assets/datas/
     - assets/lang/
+    - assets/locales/
   uses-material-design: true
 
