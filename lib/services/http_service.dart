@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:html';
 
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
@@ -23,9 +25,20 @@ class HttpService extends GetConnect {
 
   FutureOr<dynamic> responseInterceptor(
       Request request, Response response) async {
-    if (response.statusCode == 400) {
-    } else if (response.statusCode == 401) {
-    } else if (response.statusCode == 403) {}
+    if (response.statusCode == 200) {
+      if (response.body != null) {
+        var data = jsonDecode(response.body);
+        if (data['code'] != 0) {
+          Get.showSnackbar(
+            GetSnackBar(
+              message: data['message'],
+              duration: Duration(seconds: 2),
+              snackPosition: SnackPosition.TOP,
+            ),
+          );
+        }
+      }
+    }
 
     return response;
   }

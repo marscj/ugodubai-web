@@ -69,31 +69,27 @@ class LoginView extends GetView<LoginController> {
           ),
           FxSpacing.height(24),
           [
-            Container(
-              color: Colors.green,
-              child: TextFormField(
-                validator:
-                    controller.basicValidator.getValidation('verifyCode'),
-                controller:
-                    controller.basicValidator.getController('verifyCode'),
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(
-                    labelText: "verify_code".tr,
-                    labelStyle: FxTextStyle.bodySmall(xMuted: true),
-                    prefixIcon: Icon(
-                      Icons.lock_outline,
-                      size: 20,
-                    ),
-                    contentPadding: FxSpacing.all(16),
-                    isCollapsed: true,
-                    floatingLabelBehavior: FloatingLabelBehavior.never),
-              ),
+            TextFormField(
+              validator: controller.basicValidator.getValidation('verifyCode'),
+              controller: controller.basicValidator.getController('verifyCode'),
+              keyboardType: TextInputType.visiblePassword,
+              decoration: InputDecoration(
+                  labelText: "verify_code".tr,
+                  labelStyle: FxTextStyle.bodySmall(xMuted: true),
+                  prefixIcon: Icon(
+                    Icons.lock_outline,
+                    size: 20,
+                  ),
+                  contentPadding: FxSpacing.all(16),
+                  isCollapsed: true,
+                  floatingLabelBehavior: FloatingLabelBehavior.never),
             ).flex(3),
             Obx(
               () => controller.capthcaImg64 != null
                   ? InkWell(
                       onTap: controller.getCaptcha,
                       child: Container(
+                        height: 50,
                         margin: EdgeInsets.only(left: 20),
                         decoration: BoxDecoration(
                           color: Colors.green,
