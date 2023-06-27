@@ -70,6 +70,7 @@ class LoginView extends GetView<LoginController> {
           FxSpacing.height(24),
           [
             TextFormField(
+              onFieldSubmitted: (value) => controller.onLogin(),
               validator: controller.basicValidator.getValidation('verifyCode'),
               controller: controller.basicValidator.getController('verifyCode'),
               keyboardType: TextInputType.visiblePassword,
@@ -104,7 +105,6 @@ class LoginView extends GetView<LoginController> {
                   : SizedBox.shrink(),
             ).flex(2)
           ].row(ca: CrossAxisAlignment.start),
-
           FxSpacing.height(46),
           FilledButton(
             onPressed: controller.onLogin,
@@ -121,6 +121,7 @@ class LoginView extends GetView<LoginController> {
           //   ),
           // ).center,
           FxSpacing.height(12),
+
           TextButton(
             onPressed: controller.gotoRegister,
             style: TextButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
