@@ -18,7 +18,7 @@ class HttpService extends GetConnect {
   }
 
   FutureOr<Request> requestInterceptor(Request request) async {
-    request.headers['Authorization'] = AuthService.to.getToken();
+    request.headers['Authorization'] = 'Bearer ${AuthService.to.getToken()}';
     return request;
   }
 
@@ -27,33 +27,38 @@ class HttpService extends GetConnect {
     if (response.statusCode == 200) {
       if (response.body != null) {
         var data = response.body;
-        if (data['code'] != 0) {
-          GetSnackBar(
-            backgroundColor: Get.theme.colorScheme.background,
-            userInputForm: Form(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.error,
-                    color: Get.theme.colorScheme.error,
-                  ),
-                  Text(
-                    data['message'],
-                    style: Get.theme.textTheme.labelLarge
-                        ?.copyWith(color: Get.theme.colorScheme.error),
-                  ).paddingSymmetric(horizontal: 10)
-                ],
-              ),
-            ),
-            duration: Duration(seconds: 2),
-            snackPosition: SnackPosition.TOP,
-          ).show();
+        if (data['code'] != 401) {
+          showMessage(data['message']);
+        } else if (data['code'] != 0) {
+          showMessage(data['message']);
         }
       }
     }
-
     return response;
+  }
+
+  void showMessage(message) {
+    GetSnackBar(
+      backgroundColor: Get.theme.colorScheme.background,
+      userInputForm: Form(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.error,
+              color: Get.theme.colorScheme.error,
+            ),
+            Text(
+              message,
+              style: Get.theme.textTheme.labelLarge
+                  ?.copyWith(color: Get.theme.colorScheme.error),
+            ).paddingSymmetric(horizontal: 10)
+          ],
+        ),
+      ),
+      duration: Duration(seconds: 2),
+      snackPosition: SnackPosition.TOP,
+    ).show();
   }
 }

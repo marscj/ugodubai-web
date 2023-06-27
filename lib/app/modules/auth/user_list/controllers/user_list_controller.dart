@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ugodubai/app/data/providers/user_provider.dart';
 
 class UserListController extends GetxController {
   //TODO: Implement UserListController
@@ -7,6 +8,8 @@ class UserListController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    UserProvider().getUsers();
   }
 
   @override

@@ -1,19 +1,16 @@
 import 'package:get/get.dart';
 import 'package:ugodubai/app/data/login_model.dart';
+import 'package:ugodubai/services/http_service.dart';
 
-class UserProvider extends GetConnect {
-  @override
-  void onInit() {
-    httpClient.defaultDecoder = (map) {
-      if (map is Map<String, dynamic>) return User.fromJson(map);
-      if (map is List) return map.map((item) => User.fromJson(item)).toList();
-    };
-    httpClient.baseUrl = 'YOUR-API-URL';
-  }
-
+class UserProvider extends HttpService {
   Future<User?> getUser(int id) async {
     final response = await get('user/$id');
     return response.body;
+  }
+
+  Future<dynamic> getUsers() async {
+    final res = await get('system/user/list');
+    return res.body;
   }
 
   Future<Response<User>> postUser(User user) async => await post('user', user);
