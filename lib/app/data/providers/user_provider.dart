@@ -10,6 +10,7 @@ class UserProvider extends HttpService {
 
   Future<dynamic> getUsers() async {
     final res = await get('system/user/list');
+    print(res.bodyString);
     return res.body;
   }
 
