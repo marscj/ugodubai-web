@@ -143,21 +143,22 @@ class App extends GetView<AppController> {
       defaultTransition: Transition.noTransition,
       unknownRoute: GetPage(name: '/404', page: () => NotFoundScreen()),
 
-      builder: (context, child) => [
-        Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Get.to(
-                ColorPalettesScreen(),
-                fullscreenDialog: true,
-                transition: Transition.downToUp,
-              );
-            },
-            child: Icon(Icons.arrow_right_alt),
-          ),
-          body: child ?? Container(color: Colors.red),
-        )
-      ].stack(),
+      // builder: (context, child) => [
+      //   Scaffold(
+      //     persistentFooterAlignment: AlignmentDirectional.bottomStart,
+      //     floatingActionButton: FloatingActionButton(
+      //       onPressed: () {
+      //         Get.to(
+      //           ColorPalettesScreen(),
+      //           fullscreenDialog: true,
+      //           transition: Transition.downToUp,
+      //         );
+      //       },
+      //       child: Icon(Icons.arrow_right_alt),
+      //     ),
+      //     body: child ?? Container(color: Colors.red),
+      //   )
+      // ].stack(),
 
       // theme
       theme: lightTheme,

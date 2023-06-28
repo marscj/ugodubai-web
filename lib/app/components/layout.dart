@@ -52,7 +52,7 @@ class _LayoutState extends State<Layout> {
         LeftBar(leftBarCondensed: consoleController.leftBarCondensed),
         [
           TopBar(leftBarFun: toggleLeftBarCondensed),
-          widget.child,
+          widget.child.expanded,
         ].col().expanded
       ].row(),
     );

@@ -1,3 +1,4 @@
+import 'list_model.dart';
 import 'response_model.dart';
 
 class UserListRes extends BaseResponse {
@@ -52,7 +53,7 @@ class UserListData {
   }
 }
 
-class UserList {
+class UserList extends ListSelect {
   int? id;
   String? userName;
   String? mobile;
