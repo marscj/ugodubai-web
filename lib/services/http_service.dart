@@ -27,7 +27,7 @@ class HttpService extends GetConnect {
     if (response.statusCode == 200) {
       if (response.body != null) {
         var data = response.body;
-        if (data['code'] != 401) {
+        if (data['code'] == 401) {
           showMessage(data['message']);
         } else if (data['code'] != 0) {
           showMessage(data['message']);

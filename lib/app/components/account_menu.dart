@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:ugodubai/services/auth_service.dart';
 
 import 'package:ugodubai/utils/assets.dart';
 import 'package:ugodubai/app/widgets/custom_pop_menu.dart';
@@ -64,7 +66,9 @@ class AccountWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FxButton(
-                  onPressed: () => {},
+                  onPressed: () {
+                    print('abc');
+                  },
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   // borderRadiusAll: AppStyle.buttonRadius.medium,
                   padding: FxSpacing.xy(8, 4),
@@ -117,23 +121,22 @@ class AccountWidget extends StatelessWidget {
             padding: FxSpacing.xy(8, 8),
             child: FxButton(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              onPressed: () => {},
-              // borderRadiusAll: AppStyle.buttonRadius.medium,
+              onPressed: () {
+                print('dbd');
+                AuthService.to.logout();
+              },
               padding: FxSpacing.xy(8, 4),
-              // splashColor: contentTheme.danger.withAlpha(28),
               backgroundColor: Colors.transparent,
               child: Row(
                 children: [
                   FaIcon(
                     FontAwesomeIcons.arrowRightFromBracket,
                     size: 14,
-                    // color: contentTheme.danger,
                   ),
                   FxSpacing.width(8),
                   FxText.labelMedium(
-                    "Log out",
+                    'logout1'.tr,
                     fontWeight: 600,
-                    // color: contentTheme.danger,
                   )
                 ],
               ),

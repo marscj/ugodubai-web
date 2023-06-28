@@ -46,6 +46,7 @@ class LoginController extends GetxController {
                   .currentPage!.parameters?['then'] ??
               Routes.HOME);
         } else {
+          basicValidator.getController('verifyCode')?.clear();
           return getCaptcha();
         }
       });

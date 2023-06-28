@@ -1,7 +1,7 @@
 {
   "app_name": "UGODUBAI",
   "login": "Login",
-  "sign_in": "Sign-in",
+  "logout": "Logout",
   "console": "Console",
   "dashboard": "Dashboard",
   "username": "Username",

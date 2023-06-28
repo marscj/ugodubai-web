@@ -13,7 +13,6 @@ class LocaleKeys {
   LocaleKeys._();
   static const app_name = 'app_name';
   static const login = 'login';
-  static const sign_in = 'sign_in';
   static const logout = 'logout';
   static const console = 'console';
   static const dashboard = 'dashboard';
@@ -58,8 +57,7 @@ class Locales {
   static const zh_CN = {
     'app_name': 'UGODUBAI',
     'login': '登录',
-    'sign_in': '注册',
-    'logout': '注销',
+    'logout': '登出',
     'console': '控制台',
     'dashboard': '工作台',
     'email_address': '邮件',
@@ -101,7 +99,7 @@ class Locales {
   static const en_US = {
     'app_name': 'UGODUBAI',
     'login': 'Login',
-    'sign_in': 'Sign-in',
+    'logout': 'Logout',
     'console': 'Console',
     'dashboard': 'Dashboard',
     'username': 'Username',

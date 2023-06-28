@@ -14,7 +14,7 @@ class ProductListView extends GetView<ProductListController> {
     return Layout(
       child: Center(
         child: ElevatedButton(
-          child: Text('ProductListView'),
+          child: Text('ProductListView${controller.count.value.toString()}'),
           onPressed: () {
             Get.rootDelegate.toNamed(Routes.CONSOLE);
           },
