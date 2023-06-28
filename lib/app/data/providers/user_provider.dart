@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ugodubai/app/data/login_model.dart';
+import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/services/http_service.dart';
 
 class UserProvider extends HttpService {
@@ -8,10 +9,9 @@ class UserProvider extends HttpService {
     return response.body;
   }
 
-  Future<dynamic> getUsers() async {
+  Future<UserListRes> getUsers() async {
     final res = await get('system/user/list');
-    print(res.bodyString);
-    return res.body;
+    return UserListRes.fromJson(res.body);
   }
 
   Future<Response<User>> postUser(User user) async => await post('user', user);

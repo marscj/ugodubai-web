@@ -1,16 +1,17 @@
-class UserReq {
-  int? code;
-  String? message;
+import 'response_model.dart';
+
+class UserListRes extends BaseResponse {
   UserListData? data;
 
-  UserReq({this.code, this.message, this.data});
+  UserListRes({this.data});
 
-  UserReq.fromJson(Map<String, dynamic> json) {
+  UserListRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
     data = json['data'] != null ? UserListData?.fromJson(json['data']) : null;
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['code'] = code;

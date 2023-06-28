@@ -1,26 +1,28 @@
 import 'package:get/get.dart';
 import 'package:ugodubai/app/data/providers/user_provider.dart';
+import 'package:ugodubai/app/data/user_model.dart';
 
 class UserListController extends GetxController {
-  //TODO: Implement UserListController
+  final _userList = Rx<List<UserList>>([]);
+  List<UserList> get userList => this._userList.value;
+  set userList(value) => this._userList.value = value;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
-
-    UserProvider().getUsers();
   }
 
   @override
   void onReady() {
     super.onReady();
+
+    UserProvider().getUsers().then((value) {
+      userList = value.data?.userList ?? [];
+    });
   }
 
   @override
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

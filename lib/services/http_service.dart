@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
+import 'package:ugodubai/app/data/response_model.dart';
 import 'package:ugodubai/config.dart';
 import 'package:ugodubai/services/auth_service.dart';
 
@@ -24,14 +25,11 @@ class HttpService extends GetConnect {
 
   FutureOr<dynamic> responseInterceptor(
       Request request, Response response) async {
-    if (response.statusCode == 200) {
-      if (response.body != null) {
-        var data = response.body;
-        if (data['code'] == 401) {
-          showMessage(data['message']);
-        } else if (data['code'] != 0) {
-          showMessage(data['message']);
-        }
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final res = BaseResponse.fromJson(response.body);
+
+      if (res.code != 0) {
+        showMessage(res.message);
       }
     }
     return response;
