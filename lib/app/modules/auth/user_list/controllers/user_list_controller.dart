@@ -11,7 +11,7 @@ class UserListController extends GetxController {
   UserListDataSource get source => this._source.value;
   set source(value) => this._source.value = value;
 
-  final _sortColumnIndex = null.obs;
+  final _sortColumnIndex = Rx<int?>(null);
   get sortColumnIndex => this._sortColumnIndex.value;
   set sortColumnIndex(value) => this._sortColumnIndex.value = value;
 
@@ -22,6 +22,10 @@ class UserListController extends GetxController {
   final _rowsPerPage = 10.obs;
   get rowsPerPage => this._rowsPerPage.value;
   set rowsPerPage(value) => this._rowsPerPage.value = value;
+
+  final _showCheckboxColumn = false.obs;
+  get showCheckboxColumn => this._showCheckboxColumn.value;
+  set showCheckboxColumn(value) => this._showCheckboxColumn.value = value;
 
   @override
   void onReady() {
@@ -102,6 +106,19 @@ class UserListDataSource extends DataTableSource {
       },
       cells: [
         DataCell(Text('${data.id}')),
+        DataCell(
+          TextButton(
+            child: Text('${data.userName}'),
+            onPressed: () {},
+          ),
+          // onDoubleTap: () {},
+          // onLongPress: () {},
+          onTap: () {},
+        ),
+        // DataCell(TextButton(
+        //   onPressed: () {},
+        //   child: Text('Action'),
+        // )),
       ],
     );
   }
@@ -116,6 +133,7 @@ class UserListDataSource extends DataTableSource {
   int get selectedRowCount => _selectedCount;
 
   void selectAll(bool? checked) {
+    print('-------------------------');
     for (final data in list) {
       data.selected = checked ?? false;
     }

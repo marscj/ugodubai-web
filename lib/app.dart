@@ -7,16 +7,15 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:ugodubai/app/extensions/widgets.dart';
 import 'package:ugodubai/app/modules/console/controllers/console_controller.dart';
 
 import 'package:ugodubai/app/routes/app_pages.dart';
 import 'package:ugodubai/app/components/error_404.dart';
-import 'package:ugodubai/color_palettes.dart';
+
 import 'package:ugodubai/generated/locales.g.dart';
 import 'package:ugodubai/services/auth_service.dart';
 
-ThemeData get lightTheme => FlexThemeData.light(
+ThemeData lightTheme(context) => FlexThemeData.light(
       colors: const FlexSchemeColor(
         primary: Color(0xff00296b),
         primaryContainer: Color(0xffa0c2ed),
@@ -48,9 +47,19 @@ ThemeData get lightTheme => FlexThemeData.light(
       swapLegacyOnMaterial3: true,
       // To use the Playground font, add GoogleFonts package and uncomment
       fontFamily: GoogleFonts.notoSans().fontFamily,
-    );
+    ).copyWith(
+        textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom().copyWith(
+                overlayColor: MaterialStateProperty.resolveWith((states) {
+      return Colors.transparent;
+    }), foregroundColor: MaterialStateProperty.resolveWith((states) {
+      if (states.contains(MaterialState.hovered)) {
+        return Theme.of(context).colorScheme.secondary;
+      }
+      return null;
+    }))));
 
-ThemeData get darkTheme => FlexThemeData.dark(
+ThemeData darkTheme(context) => FlexThemeData.dark(
       colors: const FlexSchemeColor(
         primary: Color(0xffb1cff5),
         primaryContainer: Color(0xff3873ba),
@@ -80,7 +89,17 @@ ThemeData get darkTheme => FlexThemeData.dark(
       swapLegacyOnMaterial3: true,
       // To use the Playground font, add GoogleFonts package and uncomment
       fontFamily: GoogleFonts.notoSans().fontFamily,
-    );
+    ).copyWith(
+        textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom().copyWith(
+                overlayColor: MaterialStateProperty.resolveWith((states) {
+      return Colors.transparent;
+    }), foregroundColor: MaterialStateProperty.resolveWith((states) {
+      if (states.contains(MaterialState.hovered)) {
+        return Theme.of(context).colorScheme.secondary;
+      }
+      return null;
+    }))));
 
 class AppController extends GetxController {
   get localeStorage => ''.val('locale', defVal: 'zh');
@@ -89,7 +108,6 @@ class AppController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    FxAppTheme.changeTheme(lightTheme);
   }
 
   @override
@@ -115,6 +133,7 @@ class App extends GetView<AppController> {
 
   @override
   Widget build(BuildContext context) {
+    FxAppTheme.changeTheme(lightTheme(context));
     return GetMaterialApp.router(
       title: 'app_name'.tr,
 
@@ -161,8 +180,8 @@ class App extends GetView<AppController> {
       // ].stack(),
 
       // theme
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: lightTheme(context),
+      darkTheme: darkTheme(context),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
     );
