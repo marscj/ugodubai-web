@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension StringCasingExtension on String {
+extension StringExtension on String {
   String get toCapitalized =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
 
@@ -13,4 +13,8 @@ extension StringCasingExtension on String {
       replaceAll('_', ' ').split(' ').map((str) => str.toCapitalized).join(' ');
 
   Text get text => Text(this);
+}
+
+extension InterExtension on int {
+  bool get toBool => this == 1;
 }

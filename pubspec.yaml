@@ -25,6 +25,7 @@ dependencies:
   intl: 0.18.0
   sticky_headers: 0.3.0+2
   syncfusion_flutter_datagrid: 22.1.37
+  syncfusion_flutter_core: 22.1.37
   flutter: 
     sdk: flutter
   flutter_localizations: 

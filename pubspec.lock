@@ -451,7 +451,7 @@ packages:
     source: hosted
     version: "1.2.0"
   syncfusion_flutter_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: syncfusion_flutter_core
       sha256: e2b49a16805a54714ba0712d62e9f3c6311081ec2bec835529b778cc5349430a
