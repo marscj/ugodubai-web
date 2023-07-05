@@ -12,7 +12,7 @@ class UserListController extends GetxController {
   void onReady() {
     super.onReady();
 
-    // unawaited(getSource());
+    unawaited(getSource());
   }
 
   Future<void> getSource() async {
