@@ -9,8 +9,13 @@ class UserProvider extends HttpService {
     return response.body;
   }
 
-  Future<UserListRes> getUsers() async {
-    final res = await get('system/user/list');
+  Future<UserListRes> getUsers(Map<String, dynamic> payload) async {
+    print(payload);
+    final res = await get('system/user/list',
+        query: payload
+            .map((key, value) => MapEntry(key, value?.toString()))
+            .cast());
+
     return UserListRes.fromJson(res.body);
   }
 

@@ -2,31 +2,36 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:ugodubai/app/data/providers/user_provider.dart';
+
 import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/app/extensions/base.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
-import 'package:ugodubai/app/modules/auth/user_list/views/user_list_view.dart';
+import 'package:ugodubai/app/modules/auth/user_list/controllers/user_list_controller.dart';
 
 class UserDataSource extends DataGridSource {
-  /// Instance of an employee.
-  List<UserList> data = <UserList>[];
-
-  /// Instance of DataGridRow.
   List<DataGridRow> dataGridRows = <DataGridRow>[];
 
-  Future<void> generateList() async {
-    await asyncData().then((value) {
-      data = value;
-      buildDataGridRow(value);
-    });
+  UserDataSource(List<UserList> list) {
+    buildDataGridRow(list);
   }
 
-  // Populate Data from the json file
-  Future<List<UserList>> asyncData() async {
-    return UserProvider().getUsers().then((value) {
-      return value.data?.userList ?? [];
-    });
+  @override
+  List<DataGridRow> get rows => dataGridRows;
+
+  @override
+  Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) {
+    UserListController controller = Get.find();
+
+    if (oldPageIndex != newPageIndex) {
+      return controller.getSource({
+        'pageSize': controller.rowsPerPage,
+        'pageNum': newPageIndex + 1,
+      }).then((value) {
+        return super.handlePageChange(oldPageIndex, newPageIndex);
+      });
+    }
+
+    return super.handlePageChange(oldPageIndex, newPageIndex);
   }
 
   /// Building DataGridRows
@@ -46,10 +51,6 @@ class UserDataSource extends DataGridSource {
     notifyListeners();
   }
 
-  // Overrides
-  @override
-  List<DataGridRow> get rows => dataGridRows;
-
   @override
   DataGridRowAdapter buildRow(DataGridRow row) {
     return DataGridRowAdapter(
@@ -57,21 +58,12 @@ class UserDataSource extends DataGridSource {
       switch (dataCell.columnName) {
         case 'active':
           return Checkbox(value: dataCell.value, onChanged: null)
-              .align(Alignment.centerLeft)
-              .paddingSymmetric(vertical: 6, horizontal: 16)
-              .align(Alignment.centerLeft);
+              .align(Alignment.center)
+              .paddingSymmetric(vertical: 6, horizontal: 16);
         case 'action':
           return ButtonBar(
             children: [
-              TextButton(
-                  onPressed: () {
-                    Get.to(
-                        UserListViewPage(
-                          isDialog: true,
-                        ),
-                        fullscreenDialog: true);
-                  },
-                  child: 'reset_password'.tr.text)
+              TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
             ],
           );
         default:
@@ -84,3 +76,96 @@ class UserDataSource extends DataGridSource {
     }).toList());
   }
 }
+
+// import 'package:flutter/material.dart';
+
+// import 'package:get/get.dart';
+// import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
+// import 'package:ugodubai/app/data/providers/user_provider.dart';
+// import 'package:ugodubai/app/data/user_model.dart';
+// import 'package:ugodubai/app/extensions/base.dart';
+// import 'package:ugodubai/app/extensions/widget.dart';
+// import 'package:ugodubai/app/modules/auth/user_list/controllers/user_list_controller.dart';
+
+// class UserDataSource extends DataGridSource {
+//   List<DataGridRow> dataGridRows = <DataGridRow>[];
+
+//   UserDataSource(List<UserList> list) {
+
+//   }
+
+//   @override
+//   List<DataGridRow> get rows => dataGridRows;
+
+//   Future<UserListData?> asyncList([payload]) async {
+//     return UserProvider()
+//         .getUsers(payload ??
+//             {
+//               'pageSize': 10,
+//               'pageNum': 1,
+//             })
+//         .then((value) {
+//       buildDataGridRow(value.data?.userList ?? []);
+//       return value.data;
+//     });
+//   }
+
+//   @override
+//   Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) {
+//     UserListController controller = Get.find();
+
+//     if (oldPageIndex != newPageIndex) {
+//       return asyncList({
+//         'pageSize': controller.rowsPerPage,
+//         'pageNum': newPageIndex + 1,
+//       }).then((value) {
+//         return super.handlePageChange(oldPageIndex, newPageIndex);
+//       });
+//     }
+
+//     return super.handlePageChange(oldPageIndex, newPageIndex);
+//   }
+
+//   /// Building DataGridRows
+//   void buildDataGridRow(data) {
+//     dataGridRows = data.map<DataGridRow>((UserList user) {
+//       return DataGridRow(
+//         cells: <DataGridCell>[
+//           DataGridCell<String>(columnName: 'id', value: user.id.toString()),
+//           DataGridCell<String>(columnName: 'username', value: user.userName),
+//           DataGridCell<String>(columnName: 'email', value: user.userEmail),
+//           DataGridCell<bool>(
+//               columnName: 'active', value: user.userStatus!.toBool),
+//           DataGridCell(columnName: 'action', value: null),
+//         ],
+//       );
+//     }).toList();
+//     notifyListeners();
+//   }
+
+//   @override
+//   DataGridRowAdapter buildRow(DataGridRow row) {
+//     return DataGridRowAdapter(
+//         cells: row.getCells().map<Widget>((DataGridCell dataCell) {
+//       switch (dataCell.columnName) {
+//         case 'active':
+//           return Checkbox(value: dataCell.value, onChanged: null)
+//               .align(Alignment.center)
+//               .paddingSymmetric(vertical: 6, horizontal: 16);
+//         case 'action':
+//           return ButtonBar(
+//             children: [
+//               TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
+//             ],
+//           );
+//         default:
+//           return dataCell.value
+//               .toString()
+//               .text
+//               .paddingSymmetric(vertical: 6, horizontal: 16)
+//               .align(Alignment.centerLeft);
+//       }
+//     }).toList());
+//   }
+// }
