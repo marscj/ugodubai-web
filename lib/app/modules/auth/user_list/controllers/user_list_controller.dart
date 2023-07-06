@@ -8,6 +8,10 @@ class UserListController extends GetxController {
   UserDataSource get source => this._source.value;
   set source(value) => this._source.value = value;
 
+  final _idColumnWidth = 80.0.obs;
+  get idColumnWidth => this._idColumnWidth.value;
+  set idColumnWidth(value) => this._idColumnWidth.value = value;
+
   @override
   void onReady() {
     super.onReady();

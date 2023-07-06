@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:ugodubai/app/data/providers/user_provider.dart';
 import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/app/extensions/base.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
+import 'package:ugodubai/app/modules/auth/user_list/views/user_list_view.dart';
 
 class UserDataSource extends DataGridSource {
   /// Instance of an employee.
@@ -62,7 +63,15 @@ class UserDataSource extends DataGridSource {
         case 'action':
           return ButtonBar(
             children: [
-              TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
+              TextButton(
+                  onPressed: () {
+                    Get.to(
+                        UserListViewPage(
+                          isDialog: true,
+                        ),
+                        fullscreenDialog: true);
+                  },
+                  child: 'reset_password'.tr.text)
             ],
           );
         default:

@@ -26,6 +26,8 @@ dependencies:
   sticky_headers: 0.3.0+2
   syncfusion_flutter_datagrid: 22.1.37
   syncfusion_flutter_core: 22.1.37
+  vertical_scrollable_tabview: 0.1.0
+  scroll_to_index: 3.0.1
   flutter: 
     sdk: flutter
   flutter_localizations: 
