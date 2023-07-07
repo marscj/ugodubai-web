@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutx/flutx.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -33,11 +34,12 @@ class UserListViewPage extends StatelessWidget {
       () {
         return SfDataGridTheme(
           data: SfDataGridThemeData(
-              brightness: colorScheme.brightness,
-              headerHoverColor: Colors.white.withOpacity(0.4),
-              headerColor: colorScheme.surfaceTint),
+            brightness: colorScheme.brightness,
+            headerHoverColor: Colors.white.withOpacity(0.1),
+            headerColor: colorScheme.surfaceTint,
+          ),
           child: SfDataGrid(
-            // controller: _controller.dataGridController,
+            controller: _controller.dataGridController,
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
             footerFrozenColumnsCount: 1,
@@ -54,25 +56,60 @@ class UserListViewPage extends StatelessWidget {
             columns: <GridColumn>[
               GridColumn(
                 columnName: 'id',
-                label: 'ID'.tr.text.white.bold.paddingAll(16),
+                label: 'ID'
+                    .tr
+                    .text
+                    .white
+                    .bold
+                    .paddingAll(16)
+                    .align(Alignment.center),
+                autoFitPadding: EdgeInsets.all(16),
                 width: 60,
               ),
               GridColumn(
                 columnName: 'username',
-                label: 'UserName'.tr.text.white.bold.paddingAll(16),
+                label: 'UserName'
+                    .tr
+                    .text
+                    .white
+                    .bold
+                    .paddingAll(16)
+                    .align(Alignment.centerLeft),
+                autoFitPadding: EdgeInsets.all(16),
               ),
               GridColumn(
                 columnName: 'email',
-                label: 'Email'.tr.text.white.bold.paddingAll(16),
+                label: 'Email'
+                    .tr
+                    .text
+                    .white
+                    .bold
+                    .paddingAll(16)
+                    .align(Alignment.centerLeft),
+                autoFitPadding: EdgeInsets.all(16),
               ),
               GridColumn(
                 columnName: 'active',
-                label: 'Active'.tr.text.white.bold.paddingAll(16),
+                label: 'Active'
+                    .tr
+                    .text
+                    .white
+                    .bold
+                    .paddingAll(12)
+                    .align(Alignment.center),
                 columnWidthMode: ColumnWidthMode.fitByColumnName,
+                autoFitPadding: EdgeInsets.all(16),
               ),
               GridColumn(
                 columnName: 'action',
-                label: 'Actions'.tr.text.white.bold.paddingAll(16),
+                label: 'Actions'
+                    .tr
+                    .text
+                    .white
+                    .bold
+                    .paddingAll(16)
+                    .align(Alignment.center),
+                autoFitPadding: EdgeInsets.all(16),
                 width: 100,
               ),
             ],
@@ -86,7 +123,7 @@ class UserListViewPage extends StatelessWidget {
     final UserListController _controller = Get.find<UserListController>();
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Obx(() => _controller.total > _controller.rowsPerPage
+    return Obx(() => _controller.total > 0
         ? SfDataPagerTheme(
             data: SfDataPagerThemeData(
               brightness: colorScheme.brightness,
@@ -94,12 +131,16 @@ class UserListViewPage extends StatelessWidget {
             ),
             child: SfDataPager(
               delegate: _controller.source,
-              // controller: _controller.dataPagerController,
-              availableRowsPerPage: <int>[10, 20, 21],
+              controller: _controller.dataPagerController,
+              availableRowsPerPage: <int>[20, 50, 100],
               pageCount: _controller.pageCount,
               onRowsPerPageChanged: (int? rowsPerPage) {
                 _controller.rowsPerPage = rowsPerPage!;
-                _controller.dataPagerController.firstPage();
+                // _controller.dataPagerController.firstPage();
+                _controller.getSource({
+                  'pageSize': rowsPerPage,
+                  'pageNum': 1,
+                });
               },
             ),
           )
@@ -130,6 +171,9 @@ class UserListViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildLayoutBuilder(context);
+    return FxContainer.none(
+      margin: EdgeInsets.all(24),
+      child: _buildLayoutBuilder(context),
+    );
   }
 }

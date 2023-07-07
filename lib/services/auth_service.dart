@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ugodubai/app/data/login_model.dart';
 import 'package:ugodubai/app/routes/app_pages.dart';
-import 'package:ugodubai/utils/utils.dart';
 
 class AuthService extends GetxService {
   static AuthService get to => Get.find();

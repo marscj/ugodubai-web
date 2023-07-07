@@ -66,6 +66,12 @@ class UserDataSource extends DataGridSource {
               TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
             ],
           );
+        case 'id':
+          return dataCell.value
+              .toString()
+              .text
+              .paddingSymmetric(vertical: 6, horizontal: 16)
+              .align(Alignment.center);
         default:
           return dataCell.value
               .toString()

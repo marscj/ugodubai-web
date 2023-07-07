@@ -17,7 +17,7 @@ class UserListController extends GetxController {
   get total => this._total.value;
   set total(value) => this._total.value = value;
 
-  final _rowsPerPage = 10.obs;
+  final _rowsPerPage = 20.obs;
   get rowsPerPage => this._rowsPerPage.value;
   set rowsPerPage(value) => this._rowsPerPage.value = value;
 
@@ -33,7 +33,7 @@ class UserListController extends GetxController {
     }));
   }
 
-  Future<void> getSource([payload]) async {
+  Future<void> getSource(payload) async {
     return UserProvider().getUsers(payload).then((value) {
       source = UserDataSource(value.data?.userList ?? []);
       total = value.data?.total ?? 0;

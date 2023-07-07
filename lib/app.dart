@@ -6,6 +6,7 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
 import 'package:ugodubai/app/modules/console/controllers/console_controller.dart';
 
@@ -135,6 +136,7 @@ class App extends GetView<AppController> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        SfGlobalLocalizations.delegate
       ],
       supportedLocales: [Locale('zh'), Locale('en')],
 

@@ -66,9 +66,7 @@ class AccountWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FxButton(
-                  onPressed: () {
-                    print('abc');
-                  },
+                  onPressed: () {},
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   // borderRadiusAll: AppStyle.buttonRadius.medium,
                   padding: FxSpacing.xy(8, 4),
@@ -122,7 +120,6 @@ class AccountWidget extends StatelessWidget {
             child: FxButton(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               onPressed: () {
-                print('dbd');
                 AuthService.to.logout();
               },
               padding: FxSpacing.xy(8, 4),

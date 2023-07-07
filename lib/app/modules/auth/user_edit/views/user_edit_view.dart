@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -159,7 +158,7 @@ class CategorySection extends StatelessWidget {
         if (category.isHotSale) _buildSectionHoteSaleIcon(),
         Text(
           category.title,
-          style: _textTheme(context).headline6,
+          style: _textTheme(context).bodyMedium,
         )
       ],
     );
@@ -168,7 +167,7 @@ class CategorySection extends StatelessWidget {
   Widget _sectionSubtitle(BuildContext context) {
     return Text(
       category.subtitle!,
-      style: _textTheme(context).subtitle2,
+      style: _textTheme(context).bodyMedium,
     );
   }
 
@@ -206,18 +205,18 @@ class CategorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(food.name, style: _textTheme(context).subtitle1),
+        Text(food.name, style: _textTheme(context).bodyMedium),
         const SizedBox(height: 16),
         Row(
           children: [
             Text(
               "特價${food.price} ",
-              style: _textTheme(context).caption,
+              style: _textTheme(context).bodyMedium,
             ),
             Text(
               food.comparePrice,
               style: _textTheme(context)
-                  .caption
+                  .bodyMedium
                   ?.copyWith(decoration: TextDecoration.lineThrough),
             ),
             const SizedBox(width: 8.0),
