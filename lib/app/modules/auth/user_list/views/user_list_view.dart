@@ -6,8 +6,6 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 import 'package:ugodubai/app/components/layout.dart';
-import 'package:ugodubai/app/extensions/base.dart';
-import 'package:ugodubai/app/extensions/text.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/user_list_controller.dart';
@@ -36,7 +34,7 @@ class UserListViewPage extends StatelessWidget {
           data: SfDataGridThemeData(
             brightness: colorScheme.brightness,
             headerHoverColor: Colors.white.withOpacity(0.1),
-            headerColor: colorScheme.surfaceTint,
+            headerColor: colorScheme.primary,
           ),
           child: SfDataGrid(
             controller: _controller.dataGridController,
@@ -53,66 +51,7 @@ class UserListViewPage extends StatelessWidget {
             onColumnResizeUpdate: (ColumnResizeUpdateDetails args) {
               return true;
             },
-            columns: <GridColumn>[
-              GridColumn(
-                columnName: 'id',
-                label: 'ID'
-                    .tr
-                    .text
-                    .white
-                    .bold
-                    .paddingAll(16)
-                    .align(Alignment.center),
-                autoFitPadding: EdgeInsets.all(16),
-                width: 60,
-              ),
-              GridColumn(
-                columnName: 'username',
-                label: 'UserName'
-                    .tr
-                    .text
-                    .white
-                    .bold
-                    .paddingAll(16)
-                    .align(Alignment.centerLeft),
-                autoFitPadding: EdgeInsets.all(16),
-              ),
-              GridColumn(
-                columnName: 'email',
-                label: 'Email'
-                    .tr
-                    .text
-                    .white
-                    .bold
-                    .paddingAll(16)
-                    .align(Alignment.centerLeft),
-                autoFitPadding: EdgeInsets.all(16),
-              ),
-              GridColumn(
-                columnName: 'active',
-                label: 'Active'
-                    .tr
-                    .text
-                    .white
-                    .bold
-                    .paddingAll(12)
-                    .align(Alignment.center),
-                columnWidthMode: ColumnWidthMode.fitByColumnName,
-                autoFitPadding: EdgeInsets.all(16),
-              ),
-              GridColumn(
-                columnName: 'action',
-                label: 'Actions'
-                    .tr
-                    .text
-                    .white
-                    .bold
-                    .paddingAll(16)
-                    .align(Alignment.center),
-                autoFitPadding: EdgeInsets.all(16),
-                width: 100,
-              ),
-            ],
+            columns: _controller.source.dataGridColumn,
           ),
         );
       },
