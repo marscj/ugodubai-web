@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ugodubai/app/data/login_model.dart';
+
 import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/services/http_service.dart';
 
@@ -15,7 +15,6 @@ class UserProvider extends HttpService {
             .map((key, value) => MapEntry(key, value?.toString()))
             .cast());
 
-    print(res.bodyString);
     return UserListRes.fromJson(res.body);
   }
 
