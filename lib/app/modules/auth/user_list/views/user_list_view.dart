@@ -92,9 +92,8 @@ class UserListViewPage extends StatelessWidget {
             color: Theme.of(context).colorScheme.surface.withOpacity(0.12),
             border: Border(
               top: BorderSide(
-                // width: .5,
-                color:
-                    Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
+                width: 2.5,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
           ),

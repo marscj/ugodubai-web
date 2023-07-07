@@ -10,19 +10,8 @@ import 'package:ugodubai/app/extensions/base.dart';
 import 'package:ugodubai/app/extensions/text.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 
-class UserDataSource<T> extends DataGridSource {
-  UserDataSource({
-    this.rowsPerPage = 20,
-    this.total = 0,
-    this.future,
-    List<UserList>? data,
-  }) {
-    buildDataGridRow(data ?? []);
-  }
-
-  List<DataGridRow> dataGridRows = <DataGridRow>[];
-
-  List<GridColumn> dataGridColumn = [
+class RowDataSource {
+  final List<GridColumn> dataGridColumn = [
     GridColumn(
       columnName: 'id',
       label: 'ID'.tr.text.grey.bold.paddingAll(16).align(Alignment.center),
@@ -60,6 +49,57 @@ class UserDataSource<T> extends DataGridSource {
     ),
   ];
 
+  List<DataGridCell> dataGridCell(UserList user) => [
+        DataGridCell<String>(columnName: 'id', value: user.id.toString()),
+        DataGridCell<String>(columnName: 'username', value: user.userName),
+        DataGridCell<String>(columnName: 'email', value: user.userEmail),
+        DataGridCell<bool>(
+            columnName: 'active', value: user.userStatus!.toBool),
+        DataGridCell(columnName: 'action', value: null),
+      ];
+
+  List<Widget> dataGridRowAdapter(List<DataGridCell> cell) {
+    return cell.map<Widget>((dataCell) {
+      switch (dataCell.columnName) {
+        case 'active':
+          return Checkbox(value: dataCell.value, onChanged: null)
+              .align(Alignment.center)
+              .paddingSymmetric(vertical: 6, horizontal: 16);
+        case 'action':
+          return ButtonBar(
+            children: [
+              TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
+            ],
+          );
+        case 'id':
+          return dataCell.value
+              .toString()
+              .text
+              .paddingSymmetric(vertical: 6, horizontal: 16)
+              .align(Alignment.center);
+        default:
+          return dataCell.value
+              .toString()
+              .text
+              .paddingSymmetric(vertical: 6, horizontal: 16)
+              .align(Alignment.centerLeft);
+      }
+    }).toList();
+  }
+}
+
+class UserDataSource<T> extends DataGridSource with RowDataSource {
+  UserDataSource({
+    this.rowsPerPage = 20,
+    this.total = 0,
+    this.future,
+    List<UserList> data = const [],
+  }) {
+    buildDataGridRow(data);
+  }
+
+  List<DataGridRow> dataGridRows = <DataGridRow>[];
+
   final int total;
 
   final int rowsPerPage;
@@ -91,14 +131,7 @@ class UserDataSource<T> extends DataGridSource {
   void buildDataGridRow(data) {
     dataGridRows = data.map<DataGridRow>((UserList user) {
       return DataGridRow(
-        cells: <DataGridCell>[
-          DataGridCell<String>(columnName: 'id', value: user.id.toString()),
-          DataGridCell<String>(columnName: 'username', value: user.userName),
-          DataGridCell<String>(columnName: 'email', value: user.userEmail),
-          DataGridCell<bool>(
-              columnName: 'active', value: user.userStatus!.toBool),
-          DataGridCell(columnName: 'action', value: null),
-        ],
+        cells: dataGridCell(user),
       );
     }).toList();
     notifyListeners();
@@ -106,32 +139,6 @@ class UserDataSource<T> extends DataGridSource {
 
   @override
   DataGridRowAdapter buildRow(DataGridRow row) {
-    return DataGridRowAdapter(
-        cells: row.getCells().map<Widget>((DataGridCell dataCell) {
-      switch (dataCell.columnName) {
-        case 'active':
-          return Checkbox(value: dataCell.value, onChanged: null)
-              .align(Alignment.center)
-              .paddingSymmetric(vertical: 6, horizontal: 16);
-        case 'action':
-          return ButtonBar(
-            children: [
-              TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
-            ],
-          );
-        case 'id':
-          return dataCell.value
-              .toString()
-              .text
-              .paddingSymmetric(vertical: 6, horizontal: 16)
-              .align(Alignment.center);
-        default:
-          return dataCell.value
-              .toString()
-              .text
-              .paddingSymmetric(vertical: 6, horizontal: 16)
-              .align(Alignment.centerLeft);
-      }
-    }).toList());
+    return DataGridRowAdapter(cells: dataGridRowAdapter(row.getCells()));
   }
 }
