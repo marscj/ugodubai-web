@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,9 +9,17 @@ import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/app/extensions/base.dart';
 import 'package:ugodubai/app/extensions/text.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
-import 'package:ugodubai/app/modules/auth/user_list/controllers/user_list_controller.dart';
 
-class UserDataSource extends DataGridSource {
+class UserDataSource<T> extends DataGridSource {
+  UserDataSource({
+    this.rowsPerPage = 20,
+    this.total = 0,
+    this.future,
+    List<UserList>? data,
+  }) {
+    buildDataGridRow(data ?? []);
+  }
+
   List<DataGridRow> dataGridRows = <DataGridRow>[];
 
   List<GridColumn> dataGridColumn = [
@@ -50,24 +60,28 @@ class UserDataSource extends DataGridSource {
     ),
   ];
 
-  UserDataSource(List<UserList> list) {
-    buildDataGridRow(list);
-  }
+  final int total;
+
+  final int rowsPerPage;
+
+  final Future<UserListRes> Function(Map<String, dynamic>)? future;
+
+  get pageCount => (total / rowsPerPage).ceil();
 
   @override
   List<DataGridRow> get rows => dataGridRows;
 
   @override
   Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) {
-    UserListController controller = Get.find();
-
     if (oldPageIndex != newPageIndex) {
-      return controller.getSource({
-        'pageSize': controller.rowsPerPage,
-        'pageNum': newPageIndex + 1,
-      }).then((value) {
-        return super.handlePageChange(oldPageIndex, newPageIndex);
-      });
+      return future != null
+          ? future!({
+              'pageSize': rowsPerPage,
+              'pageNum': newPageIndex + 1,
+            }).then((value) {
+              return super.handlePageChange(oldPageIndex, newPageIndex);
+            })
+          : super.handlePageChange(oldPageIndex, newPageIndex);
     }
 
     return super.handlePageChange(oldPageIndex, newPageIndex);
@@ -121,96 +135,3 @@ class UserDataSource extends DataGridSource {
     }).toList());
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// import 'package:get/get.dart';
-// import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-
-// import 'package:ugodubai/app/data/providers/user_provider.dart';
-// import 'package:ugodubai/app/data/user_model.dart';
-// import 'package:ugodubai/app/extensions/base.dart';
-// import 'package:ugodubai/app/extensions/widget.dart';
-// import 'package:ugodubai/app/modules/auth/user_list/controllers/user_list_controller.dart';
-
-// class UserDataSource extends DataGridSource {
-//   List<DataGridRow> dataGridRows = <DataGridRow>[];
-
-//   UserDataSource(List<UserList> list) {
-
-//   }
-
-//   @override
-//   List<DataGridRow> get rows => dataGridRows;
-
-//   Future<UserListData?> asyncList([payload]) async {
-//     return UserProvider()
-//         .getUsers(payload ??
-//             {
-//               'pageSize': 10,
-//               'pageNum': 1,
-//             })
-//         .then((value) {
-//       buildDataGridRow(value.data?.userList ?? []);
-//       return value.data;
-//     });
-//   }
-
-//   @override
-//   Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) {
-//     UserListController controller = Get.find();
-
-//     if (oldPageIndex != newPageIndex) {
-//       return asyncList({
-//         'pageSize': controller.rowsPerPage,
-//         'pageNum': newPageIndex + 1,
-//       }).then((value) {
-//         return super.handlePageChange(oldPageIndex, newPageIndex);
-//       });
-//     }
-
-//     return super.handlePageChange(oldPageIndex, newPageIndex);
-//   }
-
-//   /// Building DataGridRows
-//   void buildDataGridRow(data) {
-//     dataGridRows = data.map<DataGridRow>((UserList user) {
-//       return DataGridRow(
-//         cells: <DataGridCell>[
-//           DataGridCell<String>(columnName: 'id', value: user.id.toString()),
-//           DataGridCell<String>(columnName: 'username', value: user.userName),
-//           DataGridCell<String>(columnName: 'email', value: user.userEmail),
-//           DataGridCell<bool>(
-//               columnName: 'active', value: user.userStatus!.toBool),
-//           DataGridCell(columnName: 'action', value: null),
-//         ],
-//       );
-//     }).toList();
-//     notifyListeners();
-//   }
-
-//   @override
-//   DataGridRowAdapter buildRow(DataGridRow row) {
-//     return DataGridRowAdapter(
-//         cells: row.getCells().map<Widget>((DataGridCell dataCell) {
-//       switch (dataCell.columnName) {
-//         case 'active':
-//           return Checkbox(value: dataCell.value, onChanged: null)
-//               .align(Alignment.center)
-//               .paddingSymmetric(vertical: 6, horizontal: 16);
-//         case 'action':
-//           return ButtonBar(
-//             children: [
-//               TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
-//             ],
-//           );
-//         default:
-//           return dataCell.value
-//               .toString()
-//               .text
-//               .paddingSymmetric(vertical: 6, horizontal: 16)
-//               .align(Alignment.centerLeft);
-//       }
-//     }).toList());
-//   }
-// }

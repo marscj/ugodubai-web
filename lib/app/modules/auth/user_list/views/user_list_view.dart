@@ -37,12 +37,11 @@ class UserListViewPage extends StatelessWidget {
             headerColor: colorScheme.primary,
           ),
           child: SfDataGrid(
-            controller: _controller.dataGridController,
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
             footerFrozenColumnsCount: 1,
             source: _controller.source,
-            rowsPerPage: _controller.rowsPerPage,
+            rowsPerPage: _controller.source.rowsPerPage,
             columnWidthMode: ColumnWidthMode.fill,
             rowHeight: 60,
             allowColumnsResizing: true,
@@ -62,7 +61,7 @@ class UserListViewPage extends StatelessWidget {
     final UserListController _controller = Get.find<UserListController>();
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Obx(() => _controller.total > 0
+    return Obx(() => _controller.source.dataGridRows.isNotEmpty
         ? SfDataPagerTheme(
             data: SfDataPagerThemeData(
               brightness: colorScheme.brightness,
@@ -70,12 +69,9 @@ class UserListViewPage extends StatelessWidget {
             ),
             child: SfDataPager(
               delegate: _controller.source,
-              controller: _controller.dataPagerController,
               availableRowsPerPage: <int>[20, 50, 100],
-              pageCount: _controller.pageCount,
+              pageCount: _controller.source.pageCount,
               onRowsPerPageChanged: (int? rowsPerPage) {
-                _controller.rowsPerPage = rowsPerPage!;
-                // _controller.dataPagerController.firstPage();
                 _controller.getSource({
                   'pageSize': rowsPerPage,
                   'pageNum': 1,
@@ -96,7 +92,7 @@ class UserListViewPage extends StatelessWidget {
             color: Theme.of(context).colorScheme.surface.withOpacity(0.12),
             border: Border(
               top: BorderSide(
-                width: .5,
+                // width: .5,
                 color:
                     Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
               ),
