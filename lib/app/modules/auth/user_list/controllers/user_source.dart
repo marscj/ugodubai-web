@@ -54,7 +54,7 @@ class RowDataSource {
     ),
   ];
 
-  List<DataGridCell> dataGridCell(UserList user) => [
+  List<DataGridCell> dataGridCell(User user) => [
         DataGridCell<String>(columnName: 'id', value: user.id.toString()),
         DataGridCell<String>(columnName: 'username', value: user.userName),
         DataGridCell<String>(columnName: 'email', value: user.userEmail),
@@ -98,7 +98,7 @@ class UserDataSource<T> extends DataGridSource with RowDataSource {
     this.rowsPerPage = 20,
     this.total = 0,
     this.future,
-    List<UserList> data = const [],
+    List<User> data = const [],
   }) {
     buildDataGridRow(data);
   }
@@ -132,9 +132,8 @@ class UserDataSource<T> extends DataGridSource with RowDataSource {
     return super.handlePageChange(oldPageIndex, newPageIndex);
   }
 
-  /// Building DataGridRows
   void buildDataGridRow(data) {
-    dataGridRows = data.map<DataGridRow>((UserList user) {
+    dataGridRows = data.map<DataGridRow>((User user) {
       return DataGridRow(
         cells: dataGridCell(user),
       );

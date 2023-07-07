@@ -1,10 +1,9 @@
-import 'list_model.dart';
-import 'response_model.dart';
-
-class UserListRes extends BaseResponse {
+class UserListRes {
+  int? code;
+  String? message;
   UserListData? data;
 
-  UserListRes({this.data});
+  UserListRes({this.code, this.message, this.data});
 
   UserListRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -12,7 +11,6 @@ class UserListRes extends BaseResponse {
     data = json['data'] != null ? UserListData?.fromJson(json['data']) : null;
   }
 
-  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['code'] = code;
@@ -25,7 +23,7 @@ class UserListRes extends BaseResponse {
 }
 
 class UserListData {
-  List<UserList>? userList;
+  List<User>? userList;
   int? currentPage;
   int? total;
 
@@ -33,9 +31,9 @@ class UserListData {
 
   UserListData.fromJson(Map<String, dynamic> json) {
     if (json['userList'] != null) {
-      userList = <UserList>[];
+      userList = <User>[];
       json['userList'].forEach((v) {
-        userList?.add(UserList.fromJson(v));
+        userList?.add(User.fromJson(v));
       });
     }
     currentPage = json['currentPage'];
@@ -53,7 +51,7 @@ class UserListData {
   }
 }
 
-class UserList extends ListSelect {
+class User {
   int? id;
   String? userName;
   String? mobile;
@@ -77,10 +75,9 @@ class UserList extends ListSelect {
   dynamic deletedAt;
   int? primay;
   Dept? dept;
-  dynamic roleInfo;
-  dynamic post;
+  List<RoleInfo>? roleInfo;
 
-  UserList(
+  User(
       {this.id,
       this.userName,
       this.mobile,
@@ -104,10 +101,9 @@ class UserList extends ListSelect {
       this.deletedAt,
       this.primay,
       this.dept,
-      this.roleInfo,
-      this.post});
+      this.roleInfo});
 
-  UserList.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userName = json['userName'];
     mobile = json['mobile'];
@@ -131,8 +127,12 @@ class UserList extends ListSelect {
     deletedAt = json['deletedAt'];
     primay = json['primay'];
     dept = json['dept'] != null ? Dept?.fromJson(json['dept']) : null;
-    roleInfo = json['roleInfo'];
-    post = json['post'];
+    if (json['roleInfo'] != null) {
+      roleInfo = <RoleInfo>[];
+      json['roleInfo'].forEach((v) {
+        roleInfo?.add(RoleInfo.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -162,8 +162,9 @@ class UserList extends ListSelect {
     if (dept != null) {
       data['dept'] = dept?.toJson();
     }
-    data['roleInfo'] = roleInfo;
-    data['post'] = post;
+    if (roleInfo != null) {
+      data['roleInfo'] = roleInfo?.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
@@ -233,6 +234,25 @@ class Dept {
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     data['deletedAt'] = deletedAt;
+    return data;
+  }
+}
+
+class RoleInfo {
+  int? roleId;
+  String? name;
+
+  RoleInfo({this.roleId, this.name});
+
+  RoleInfo.fromJson(Map<String, dynamic> json) {
+    roleId = json['roleId'];
+    name = json['name'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['roleId'] = roleId;
+    data['name'] = name;
     return data;
   }
 }

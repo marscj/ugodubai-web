@@ -1,3 +1,5 @@
+import 'package:ugodubai/app/data/user_model.dart';
+
 class LoginRes {
   int? code;
   String? message;
@@ -51,55 +53,6 @@ class UserData {
       data['menuList'] = menuList?.map((v) => v.toJson()).toList();
     }
 
-    return data;
-  }
-}
-
-class User {
-  int? id;
-  String? userName;
-  String? userNickname;
-  String? userPassword;
-  String? userSalt;
-  int? userStatus;
-  int? isAdmin;
-  String? avatar;
-  int? deptId;
-
-  User(
-      {this.id,
-      this.userName,
-      this.userNickname,
-      this.userPassword,
-      this.userSalt,
-      this.userStatus,
-      this.isAdmin,
-      this.avatar,
-      this.deptId});
-
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userName = json['userName'];
-    userNickname = json['userNickname'];
-    userPassword = json['userPassword'];
-    userSalt = json['userSalt'];
-    userStatus = json['userStatus'];
-    isAdmin = json['isAdmin'];
-    avatar = json['avatar'];
-    deptId = json['deptId'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['id'] = id;
-    data['userName'] = userName;
-    data['userNickname'] = userNickname;
-    data['userPassword'] = userPassword;
-    data['userSalt'] = userSalt;
-    data['userStatus'] = userStatus;
-    data['isAdmin'] = isAdmin;
-    data['avatar'] = avatar;
-    data['deptId'] = deptId;
     return data;
   }
 }

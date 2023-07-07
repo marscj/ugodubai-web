@@ -10,12 +10,12 @@ class UserProvider extends HttpService {
   }
 
   Future<UserListRes> getUsers(Map<String, dynamic> payload) async {
-    print(payload);
     final res = await get('system/user/list',
         query: payload
             .map((key, value) => MapEntry(key, value?.toString()))
             .cast());
 
+    print(res.bodyString);
     return UserListRes.fromJson(res.body);
   }
 
