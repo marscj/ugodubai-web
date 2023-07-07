@@ -14,7 +14,7 @@ class RowDataSource {
   final List<GridColumn> dataGridColumn = [
     GridColumn(
       columnName: 'id',
-      label: 'ID'.tr.text.grey.bold.paddingAll(16).align(Alignment.center),
+      label: 'ID'.tr.text.white.bold.align(Alignment.center),
       autoFitPadding: EdgeInsets.all(16),
       width: 60,
     ),
@@ -23,7 +23,7 @@ class RowDataSource {
       label: 'UserName'
           .tr
           .text
-          .grey
+          .white
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
@@ -31,19 +31,24 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'email',
-      label:
-          'Email'.tr.text.grey.bold.paddingAll(16).align(Alignment.centerLeft),
+      label: 'email_address'
+          .tr
+          .text
+          .white
+          .bold
+          .paddingAll(16)
+          .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'active',
-      label: 'Active'.tr.text.grey.bold.paddingAll(12).align(Alignment.center),
+      label: 'Active'.tr.text.white.bold.align(Alignment.center),
       columnWidthMode: ColumnWidthMode.fitByColumnName,
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'action',
-      label: 'Actions'.tr.text.grey.bold.paddingAll(16).align(Alignment.center),
+      label: 'Actions'.tr.text.white.bold.align(Alignment.center),
       autoFitPadding: EdgeInsets.all(16),
       width: 100,
     ),

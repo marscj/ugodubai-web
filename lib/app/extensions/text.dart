@@ -20,6 +20,12 @@ extension TextExtension on Text {
       maxLines: maxLines,
       overflow: overflow);
 
+  Text get white70 => Text(data ?? '',
+      style: style?.copyWith(color: Colors.white) ??
+          TextStyle(color: Colors.white70),
+      maxLines: maxLines,
+      overflow: overflow);
+
   Text get black => Text(data ?? '',
       style: style?.copyWith(color: Colors.black87) ??
           TextStyle(color: Colors.black87),
