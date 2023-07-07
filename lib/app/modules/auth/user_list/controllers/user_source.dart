@@ -41,6 +41,12 @@ class RowDataSource {
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
+      columnName: 'role',
+      label:
+          'Role'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
+      autoFitPadding: EdgeInsets.all(16),
+    ),
+    GridColumn(
       columnName: 'active',
       label: 'Active'.tr.text.white.bold.align(Alignment.center),
       columnWidthMode: ColumnWidthMode.fitByColumnName,
@@ -58,6 +64,7 @@ class RowDataSource {
         DataGridCell<String>(columnName: 'id', value: user.id.toString()),
         DataGridCell<String>(columnName: 'username', value: user.userName),
         DataGridCell<String>(columnName: 'email', value: user.userEmail),
+        DataGridCell<List<RoleInfo>?>(columnName: 'role', value: user.roleInfo),
         DataGridCell<bool>(
             columnName: 'active', value: user.userStatus!.toBool),
         DataGridCell(columnName: 'action', value: null),
@@ -66,6 +73,17 @@ class RowDataSource {
   List<Widget> dataGridRowAdapter(List<DataGridCell> cell) {
     return cell.map<Widget>((dataCell) {
       switch (dataCell.columnName) {
+        case 'role':
+          return dataCell.value != null
+              ? dataCell.value
+                  .map((data) => data.name)
+                  .toList()
+                  .join(',')
+                  .toString()
+                  .text
+                  .paddingSymmetric(vertical: 6, horizontal: 16)
+                  .align(Alignment.centerLeft)
+              : SizedBox.shrink();
         case 'active':
           return Checkbox(value: dataCell.value, onChanged: null)
               .align(Alignment.center)
