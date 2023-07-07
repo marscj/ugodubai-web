@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:ugodubai/app/data/providers/agent_provider.dart';
 
 import 'package:ugodubai/app/data/providers/user_provider.dart';
 import 'package:ugodubai/app/data/user_model.dart';

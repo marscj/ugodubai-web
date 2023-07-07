@@ -1,0 +1,26 @@
+{
+	"code": 0,
+	"message": "",
+	"data": {
+		"agent": [{
+			"id": 10,
+			"name": "第五季",
+			"email": "agent1@example.com",
+			"contactName": "Contact Name 1",
+			"contactPhone": "1234567890",
+			"address": "Address 1",
+			"nationality": "China",
+			"agentCode": "AGT001",
+			"availableLimit": 10000,
+			"creditLimit": 20000,
+			"usedLimit": 5000,
+			"status": 1,
+			"adminId": 1,
+			"licenseUrl": "https://example.com/license1",
+			"createdAt": "2023-07-07 20:08:53",
+			"updatedAt": "2023-07-07 20:08:53"
+		}],
+		"currentPage": 1,
+		"total": 10
+	}
+}
