@@ -1,10 +1,10 @@
-import 'list_model.dart';
+import 'package:ugodubai/app/data/list_model.dart';
 
 class AgentListRes extends ListRes {
   AgentListRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? AgentList.fromJson(json['data']) : null;
+    data = json['data'] != null ? AgentListData?.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -18,14 +18,14 @@ class AgentListRes extends ListRes {
   }
 }
 
-class AgentList {
+class AgentListData {
   List<Agent>? agent;
   int? currentPage;
   int? total;
 
-  AgentList({this.agent, this.currentPage, this.total});
+  AgentListData({this.agent, this.currentPage, this.total});
 
-  AgentList.fromJson(Map<String, dynamic> json) {
+  AgentListData.fromJson(Map<String, dynamic> json) {
     if (json['agent'] != null) {
       agent = <Agent>[];
       json['agent'].forEach((v) {
@@ -58,7 +58,8 @@ class Agent {
   String? agentCode;
   double? availableLimit;
   double? creditLimit;
-  double? usedLimit;
+  double? outstandingBalance;
+  double? accountBlance;
   int? status;
   int? adminId;
   String? licenseUrl;
@@ -76,7 +77,8 @@ class Agent {
       this.agentCode,
       this.availableLimit,
       this.creditLimit,
-      this.usedLimit,
+      this.outstandingBalance,
+      this.accountBlance,
       this.status,
       this.adminId,
       this.licenseUrl,
@@ -87,19 +89,20 @@ class Agent {
     id = json['id'];
     name = json['name'];
     email = json['email'];
-    contactName = json['contact_name'];
-    contactPhone = json['contact_phone'];
+    contactName = json['contactName'];
+    contactPhone = json['contactPhone'];
     address = json['address'];
     nationality = json['nationality'];
-    agentCode = json['agent_code'];
-    availableLimit = json['available_limit'];
-    creditLimit = json['credit_limit'];
-    usedLimit = json['used_limit'];
+    agentCode = json['agentCode'];
+    availableLimit = json['availableLimit'];
+    creditLimit = json['creditLimit'];
+    outstandingBalance = json['outstandingBalance'];
+    accountBlance = json['accountBlance'];
     status = json['status'];
-    adminId = json['admin_id'];
-    licenseUrl = json['license_url'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    adminId = json['adminId'];
+    licenseUrl = json['licenseUrl'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
   }
 
   Map<String, dynamic> toJson() {
@@ -107,19 +110,20 @@ class Agent {
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;
-    data['contact_name'] = contactName;
-    data['contact_phone'] = contactPhone;
+    data['contactName'] = contactName;
+    data['contactPhone'] = contactPhone;
     data['address'] = address;
     data['nationality'] = nationality;
-    data['agent_code'] = agentCode;
-    data['available_limit'] = availableLimit;
-    data['credit_limit'] = creditLimit;
-    data['used_limit'] = usedLimit;
+    data['agentCode'] = agentCode;
+    data['availableLimit'] = availableLimit;
+    data['creditLimit'] = creditLimit;
+    data['outstandingBalance'] = outstandingBalance;
+    data['accountBlance'] = accountBlance;
     data['status'] = status;
-    data['admin_id'] = adminId;
-    data['license_url'] = licenseUrl;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
+    data['adminId'] = adminId;
+    data['licenseUrl'] = licenseUrl;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
     return data;
   }
 }

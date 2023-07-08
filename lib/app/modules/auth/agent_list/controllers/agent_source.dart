@@ -26,18 +26,13 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'email',
-      label: 'email_address'
-          .tr
-          .text
-          .white
-          .bold
-          .paddingAll(16)
-          .align(Alignment.centerLeft),
+      label:
+          'email'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'agentCode',
-      label: 'agent_code'
+      label: 'agentCode'
           .tr
           .text
           .white
@@ -45,11 +40,10 @@ class RowDataSource {
           .paddingAll(16)
           .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
-      columnWidthMode: ColumnWidthMode.fitByColumnName,
     ),
     GridColumn(
-      columnName: 'available_limit',
-      label: 'available_limit'
+      columnName: 'availableLimit',
+      label: 'availableLimit'
           .tr
           .text
           .white
@@ -57,11 +51,10 @@ class RowDataSource {
           .paddingAll(16)
           .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
-      columnWidthMode: ColumnWidthMode.fitByColumnName,
     ),
     GridColumn(
-      columnName: 'credit_limit',
-      label: 'credit_limit'
+      columnName: 'creditLimit',
+      label: 'creditLimit'
           .tr
           .text
           .white
@@ -69,11 +62,10 @@ class RowDataSource {
           .paddingAll(16)
           .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
-      columnWidthMode: ColumnWidthMode.fitByColumnName,
     ),
     GridColumn(
-      columnName: 'used_limit',
-      label: 'used_limit'
+      columnName: 'outstandingBalance',
+      label: 'outstandingBalance'
           .tr
           .text
           .white
@@ -81,7 +73,17 @@ class RowDataSource {
           .paddingAll(16)
           .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
-      columnWidthMode: ColumnWidthMode.fitByColumnName,
+    ),
+    GridColumn(
+      columnName: 'accountBlance',
+      label: 'accountBlance'
+          .tr
+          .text
+          .white
+          .bold
+          .paddingAll(16)
+          .align(Alignment.centerLeft),
+      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'active',
@@ -103,10 +105,13 @@ class RowDataSource {
         DataGridCell<String>(columnName: 'email', value: user.email),
         DataGridCell<String>(columnName: 'agentCode', value: user.agentCode),
         DataGridCell<double>(
-            columnName: 'available_limit', value: user.availableLimit),
+            columnName: 'availableLimit', value: user.availableLimit),
         DataGridCell<double>(
-            columnName: 'credit_limit', value: user.creditLimit),
-        DataGridCell<double>(columnName: 'used_limit', value: user.usedLimit),
+            columnName: 'creditLimit', value: user.creditLimit),
+        DataGridCell<double>(
+            columnName: 'outstandingBalance', value: user.outstandingBalance),
+        DataGridCell<double>(
+            columnName: 'accountBlance', value: user.accountBlance),
         DataGridCell<bool>(columnName: 'active', value: user.status!.toBool),
         DataGridCell(columnName: 'action', value: null),
       ];
@@ -114,14 +119,15 @@ class RowDataSource {
   List<Widget> dataGridRowAdapter(List<DataGridCell> cell) {
     return cell.map<Widget>((dataCell) {
       switch (dataCell.columnName) {
-        case 'available_limit':
-        case 'credit_limit':
-        case 'used_limit':
-          return dataCell.value
-              .toString()
-              .text
-              .paddingSymmetric(vertical: 6, horizontal: 16)
-              .align(Alignment.center);
+        // case 'availableLimit':
+        // case 'creditLimit':
+        // case 'outstandingBalance':
+        // case 'accountBlance':
+        //   return dataCell.value
+        //       .toString()
+        //       .text
+        //       .paddingSymmetric(vertical: 6, horizontal: 16)
+        //       .align(Alignment.center);
         case 'active':
           return Checkbox(value: dataCell.value, onChanged: null)
               .align(Alignment.center)

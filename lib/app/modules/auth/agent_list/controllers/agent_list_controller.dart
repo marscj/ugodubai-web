@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:ugodubai/app/data/agent_model.dart';
 import 'package:ugodubai/app/data/providers/agent_provider.dart';
-import 'package:ugodubai/app/modules/auth/agent_list/controllers/user_source.dart';
+import 'package:ugodubai/app/modules/auth/agent_list/controllers/agent_source.dart';
 
 class AgentListController extends GetxController {
   final _source = Rx<AgentDataSource>(AgentDataSource());

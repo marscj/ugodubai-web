@@ -78,7 +78,7 @@ class RowDataSource {
               ? dataCell.value
                   .map((data) => data.name)
                   .toList()
-                  .join(',')
+                  .join(' | ')
                   .toString()
                   .text
                   .paddingSymmetric(vertical: 6, horizontal: 16)

@@ -1,10 +1,6 @@
-class UserListRes {
-  int? code;
-  String? message;
-  UserListData? data;
+import 'package:ugodubai/app/data/list_model.dart';
 
-  UserListRes({this.code, this.message, this.data});
-
+class UserListRes extends ListRes {
   UserListRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
@@ -105,26 +101,26 @@ class User {
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    userName = json['user_name'];
+    userName = json['userName'];
     mobile = json['mobile'];
-    userNickname = json['user_nickname'];
+    userNickname = json['userNickname'];
     birthday = json['birthday'];
-    userPassword = json['user_password'];
-    userSalt = json['user_salt'];
-    userStatus = json['user_status'];
-    userEmail = json['user_email'];
+    userPassword = json['userPassword'];
+    userSalt = json['userSalt'];
+    userStatus = json['userStatus'];
+    userEmail = json['userEmail'];
     sex = json['sex'];
     avatar = json['avatar'];
-    deptId = json['dept_id'];
+    deptId = json['deptId'];
     remark = json['remark'];
-    isAdmin = json['is_admin'];
+    isAdmin = json['isAdmin'];
     address = json['address'];
     describe = json['describe'];
-    lastLoginIp = json['last_login_ip'];
-    lastLoginTime = json['last_login_time'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    deletedAt = json['deleted_at'];
+    lastLoginIp = json['lastLoginIp'];
+    lastLoginTime = json['lastLoginTime'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+    deletedAt = json['deletedAt'];
     dept = json['dept'] != null ? Dept?.fromJson(json['dept']) : null;
     if (json['roleInfo'] != null) {
       roleInfo = <RoleInfo>[];
@@ -138,26 +134,26 @@ class User {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['user_name'] = userName;
+    data['userName'] = userName;
     data['mobile'] = mobile;
-    data['user_nickname'] = userNickname;
+    data['userNickname'] = userNickname;
     data['birthday'] = birthday;
-    data['user_password'] = userPassword;
-    data['user_salt'] = userSalt;
-    data['user_status'] = userStatus;
-    data['user_email'] = userEmail;
+    data['userPassword'] = userPassword;
+    data['userSalt'] = userSalt;
+    data['userStatus'] = userStatus;
+    data['userEmail'] = userEmail;
     data['sex'] = sex;
     data['avatar'] = avatar;
-    data['dept_id'] = deptId;
+    data['deptId'] = deptId;
     data['remark'] = remark;
-    data['is_admin'] = isAdmin;
+    data['isAdmin'] = isAdmin;
     data['address'] = address;
     data['describe'] = describe;
-    data['last_login_ip'] = lastLoginIp;
-    data['last_login_time'] = lastLoginTime;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['deleted_at'] = deletedAt;
+    data['lastLoginIp'] = lastLoginIp;
+    data['lastLoginTime'] = lastLoginTime;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    data['deletedAt'] = deletedAt;
     if (dept != null) {
       data['dept'] = dept?.toJson();
     }
@@ -202,38 +198,38 @@ class Dept {
       this.deletedAt});
 
   Dept.fromJson(Map<String, dynamic> json) {
-    deptId = json['dept_id'];
-    parentId = json['parent_id'];
+    deptId = json['deptId'];
+    parentId = json['parentId'];
     ancestors = json['ancestors'];
-    deptName = json['dept_name'];
-    orderNum = json['order_num'];
+    deptName = json['deptName'];
+    orderNum = json['orderNum'];
     leader = json['leader'];
     phone = json['phone'];
     email = json['email'];
     status = json['status'];
-    createdBy = json['created_by'];
-    updatedBy = json['updated_by'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    deletedAt = json['deleted_at'];
+    createdBy = json['createdBy'];
+    updatedBy = json['updatedBy'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+    deletedAt = json['deletedAt'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['dept_id'] = deptId;
-    data['parent_id'] = parentId;
+    data['deptId'] = deptId;
+    data['parentId'] = parentId;
     data['ancestors'] = ancestors;
-    data['dept_name'] = deptName;
-    data['order_num'] = orderNum;
+    data['deptName'] = deptName;
+    data['orderNum'] = orderNum;
     data['leader'] = leader;
     data['phone'] = phone;
     data['email'] = email;
     data['status'] = status;
-    data['created_by'] = createdBy;
-    data['updated_by'] = updatedBy;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['deleted_at'] = deletedAt;
+    data['createdBy'] = createdBy;
+    data['updatedBy'] = updatedBy;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    data['deletedAt'] = deletedAt;
     return data;
   }
 }
