@@ -20,19 +20,30 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'name',
-      label:
-          'name'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
+      label: 'agent_name'
+          .tr
+          .text
+          .white
+          .bold
+          .paddingAll(16)
+          .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'email',
-      label:
-          'email'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
+      label: 'email_address'
+          .tr
+          .text
+          .white
+          .bold
+          .paddingAll(16)
+          .align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
+      columnWidthMode: ColumnWidthMode.fill,
     ),
     GridColumn(
       columnName: 'agentCode',
-      label: 'agentCode'
+      label: 'agent_code'
           .tr
           .text
           .white
@@ -43,7 +54,7 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'availableLimit',
-      label: 'availableLimit'
+      label: 'available_limit'
           .tr
           .text
           .white
@@ -54,7 +65,7 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'creditLimit',
-      label: 'creditLimit'
+      label: 'credit_limit'
           .tr
           .text
           .white
@@ -65,7 +76,7 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'outstandingBalance',
-      label: 'outstandingBalance'
+      label: 'outstanding_balance'
           .tr
           .text
           .white
@@ -76,7 +87,7 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'accountBlance',
-      label: 'accountBlance'
+      label: 'account_blance'
           .tr
           .text
           .white

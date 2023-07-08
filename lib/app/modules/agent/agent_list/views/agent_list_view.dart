@@ -27,7 +27,7 @@ class AgentListView extends GetView<AgentListController> {
             footerFrozenColumnsCount: 1,
             source: controller.source,
             rowsPerPage: controller.source.rowsPerPage,
-            columnWidthMode: ColumnWidthMode.fill,
+            columnWidthMode: ColumnWidthMode.auto,
             rowHeight: 60,
             allowColumnsResizing: true,
             columnResizeMode: ColumnResizeMode.onResize,

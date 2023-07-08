@@ -57,7 +57,7 @@ class LocaleKeys {
   static const agent_code = 'agent_code';
   static const available_limit = 'available_limit';
   static const credit_limit = 'credit_limit';
-  static const outstanding_blance = 'outstanding_blance';
+  static const outstanding_balance = 'outstanding_balance';
   static const account_blance = 'account_blance';
   static const active = 'active';
   static const actions = 'actions';
@@ -113,7 +113,7 @@ class Locales {
     'agent_code': '代理商代码',
     'available_limit': '可用额度',
     'credit_limit': '信用额度',
-    'outstanding_blance': '未结算金额',
+    'outstanding_balance': '未结算金额',
     'account_blance': '账户余额',
     'active': '可用',
     'actions': '操作',
@@ -169,7 +169,7 @@ class Locales {
     'agent_code': 'Agent Code',
     'available_limit': 'Available Limit',
     'credit_limit': 'Credit Limit',
-    'outstanding_blance': 'Outstanding Blance',
+    'outstanding_balance': 'Outstanding Blance',
     'account_blance': 'Account Blance',
     'profile': 'profile',
     'setting': 'Setting',

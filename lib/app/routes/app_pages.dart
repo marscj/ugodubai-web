@@ -220,11 +220,37 @@ class AppPages {
           ],
         ),
 
+        GetPageMenu(
+          name: _Paths.AGENT,
+          label: 'agent_management'.tr,
+          icon: Icons.assignment,
+          page: () => const AuthManagementView(),
+          preventDuplicates: true,
+          middlewares: [
+            EnsureAuthMiddleware(),
+          ],
+          children: [
+            GetPageMenu(
+              label: 'agent_list'.tr,
+              name: _Paths.AGENT_LIST,
+              page: () => DeferredWidget(agent_list_view.loadLibrary,
+                  () => agent_list_view.AgentListView()),
+              binding: AgentListBinding(),
+            ),
+            GetPage(
+              name: _Paths.AGENT_DETAIL,
+              page: () => DeferredWidget(agent_detail_view.loadLibrary,
+                  () => agent_detail_view.AgentDetailView()),
+              binding: AgentDetailBinding(),
+            ),
+          ],
+        ),
+
         //auth
         GetPageMenu(
           name: _Paths.AUTH,
           label: 'auth_management'.tr,
-          icon: Icons.access_alarm,
+          icon: Icons.person,
           page: () => const AuthManagementView(),
           preventDuplicates: true,
           middlewares: [
@@ -256,19 +282,6 @@ class AppPages {
               page: () => DeferredWidget(role_detail_view.loadLibrary,
                   () => role_detail_view.RoleDetailView()),
               binding: RoleDetailBinding(),
-            ),
-            GetPageMenu(
-              label: 'agent_list'.tr,
-              name: _Paths.AGENT_LIST,
-              page: () => DeferredWidget(agent_list_view.loadLibrary,
-                  () => agent_list_view.AgentListView()),
-              binding: AgentListBinding(),
-            ),
-            GetPage(
-              name: _Paths.AGENT_DETAIL,
-              page: () => DeferredWidget(agent_detail_view.loadLibrary,
-                  () => agent_detail_view.AgentDetailView()),
-              binding: AgentDetailBinding(),
             ),
           ],
         ),
