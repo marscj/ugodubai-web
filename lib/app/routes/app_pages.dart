@@ -239,8 +239,8 @@ class AppPages {
             ),
             GetPage(
               name: _Paths.USER_DETAIL,
-              page: () => DeferredWidget(user_list_view.loadLibrary,
-                  () => user_list_view.UserListView()),
+              page: () => DeferredWidget(user_detail_view.loadLibrary,
+                  () => user_detail_view.UserDetailView()),
               binding: UserDetailBinding(),
             ),
             GetPageMenu(
