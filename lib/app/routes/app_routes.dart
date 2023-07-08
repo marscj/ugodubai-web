@@ -23,7 +23,7 @@ abstract class Routes {
   static const PRODUCT_CATEGORY = _Paths.PRODUCT + _Paths.PRODUCT_CATEGORY;
   static const PRODUCT_ATTRIBUTE = _Paths.PRODUCT + _Paths.PRODUCT_ATTRIBUTE;
   static const PRODUCT_TAG = _Paths.PRODUCT + _Paths.PRODUCT_TAG;
-  static const PRODUCT_EDIT = _Paths.PRODUCT + _Paths.PRODUCT_EDIT;
+  static const PRODUCT_DETAIL = _Paths.PRODUCT + _Paths.PRODUCT_DETAIL;
 
   //order
   static const ORDER = _Paths.ORDER;
@@ -33,11 +33,16 @@ abstract class Routes {
   //auth
   static const AUTH = _Paths.AUTH;
   static const USER_LIST = _Paths.AUTH + _Paths.USER_LIST;
-  static const USER_EDIT = _Paths.AUTH + _Paths.USER_EDIT;
+  static const USER_DETAIL = _Paths.AUTH + _Paths.USER_DETAIL;
+  static const ROLE_LIST = _Paths.AUTH + _Paths.ROLE_LIST;
+  static const ROLE_DETAIL = _Paths.AUTH + _Paths.ROLE_DETAIL;
+
+  //agent
+  static const AGENT_LIST = _Paths.AGENT + _Paths.AGENT_LIST;
+  static const AGENT_DETAIL = _Paths.AGENT + _Paths.AGENT_DETAIL;
 
   //settings
   static const SETTING = _Paths.SETTING;
-
   static const PROFILE = _Paths.PROFILE;
 }
 
@@ -58,7 +63,7 @@ abstract class _Paths {
   //product
   static const PRODUCT = '/console/product';
   static const PRODUCT_LIST = '/list';
-  static const PRODUCT_EDIT = '/edit';
+  static const PRODUCT_DETAIL = '/detail';
   static const PRODUCT_CATEGORY = '/category';
   static const PRODUCT_ATTRIBUTE = '/attribute';
   static const PRODUCT_TAG = '/tag';
@@ -70,11 +75,17 @@ abstract class _Paths {
 
   //auth
   static const AUTH = '/console/auth';
-  static const USER_LIST = '/user_list';
-  static const USER_EDIT = '/user_edit';
+  static const USER_LIST = '/user/list';
+  static const USER_DETAIL = '/user/detail';
+  static const ROLE_LIST = '/role/list';
+  static const ROLE_DETAIL = '/role/detail';
+
+  //agent
+  static const AGENT = '/console/agent';
+  static const AGENT_LIST = '/list';
+  static const AGENT_DETAIL = '/detail';
 
   //settings
   static const SETTING = '/console/setting';
-  static const ROLE_LIST = '/role-list';
-  static const PROFILE = '/profile';
+  static const PROFILE = '/console/profile';
 }

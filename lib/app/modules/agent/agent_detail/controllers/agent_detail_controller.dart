@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UserEditController extends GetxController {
-  final ScrollController scrollController1 = ScrollController();
-  final ScrollController scrollController2 = ScrollController();
+class AgentDetailController extends GetxController {
+  //TODO: Implement AgentDetailController
 
   final count = 0.obs;
   @override

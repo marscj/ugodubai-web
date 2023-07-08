@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:ugodubai/app/components/layout.dart';
 import 'package:ugodubai/app/widgets/custom_tab.dart';
 import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 
-import '../controllers/user_edit_controller.dart';
+import '../controllers/user_detail_controller.dart';
 
-class UserEditView extends GetView<UserEditController> {
-  const UserEditView({Key? key}) : super(key: key);
+class UserDetailView extends GetView<UserDetailController> {
+  const UserDetailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: MyHomePage(title: 'haha'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('UserDetailView'),
+        centerTitle: true,
+      ),
+      body: const Center(
+        child: Text(
+          'UserDetailView is working',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
     );
   }
 }

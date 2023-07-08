@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class ProductEditController extends GetxController {
-  //TODO: Implement ProductEditController
+class AgentListController extends GetxController {
+  //TODO: Implement AgentListController
 
   final count = 0.obs;
   @override
