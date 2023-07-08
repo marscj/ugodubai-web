@@ -40,7 +40,21 @@
   "user_list": "All User",
   "user_edit": "User Edit",
   "role_list": "Role List",
+  "role": "Role",
+  
+  "agent_management": "Agents",
+  "agent":"Agent",
+  "agent_list":"Agent List",
+  "agent_name":"Agent Name",
+  "agent_code":"Agent Code",
+  "available_limit":"Available Limit",
+  "credit_limit":"Credit Limit",
+  "outstanding_blance":"Outstanding Blance",
+  "account_blance":"Account Blance",
   
   "profile": "profile",
-  "setting": "Setting"
+  "setting": "Setting",
+
+  "active": "Active",
+  "actions": "Actions"
 }

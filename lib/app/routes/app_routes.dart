@@ -36,6 +36,9 @@ abstract class Routes {
   static const USER_DETAIL = _Paths.AUTH + _Paths.USER_DETAIL;
   static const ROLE_LIST = _Paths.AUTH + _Paths.ROLE_LIST;
   static const ROLE_DETAIL = _Paths.AUTH + _Paths.ROLE_DETAIL;
+
+  //agent
+  static const AGENT = _Paths.AGENT;
   static const AGENT_LIST = _Paths.AUTH + _Paths.AGENT_LIST;
   static const AGENT_DETAIL = _Paths.AUTH + _Paths.AGENT_DETAIL;
 
@@ -77,6 +80,9 @@ abstract class _Paths {
   static const USER_DETAIL = '/user/detail';
   static const ROLE_LIST = '/role/list';
   static const ROLE_DETAIL = '/role/detail';
+
+  //agent
+  static const AGENT = '/console/auth';
   static const AGENT_LIST = '/agent/list';
   static const AGENT_DETAIL = '/agent/detail';
 

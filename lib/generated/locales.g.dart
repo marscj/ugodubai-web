@@ -49,6 +49,18 @@ class LocaleKeys {
   static const user_list = 'user_list';
   static const user_edit = 'user_edit';
   static const role_list = 'role_list';
+  static const role = 'role';
+  static const agent_management = 'agent_management';
+  static const agent = 'agent';
+  static const agent_list = 'agent_list';
+  static const agent_name = 'agent_name';
+  static const agent_code = 'agent_code';
+  static const available_limit = 'available_limit';
+  static const credit_limit = 'credit_limit';
+  static const outstanding_blance = 'outstanding_blance';
+  static const account_blance = 'account_blance';
+  static const active = 'active';
+  static const actions = 'actions';
   static const profile = 'profile';
   static const setting = 'setting';
 }
@@ -93,6 +105,18 @@ class Locales {
     'user_list': '用户列表',
     'user_edit': '编辑用户',
     'role_list': '角色列表',
+    'role': '角色',
+    'agent_management': '代理商管理',
+    'agent': '代理商',
+    'agent_list': '代理商列表',
+    'agent_name': '代理商名称',
+    'agent_code': '代理商代码',
+    'available_limit': '可用额度',
+    'credit_limit': '信用额度',
+    'outstanding_blance': '未结算金额',
+    'account_blance': '账户余额',
+    'active': '可用',
+    'actions': '操作',
     'profile': '个人中心',
     'setting': '网站设置',
   };
@@ -137,7 +161,19 @@ class Locales {
     'user_list': 'All User',
     'user_edit': 'User Edit',
     'role_list': 'Role List',
+    'role': 'Role',
+    'agent_management': 'Agents',
+    'agent': 'Agent',
+    'agent_list': 'Agent List',
+    'agent_name': 'Agent Name',
+    'agent_code': 'Agent Code',
+    'available_limit': 'Available Limit',
+    'credit_limit': 'Credit Limit',
+    'outstanding_blance': 'Outstanding Blance',
+    'account_blance': 'Account Blance',
     'profile': 'profile',
     'setting': 'Setting',
+    'active': 'Active',
+    'actions': 'Actions',
   };
 }

@@ -40,6 +40,20 @@
   "user_list": "用户列表",
   "user_edit": "编辑用户",
   "role_list": "角色列表",
+  "role": "角色",
+
+  "agent_management": "代理商管理",
+  "agent":"代理商",
+  "agent_list":"代理商列表",
+  "agent_name":"代理商名称",
+  "agent_code":"代理商代码",
+  "available_limit":"可用额度",
+  "credit_limit":"信用额度",
+  "outstanding_blance":"未结算金额",
+  "account_blance":"账户余额",
+
+  "active": "可用",
+  "actions": "操作",
   
   "profile": "个人中心",
   "setting": "网站设置"
