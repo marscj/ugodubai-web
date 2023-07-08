@@ -11,6 +11,7 @@ class AgentProvider extends HttpService {
 
   Future<AgentListRes> getAgents() async {
     final res = await get('system/agent/list');
+    print(res.bodyString);
     return AgentListRes.fromJson(res.body);
   }
 

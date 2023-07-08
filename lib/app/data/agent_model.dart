@@ -1,14 +1,10 @@
-class AgentListRes {
-  int? code;
-  String? message;
-  AgentList? data;
+import 'list_model.dart';
 
-  AgentListRes({this.code, this.message, this.data});
-
+class AgentListRes extends ListRes {
   AgentListRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? AgentList?.fromJson(json['data']) : null;
+    data = json['data'] != null ? AgentList.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -23,17 +19,17 @@ class AgentListRes {
 }
 
 class AgentList {
-  List<Agent>? agents;
+  List<Agent>? agent;
   int? currentPage;
   int? total;
 
-  AgentList({this.agents, this.currentPage, this.total});
+  AgentList({this.agent, this.currentPage, this.total});
 
   AgentList.fromJson(Map<String, dynamic> json) {
     if (json['agent'] != null) {
-      agents = <Agent>[];
+      agent = <Agent>[];
       json['agent'].forEach((v) {
-        agents?.add(Agent.fromJson(v));
+        agent?.add(Agent.fromJson(v));
       });
     }
     currentPage = json['currentPage'];
@@ -42,8 +38,8 @@ class AgentList {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    if (agents != null) {
-      data['agent'] = agents?.map((v) => v.toJson()).toList();
+    if (agent != null) {
+      data['agent'] = agent?.map((v) => v.toJson()).toList();
     }
     data['currentPage'] = currentPage;
     data['total'] = total;
@@ -60,9 +56,9 @@ class Agent {
   String? address;
   String? nationality;
   String? agentCode;
-  int? availableLimit;
-  int? creditLimit;
-  int? usedLimit;
+  double? availableLimit;
+  double? creditLimit;
+  double? usedLimit;
   int? status;
   int? adminId;
   String? licenseUrl;
@@ -91,19 +87,19 @@ class Agent {
     id = json['id'];
     name = json['name'];
     email = json['email'];
-    contactName = json['contactName'];
-    contactPhone = json['contactPhone'];
+    contactName = json['contact_name'];
+    contactPhone = json['contact_phone'];
     address = json['address'];
     nationality = json['nationality'];
-    agentCode = json['agentCode'];
-    availableLimit = json['availableLimit'];
-    creditLimit = json['creditLimit'];
-    usedLimit = json['usedLimit'];
+    agentCode = json['agent_code'];
+    availableLimit = json['available_limit'];
+    creditLimit = json['credit_limit'];
+    usedLimit = json['used_limit'];
     status = json['status'];
-    adminId = json['adminId'];
-    licenseUrl = json['licenseUrl'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+    adminId = json['admin_id'];
+    licenseUrl = json['license_url'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
@@ -111,19 +107,19 @@ class Agent {
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;
-    data['contactName'] = contactName;
-    data['contactPhone'] = contactPhone;
+    data['contact_name'] = contactName;
+    data['contact_phone'] = contactPhone;
     data['address'] = address;
     data['nationality'] = nationality;
-    data['agentCode'] = agentCode;
-    data['availableLimit'] = availableLimit;
-    data['creditLimit'] = creditLimit;
-    data['usedLimit'] = usedLimit;
+    data['agent_code'] = agentCode;
+    data['available_limit'] = availableLimit;
+    data['credit_limit'] = creditLimit;
+    data['used_limit'] = usedLimit;
     data['status'] = status;
-    data['adminId'] = adminId;
-    data['licenseUrl'] = licenseUrl;
-    data['createdAt'] = createdAt;
-    data['updatedAt'] = updatedAt;
+    data['admin_id'] = adminId;
+    data['license_url'] = licenseUrl;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

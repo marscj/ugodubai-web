@@ -20,7 +20,7 @@ class RowDataSource {
     ),
     GridColumn(
       columnName: 'username',
-      label: 'UserName'
+      label: 'username'
           .tr
           .text
           .white
@@ -43,18 +43,18 @@ class RowDataSource {
     GridColumn(
       columnName: 'role',
       label:
-          'Role'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
+          'role'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'active',
-      label: 'Active'.tr.text.white.bold.align(Alignment.center),
+      label: 'active'.tr.text.white.bold.align(Alignment.center),
       columnWidthMode: ColumnWidthMode.fitByColumnName,
       autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'action',
-      label: 'Actions'.tr.text.white.bold.align(Alignment.center),
+      label: 'actions'.tr.text.white.bold.align(Alignment.center),
       autoFitPadding: EdgeInsets.all(16),
       width: 100,
     ),

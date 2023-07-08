@@ -2,53 +2,54 @@
 	"code": 0,
 	"message": "",
 	"data": {
-		"userList": [{
-			"id": 3,
-			"userName": "zs",
-			"mobile": "16399669855",
-			"userNickname": "张三",
-			"birthday": 0,
-			"userPassword": "",
-			"userSalt": "",
-			"userStatus": 1,
-			"userEmail": "zs@qq.com",
-			"sex": 0,
-			"avatar": "https://yxh-1301841944.cos.ap-chongqing.myqcloud.com/gfast/2021-08-02/cd8nif79egjg9kbkgk.jpeg",
-			"deptId": 101,
-			"remark": "",
-			"isAdmin": 1,
-			"address": "",
-			"describe": "",
-			"lastLoginIp": "::1",
-			"lastLoginTime": "2022-04-28 10:01:47",
-			"createdAt": "2021-06-22 17:58:00",
-			"updatedAt": "2022-04-28 10:01:47",
-			"deletedAt": null,
-			"primay": 0,
-			"dept": {
-				"deptId": 101,
-				"parentId": 100,
-				"ancestors": "0,100",
-				"deptName": "深圳总公司",
-				"orderNum": 1,
-				"leader": "",
-				"phone": "15888888888",
-				"email": "ry@qq.com",
-				"status": 1,
-				"createdBy": 0,
-				"updatedBy": 0,
-				"createdAt": "2021-07-13 15:56:52",
-				"updatedAt": "2021-07-13 15:56:52",
-				"deletedAt": null
-			},
-			"roleInfo": [{
-				"roleId": 1,
-				"name": "超级管理员"
-			}, {
-				"roleId": 2,
-				"name": "普通管理员"
-			}]
-		}],
+		"user": [
+			{
+				"id": 31,
+				"user_name": "demo",
+				"mobile": "15334455789",
+				"user_nickname": "李四",
+				"birthday": 0,
+				"user_password": "",
+				"user_salt": "",
+				"user_status": 1,
+				"user_email": "123@qq.com",
+				"sex": 2,
+				"avatar": "upload_file/2022-11-11/co9copop81co0gysbz.jpg",
+				"dept_id": 109,
+				"remark": "3",
+				"is_admin": 1,
+				"address": "云南省曲靖市22223",
+				"describe": "生活变的再糟糕，也不妨碍我变得更好",
+				"last_login_ip": "127.0.0.1",
+				"last_login_time": "2023-07-08 11:42:46",
+				"created_at": "2021-06-22 17:58:00",
+				"updated_at": "2022-11-11 17:25:27",
+				"deleted_at": null,
+				"dept": {
+					"dept_id": 109,
+					"parent_id": 102,
+					"ancestors": "0,100,102",
+					"dept_name": "财务部门",
+					"order_num": 2,
+					"leader": "",
+					"phone": "15888888888",
+					"email": "ry@qq.com",
+					"status": 1,
+					"created_by": 0,
+					"updated_by": 0,
+					"created_at": "2021-07-13 15:56:52",
+					"updated_at": "2021-07-13 15:56:52",
+					"deleted_at": null
+				},
+				"roleInfo": [
+					{
+						"roleId": 2,
+						"name": "普通管理员"
+					}
+				],
+				"post": null
+			}
+		],
 		"currentPage": 0,
 		"total": 26
 	}

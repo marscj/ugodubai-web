@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:ugodubai/app/data/providers/agent_provider.dart';
 
 import 'package:ugodubai/app/data/providers/user_provider.dart';
 import 'package:ugodubai/app/data/user_model.dart';
@@ -23,7 +22,7 @@ class UserListController extends GetxController {
   Future<UserListRes> getSource(Map<String, dynamic> payload) async {
     return UserProvider().getUsers(payload).then((value) {
       source = UserDataSource(
-        data: value.data?.userList ?? [],
+        data: value.data?.user ?? [],
         rowsPerPage: payload['pageSize'],
         total: value.data!.total!,
         future: getSource,

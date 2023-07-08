@@ -21,7 +21,7 @@ class AgentListController extends GetxController {
   Future<AgentListRes> getSource(Map<String, dynamic> payload) async {
     return AgentProvider().getAgents().then((value) {
       source = AgentDataSource(
-        data: value.data?.agents ?? [],
+        data: value.data?.agent ?? [],
         rowsPerPage: payload['pageSize'],
         total: value.data!.total!,
         future: getSource,
