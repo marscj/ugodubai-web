@@ -12,21 +12,8 @@ import '../controllers/user_list_controller.dart';
 
 class UserListView extends GetView<UserListController> {
   const UserListView({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Layout(
-      child: UserListViewPage(),
-    );
-  }
-}
-
-class UserListViewPage extends StatelessWidget {
-  const UserListViewPage({
-    super.key,
-  });
 
   Widget _buildDataGrid(context) {
-    final UserListController _controller = Get.find<UserListController>();
     final colorScheme = Theme.of(context).colorScheme;
     return Obx(
       () {
@@ -40,8 +27,8 @@ class UserListViewPage extends StatelessWidget {
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
             footerFrozenColumnsCount: 1,
-            source: _controller.source,
-            rowsPerPage: _controller.source.rowsPerPage,
+            source: controller.source,
+            rowsPerPage: controller.source.rowsPerPage,
             columnWidthMode: ColumnWidthMode.fill,
             rowHeight: 60,
             allowColumnsResizing: true,
@@ -50,7 +37,7 @@ class UserListViewPage extends StatelessWidget {
             onColumnResizeUpdate: (ColumnResizeUpdateDetails args) {
               return true;
             },
-            columns: _controller.source.dataGridColumn,
+            columns: controller.source.dataGridColumn,
           ),
         );
       },
@@ -58,21 +45,20 @@ class UserListViewPage extends StatelessWidget {
   }
 
   Widget _buildDataPager(context) {
-    final UserListController _controller = Get.find<UserListController>();
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Obx(() => _controller.source.dataGridRows.isNotEmpty
+    return Obx(() => controller.source.dataGridRows.isNotEmpty
         ? SfDataPagerTheme(
             data: SfDataPagerThemeData(
               brightness: colorScheme.brightness,
               selectedItemColor: colorScheme.surfaceTint,
             ),
             child: SfDataPager(
-              delegate: _controller.source,
+              delegate: controller.source,
               availableRowsPerPage: <int>[20, 50, 100],
-              pageCount: _controller.source.pageCount,
+              pageCount: controller.source.pageCount,
               onRowsPerPageChanged: (int? rowsPerPage) {
-                _controller.getSource({
+                controller.getSource({
                   'pageSize': rowsPerPage,
                   'pageNum': 1,
                 });
@@ -105,9 +91,11 @@ class UserListViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FxContainer.none(
-      margin: EdgeInsets.all(24),
-      child: _buildLayoutBuilder(context),
+    return Layout(
+      child: FxContainer.none(
+        margin: EdgeInsets.all(24),
+        child: _buildLayoutBuilder(context),
+      ),
     );
   }
 }

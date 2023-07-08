@@ -23,17 +23,17 @@ class AgentListRes {
 }
 
 class AgentList {
-  List<Agent>? agent;
+  List<Agent>? agents;
   int? currentPage;
   int? total;
 
-  AgentList({this.agent, this.currentPage, this.total});
+  AgentList({this.agents, this.currentPage, this.total});
 
   AgentList.fromJson(Map<String, dynamic> json) {
     if (json['agent'] != null) {
-      agent = <Agent>[];
+      agents = <Agent>[];
       json['agent'].forEach((v) {
-        agent?.add(Agent.fromJson(v));
+        agents?.add(Agent.fromJson(v));
       });
     }
     currentPage = json['currentPage'];
@@ -42,8 +42,8 @@ class AgentList {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    if (agent != null) {
-      data['agent'] = agent?.map((v) => v.toJson()).toList();
+    if (agents != null) {
+      data['agent'] = agents?.map((v) => v.toJson()).toList();
     }
     data['currentPage'] = currentPage;
     data['total'] = total;
