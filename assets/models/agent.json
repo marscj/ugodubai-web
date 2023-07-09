@@ -20,6 +20,32 @@
             "licenseUrl": "https://example.com/license1",
             "createdAt": "2022-11-03 15:44:38",
             "updatedAt": "2022-11-03 15:44:38"
-        }
+        },
+        "user": [
+            {
+                "id": 1,
+                "userName": "admin",
+                "mobile": "13578342363",
+                "userNickname": "超级管理员",
+                "birthday": 0,
+                "userPassword": "c567ae329f9929b518759d3bea13f492",
+                "userSalt": "f9aZTAa8yz",
+                "userStatus": 1,
+                "userEmail": "yxh669@qq.com",
+                "sex": 1,
+                "avatar": "https://yxh-1301841944.cos.ap-chongqing.myqcloud.com/gfast/2021-07-19/ccwpeuqz1i2s769hua.jpeg",
+                "deptId": 101,
+                "remark": "",
+                "isAdmin": 1,
+                "address": "asdasfdsaf大发放打发士大夫发按时",
+                "describe": "描述信息",
+                "lastLoginIp": "::1",
+                "lastLoginTime": "2022-10-26 03:01:52",
+                "createdAt": "2021-06-22 17:58:00",
+                "updatedAt": "2022-11-03 15:44:38",
+                "deletedAt": null,
+                "agentId": 1
+            }
+        ]
     }
 }

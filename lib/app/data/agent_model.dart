@@ -1,4 +1,5 @@
-import 'package:ugodubai/app/data/base_model.dart';
+import 'base_model.dart';
+import 'user_model.dart';
 
 class AgentRes extends BaseRes {
   AgentRes.fromJson(Map<String, dynamic> json) {
@@ -20,17 +21,27 @@ class AgentRes extends BaseRes {
 
 class AgentData {
   Agent? agent;
+  List<User>? users;
 
-  AgentData({this.agent});
+  AgentData({this.agent, this.users});
 
   AgentData.fromJson(Map<String, dynamic> json) {
     agent = json['agent'] != null ? Agent?.fromJson(json['agent']) : null;
+    if (json['users'] != null) {
+      users = <User>[];
+      json['users'].forEach((v) {
+        users?.add(User.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (agent != null) {
       data['agent'] = agent?.toJson();
+    }
+    if (users != null) {
+      data['users'] = users?.map((v) => v.toJson()).toList();
     }
     return data;
   }
