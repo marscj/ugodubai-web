@@ -62,6 +62,7 @@ class User {
   int? deptId;
   String? remark;
   int? isAdmin;
+  int? agentId;
   String? address;
   String? describe;
   String? lastLoginIp;
@@ -88,6 +89,7 @@ class User {
       this.deptId,
       this.remark,
       this.isAdmin,
+      this.agentId,
       this.address,
       this.describe,
       this.lastLoginIp,
@@ -114,6 +116,7 @@ class User {
     deptId = json['deptId'];
     remark = json['remark'];
     isAdmin = json['isAdmin'];
+    agentId = json['agentId'];
     address = json['address'];
     describe = json['describe'];
     lastLoginIp = json['lastLoginIp'];
@@ -147,6 +150,7 @@ class User {
     data['deptId'] = deptId;
     data['remark'] = remark;
     data['isAdmin'] = isAdmin;
+    data['agentId'] = agentId;
     data['address'] = address;
     data['describe'] = describe;
     data['lastLoginIp'] = lastLoginIp;

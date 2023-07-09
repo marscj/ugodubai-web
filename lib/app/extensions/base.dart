@@ -12,8 +12,7 @@ extension StringExtension on String {
   String get toTitleFlgCase =>
       replaceAll('_', ' ').split(' ').map((str) => str.toCapitalized).join(' ');
 
-  Text get text =>
-      Text(this, style: TextStyle(overflow: TextOverflow.ellipsis));
+  Text get text => Text(this);
 }
 
 extension InterExtension on int {

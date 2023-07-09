@@ -70,7 +70,10 @@ class UserListView extends GetView<UserListController> {
 
   Widget _buildLayoutBuilder(context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        FilledButton(onPressed: () {}, child: Text('create_user'.tr))
+            .paddingSymmetric(vertical: 20),
         _buildDataGrid(context).expanded,
         Container(
           height: 60,
@@ -92,7 +95,9 @@ class UserListView extends GetView<UserListController> {
   @override
   Widget build(BuildContext context) {
     return Layout(
-      child: FxContainer.none(
+      child: FxCard(
+        color: Colors.white,
+        padding: EdgeInsets.all(24),
         margin: EdgeInsets.all(24),
         child: _buildLayoutBuilder(context),
       ),

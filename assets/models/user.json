@@ -18,6 +18,7 @@
 				"deptId": 109,
 				"remark": "3",
 				"isAdmin": 1,
+				"agentId": 1,
 				"address": "云南省曲靖市22223",
 				"describe": "生活变的再糟糕，也不妨碍我变得更好",
 				"lastLoginIp": "127.0.0.1",
