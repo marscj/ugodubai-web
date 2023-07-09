@@ -5,7 +5,7 @@ import 'package:ugodubai/services/http_service.dart';
 
 class UserProvider extends HttpService {
   Future<User?> getUser(int id) async {
-    final response = await get('user/$id');
+    final response = await get('user/get', query: {'id': id});
     return response.body;
   }
 
@@ -14,7 +14,6 @@ class UserProvider extends HttpService {
         query: payload
             .map((key, value) => MapEntry(key, value?.toString()))
             .cast());
-    print(res.bodyString);
     return UserListRes.fromJson(res.body);
   }
 

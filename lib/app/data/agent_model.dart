@@ -1,6 +1,6 @@
-import 'package:ugodubai/app/data/list_model.dart';
+import 'package:ugodubai/app/data/base_model.dart';
 
-class AgentListRes extends ListRes {
+class AgentListRes extends BaseRes {
   AgentListRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
