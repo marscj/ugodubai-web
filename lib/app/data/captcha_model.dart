@@ -1,9 +1,7 @@
-class CaptchaRes {
-  int? code;
-  String? message;
-  Captcha? data;
+import 'package:ugodubai/app/data/base_model.dart';
 
-  CaptchaRes({this.code, this.message, this.data});
+class CaptchaRes extends BaseRes {
+  CaptchaRes({super.code, super.message, super.data});
 
   CaptchaRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
