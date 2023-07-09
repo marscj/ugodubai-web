@@ -1,10 +1,10 @@
 import 'package:ugodubai/app/data/base_model.dart';
 
-class UserListRes extends BaseRes {
-  UserListRes.fromJson(Map<String, dynamic> json) {
+class UserRes extends BaseRes {
+  UserRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? UserListData?.fromJson(json['data']) : null;
+    data = json['data'] != null ? UserData?.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -18,31 +18,20 @@ class UserListRes extends BaseRes {
   }
 }
 
-class UserListData {
-  List<User>? user;
-  int? currentPage;
-  int? total;
+class UserData {
+  User? user;
 
-  UserListData({this.user, this.currentPage, this.total});
+  UserData({this.user});
 
-  UserListData.fromJson(Map<String, dynamic> json) {
-    if (json['user'] != null) {
-      user = <User>[];
-      json['user'].forEach((v) {
-        user?.add(User.fromJson(v));
-      });
-    }
-    currentPage = json['currentPage'];
-    total = json['total'];
+  UserData.fromJson(Map<String, dynamic> json) {
+    user = json['agent'] != null ? User?.fromJson(json['agent']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (user != null) {
-      data['user'] = user?.map((v) => v.toJson()).toList();
+      data['agent'] = user?.toJson();
     }
-    data['currentPage'] = currentPage;
-    data['total'] = total;
     return data;
   }
 }

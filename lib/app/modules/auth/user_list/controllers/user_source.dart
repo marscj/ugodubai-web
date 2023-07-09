@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:ugodubai/app/data/user_list_model.dart';
 
 import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/app/extensions/base.dart';

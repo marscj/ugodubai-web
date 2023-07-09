@@ -1,14 +1,15 @@
 import 'package:get/get.dart';
 import 'package:ugodubai/services/http_service.dart';
 
+import '../agent_list_model.dart';
 import '../agent_model.dart';
 
 class AgentProvider extends HttpService {
-  Future<dynamic?> getAgent(int id) async {
+  Future<AgentRes> getAgent(int id) async {
     final response =
         await get('system/agent/get', query: {'id': id.toString()});
-    print(response.bodyString);
-    return response.body;
+
+    return AgentRes.fromJson(response.body);
   }
 
   Future<AgentListRes> getAgents() async {

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:ugodubai/app/data/agent_model.dart';
+import 'package:ugodubai/app/data/agent_list_model.dart';
 import 'package:ugodubai/app/data/providers/agent_provider.dart';
 
 import 'agent_source.dart';

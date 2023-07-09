@@ -1,29 +1,25 @@
 {
-	"code": 0,
-	"message": "",
-	"data": {
-		"agent": [
-			{
-				"id": 10,
-				"name": "第五季",
-				"email": "agent1@example.com",
-				"contactName": "Contact Name 1",
-				"contactPhone": "1234567890",
-				"address": "Address 1",
-				"nationality": "China",
-				"agentCode": "AGT001",
-				"availableLimit": 10000.14,
-				"creditLimit": 20000.14,
-				"outstandingBalance": 5000.14,
-				"accountBlance": 100.1,
-				"status": 1,
-				"adminId": 1,
-				"licenseUrl": "https://example.com/license1",
-				"createdAt": "2023-07-08 14:40:00",
-				"updatedAt": "2023-07-08 14:40:00"
-			}
-		],
-		"currentPage": 1,
-		"total": 10
-	}
+    "code": 0,
+    "message": "",
+    "data": {
+        "agent": {
+            "id": 1,
+            "name": "第五季",
+            "email": "agent1@example.com",
+            "contactName": "Contact Name 1",
+            "contactPhone": "1234567890",
+            "address": "Address 1",
+            "nationality": "China",
+            "agentCode": "AGT001",
+            "availableLimit": 10000.14,
+            "creditLimit": 20000.14,
+            "outstandingBalance": 5000.14,
+            "accountBlance": 100.1,
+            "status": 1,
+            "adminId": 1,
+            "licenseUrl": "https://example.com/license1",
+            "createdAt": "2022-11-03 15:44:38",
+            "updatedAt": "2022-11-03 15:44:38"
+        }
+    }
 }

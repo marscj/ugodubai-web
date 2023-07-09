@@ -1,12 +1,8 @@
-import 'package:ugodubai/app/data/user_model.dart';
+import 'package:ugodubai/app/data/base_model.dart';
 
-class LoginRes {
-  int? code;
-  String? message;
-  UserData? data;
+import 'user_model.dart';
 
-  LoginRes({this.code, this.message, this.data});
-
+class LoginRes extends BaseRes {
   LoginRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];

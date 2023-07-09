@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 
-import 'package:ugodubai/app/data/user_model.dart';
 import 'package:ugodubai/services/http_service.dart';
+
+import '../user_list_model.dart';
+import '../user_model.dart';
 
 class UserProvider extends HttpService {
   Future<User?> getUser(int id) async {
