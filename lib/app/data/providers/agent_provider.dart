@@ -8,7 +8,7 @@ class AgentProvider extends HttpService {
   Future<AgentRes> getAgent(int id) async {
     final response =
         await get('system/agent/get', query: {'id': id.toString()});
-    print(response.bodyString);
+
     return AgentRes.fromJson(response.body);
   }
 

@@ -17,7 +17,9 @@ class AgentListController extends GetxController {
     super.onReady();
 
     unawaited(getSource({'pageSize': 20, 'pageNum': 1}));
-    AgentProvider().getAgent(1);
+    AgentProvider().getAgent(1).then((value) {
+      print(value.toJson());
+    });
   }
 
   Future<AgentListRes> getSource(Map<String, dynamic> payload) async {
