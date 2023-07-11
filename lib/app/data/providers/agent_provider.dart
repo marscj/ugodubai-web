@@ -5,11 +5,12 @@ import '../agent_list_model.dart';
 import '../agent_model.dart';
 
 class AgentProvider extends HttpService {
-  Future<AgentRes> getAgent(int id) async {
-    final response =
-        await get('system/agent/get', query: {'id': id.toString()});
+  Future<AgentRes> getAgent(int id, [bool? user]) async {
+    final res = await get('system/agent/get',
+        query: {'id': id.toString(), 'user': user?.toString()});
 
-    return AgentRes.fromJson(response.body);
+    print(res.bodyString);
+    return AgentRes.fromJson(res.body);
   }
 
   Future<AgentListRes> getAgents() async {

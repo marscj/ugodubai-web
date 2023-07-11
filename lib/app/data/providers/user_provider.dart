@@ -16,6 +16,7 @@ class UserProvider extends HttpService {
         query: payload
             .map((key, value) => MapEntry(key, value?.toString()))
             .cast());
+
     return UserListRes.fromJson(res.body);
   }
 
