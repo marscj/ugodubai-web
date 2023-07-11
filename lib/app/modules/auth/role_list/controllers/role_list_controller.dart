@@ -1,23 +1,32 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
+import 'package:ugodubai/app/data/providers/role_provider.dart';
+import 'package:ugodubai/app/data/role_list_model.dart';
+import 'package:ugodubai/app/modules/auth/role_list/controllers/role_source.dart';
 
 class RoleListController extends GetxController {
-  //TODO: Implement RoleListController
+  final _source = Rx<RoleDataSource>(RoleDataSource());
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  RoleDataSource get source => this._source.value;
+  set source(value) => this._source.value = value;
 
   @override
   void onReady() {
     super.onReady();
+
+    unawaited(getSource({'pageSize': 100, 'pageNum': 1}));
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  Future<RoleListRes> getSource(Map<String, dynamic> payload) async {
+    return RoleProvider().getRoles(payload).then((value) {
+      source = RoleDataSource(
+        data: value.data?.agent ?? [],
+        rowsPerPage: payload['pageSize'],
+        total: value.data!.total!,
+        future: getSource,
+      );
+      return value;
+    });
   }
-
-  void increment() => count.value++;
 }
