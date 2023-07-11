@@ -16,7 +16,7 @@ class UserListController extends GetxController {
   void onReady() {
     super.onReady();
 
-    unawaited(getSource({'pageSize': 20, 'pageNum': 1}));
+    unawaited(getSource({'pageSize': 100, 'pageNum': 1}));
   }
 
   Future<UserListRes> getSource(Map<String, dynamic> payload) async {

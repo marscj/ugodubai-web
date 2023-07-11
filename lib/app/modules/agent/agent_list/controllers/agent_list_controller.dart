@@ -16,13 +16,13 @@ class AgentListController extends GetxController {
   void onReady() {
     super.onReady();
 
-    unawaited(getSource({'pageSize': 20, 'pageNum': 1}));
+    unawaited(getSource({'pageSize': 100, 'pageNum': 1}));
 
     AgentProvider().getAgent(1);
   }
 
   Future<AgentListRes> getSource(Map<String, dynamic> payload) async {
-    return AgentProvider().getAgents().then((value) {
+    return AgentProvider().getAgents(payload).then((value) {
       source = AgentDataSource(
         data: value.data?.agent ?? [],
         rowsPerPage: payload['pageSize'],

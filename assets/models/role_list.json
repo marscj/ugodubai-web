@@ -1,0 +1,70 @@
+{
+    "code": 0,
+    "message": "",
+    "data": {
+        "currentPage": 1,
+        "total": 6,
+        "role": [
+            {
+                "id": 1,
+                "status": 1,
+                "listOrder": 0,
+                "name": "超级管理员",
+                "remark": "备注",
+                "dataScope": 3,
+                "createdAt": "2022-04-01 11:38:39",
+                "updatedAt": "2022-04-28 10:00:15"
+            },
+            {
+                "id": 2,
+                "status": 1,
+                "listOrder": 0,
+                "name": "普通管理员",
+                "remark": "备注",
+                "dataScope": 3,
+                "createdAt": "2022-04-01 11:38:39",
+                "updatedAt": "2022-04-28 10:01:34"
+            },
+            {
+                "id": 3,
+                "status": 1,
+                "listOrder": 0,
+                "name": "站点管理员",
+                "remark": "站点管理人员",
+                "dataScope": 3,
+                "createdAt": "2022-04-01 11:38:39",
+                "updatedAt": "2022-04-01 11:38:39"
+            },
+            {
+                "id": 4,
+                "status": 1,
+                "listOrder": 0,
+                "name": "初级管理员",
+                "remark": "初级管理员",
+                "dataScope": 3,
+                "createdAt": "2022-04-01 11:38:39",
+                "updatedAt": "2022-04-01 11:38:39"
+            },
+            {
+                "id": 5,
+                "status": 1,
+                "listOrder": 0,
+                "name": "高级管理员",
+                "remark": "高级管理员",
+                "dataScope": 2,
+                "createdAt": "2022-04-01 11:38:39",
+                "updatedAt": "2022-04-01 11:38:39"
+            },
+            {
+                "id": 8,
+                "status": 1,
+                "listOrder": 0,
+                "name": "区级管理员",
+                "remark": "",
+                "dataScope": 2,
+                "createdAt": "2022-04-01 11:38:39",
+                "updatedAt": "2022-04-06 09:53:40"
+            }
+        ]
+    }
+}

@@ -9,12 +9,14 @@ class AgentProvider extends HttpService {
     final res = await get('system/agent/get',
         query: {'id': id.toString(), 'user': user?.toString()});
 
-    print(res.bodyString);
     return AgentRes.fromJson(res.body);
   }
 
-  Future<AgentListRes> getAgents() async {
-    final res = await get('system/agent/list');
+  Future<AgentListRes> getAgents(Map<String, dynamic> payload) async {
+    final res = await get('system/agent/list',
+        query: payload
+            .map((key, value) => MapEntry(key, value?.toString()))
+            .cast());
 
     return AgentListRes.fromJson(res.body);
   }
