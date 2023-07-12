@@ -8,6 +8,7 @@ class RoleProvider extends HttpService {
         query: payload
             .map((key, value) => MapEntry(key, value?.toString()))
             .cast());
+
     return RoleListRes.fromJson(res.body);
   }
 

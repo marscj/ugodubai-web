@@ -19,82 +19,55 @@ class RowDataSource {
       autoFitPadding: EdgeInsets.all(16),
       width: 60,
     ),
-    // GridColumn(
-    //   columnName: 'username',
-    //   label: 'username'
-    //       .tr
-    //       .text
-    //       .white
-    //       .bold
-    //       .paddingAll(16)
-    //       .align(Alignment.centerLeft),
-    //   autoFitPadding: EdgeInsets.all(16),
-    // ),
-    // GridColumn(
-    //   columnName: 'email',
-    //   label: 'email_address'
-    //       .tr
-    //       .text
-    //       .white
-    //       .bold
-    //       .paddingAll(16)
-    //       .align(Alignment.centerLeft),
-    //   autoFitPadding: EdgeInsets.all(16),
-    // ),
-    // GridColumn(
-    //   columnName: 'role',
-    //   label:
-    //       'role'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
-    //   autoFitPadding: EdgeInsets.all(16),
-    // ),
+    GridColumn(
+      columnName: 'name',
+      label:
+          'name'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
+      autoFitPadding: EdgeInsets.all(16),
+    ),
+    GridColumn(
+      columnName: 'remark',
+      label: 'remark'
+          .tr
+          .text
+          .white
+          .bold
+          .paddingAll(16)
+          .align(Alignment.centerLeft),
+      autoFitPadding: EdgeInsets.all(16),
+    ),
+    GridColumn(
+      columnName: 'dataScope',
+      label: 'scope'.tr.text.white.bold.paddingAll(16).align(Alignment.center),
+      autoFitPadding: EdgeInsets.all(16),
+      width: 80,
+    ),
     GridColumn(
       columnName: 'active',
       label: 'active'.tr.text.white.bold.align(Alignment.center),
       columnWidthMode: ColumnWidthMode.fitByColumnName,
       autoFitPadding: EdgeInsets.all(16),
     ),
-    GridColumn(
-      columnName: 'action',
-      label: 'actions'.tr.text.white.bold.align(Alignment.center),
-      autoFitPadding: EdgeInsets.all(16),
-      width: 100,
-    ),
   ];
 
   List<DataGridCell> dataGridCell(Role data) => [
         DataGridCell<String>(columnName: 'id', value: data.id.toString()),
-        // DataGridCell<String>(columnName: 'username', value: data.userName),
-        // DataGridCell<String>(columnName: 'email', value: user.userEmail),
-        // DataGridCell<List<RoleInfo>?>(columnName: 'role', value: user.roleInfo),
+        DataGridCell<String>(columnName: 'name', value: data.name),
+        DataGridCell<String>(columnName: 'remark', value: data.remark),
+        DataGridCell<int>(columnName: 'dataScope', value: data.dataScope),
         DataGridCell<bool>(columnName: 'active', value: data.status!.toBool),
-        DataGridCell(columnName: 'action', value: null),
       ];
 
   List<Widget> dataGridRowAdapter(List<DataGridCell> cell) {
     return cell.map<Widget>((dataCell) {
       switch (dataCell.columnName) {
-        case 'role':
-          return dataCell.value != null
-              ? dataCell.value
-                  .map((data) => data.name)
-                  .toList()
-                  .join(' | ')
-                  .toString()
-                  .text
-                  .paddingSymmetric(vertical: 6, horizontal: 16)
-                  .align(Alignment.centerLeft)
-              : SizedBox.shrink();
         case 'active':
           return Checkbox(value: dataCell.value, onChanged: null)
               .align(Alignment.center)
               .paddingSymmetric(vertical: 6, horizontal: 16);
-        case 'action':
-          return ButtonBar(
-            children: [
-              TextButton(onPressed: () {}, child: 'reset_password'.tr.text)
-            ],
-          );
+
         case 'id':
+        case 'dataScope':
           return dataCell.value
               .toString()
               .text

@@ -21,7 +21,7 @@ class RoleListController extends GetxController {
   Future<RoleListRes> getSource(Map<String, dynamic> payload) async {
     return RoleProvider().getRoles(payload).then((value) {
       source = RoleDataSource(
-        data: value.data?.agent ?? [],
+        data: value.data?.role ?? [],
         rowsPerPage: payload['pageSize'],
         total: value.data!.total!,
         future: getSource,
