@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
 import 'package:ugodubai/app/data/providers/role_provider.dart';
 import 'package:ugodubai/app/data/role_list_model.dart';
 import 'package:ugodubai/app/modules/auth/role_list/controllers/role_source.dart';

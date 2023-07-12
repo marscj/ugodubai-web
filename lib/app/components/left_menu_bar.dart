@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:ugodubai/app/extensions/get_page.dart';
-import 'package:ugodubai/app/modules/root/controllers/root_controller.dart';
 
 import 'package:ugodubai/app/routes/app_pages.dart';
 import 'package:ugodubai/app/components/left_bar.dart';

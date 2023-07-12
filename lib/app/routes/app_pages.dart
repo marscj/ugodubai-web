@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_management_view.dart';
-import 'package:ugodubai/app/modules/root/controllers/root_controller.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
@@ -86,7 +85,6 @@ class AppPages {
     GetPage(
       name: '/',
       page: () => RootView(),
-      binding: BindingsBuilder(() => Get.put(() => RootController())),
       participatesInRootNavigator: true,
       preventDuplicates: true,
       transition: Transition.noTransition,
