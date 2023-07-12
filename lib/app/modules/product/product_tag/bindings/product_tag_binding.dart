@@ -5,8 +5,8 @@ import '../controllers/product_tag_controller.dart';
 class ProductTagBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ProductTagController>(
-      () => ProductTagController(),
+    Get.put<ProductTagController>(
+      ProductTagController(),
     );
   }
 }

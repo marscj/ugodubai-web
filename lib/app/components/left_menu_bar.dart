@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:ugodubai/app/extensions/get_page.dart';
+import 'package:ugodubai/app/modules/root/controllers/root_controller.dart';
 
 import 'package:ugodubai/app/routes/app_pages.dart';
 import 'package:ugodubai/app/components/left_bar.dart';
@@ -248,6 +249,8 @@ class _MenuItemState extends State<MenuItem> {
     return GestureDetector(
       onTap: () {
         if (widget.route != null) {
+          // RootController controller = Get.find<RootController>();
+          // controller.delegate.offNamed(widget.route!, arguments: 1);
           Get.rootDelegate.offNamed(widget.route!, arguments: 1);
         }
       },

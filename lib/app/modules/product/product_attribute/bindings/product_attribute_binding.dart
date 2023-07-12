@@ -5,8 +5,8 @@ import '../controllers/product_attribute_controller.dart';
 class ProductAttributeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ProductAttributeController>(
-      () => ProductAttributeController(),
+    Get.put<ProductAttributeController>(
+      ProductAttributeController(),
     );
   }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
+import 'package:ugodubai/app/modules/agent/agent_management_view.dart';
+import 'package:ugodubai/app/modules/root/controllers/root_controller.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
@@ -84,6 +86,7 @@ class AppPages {
     GetPage(
       name: '/',
       page: () => RootView(),
+      binding: BindingsBuilder(() => Get.put(() => RootController())),
       participatesInRootNavigator: true,
       preventDuplicates: true,
       transition: Transition.noTransition,
@@ -123,6 +126,14 @@ class AppPages {
         ),
 
         //console
+        // GetPageMenu(
+        //   name: _Paths.DASHBOARD,
+        //   label: 'dashboard'.tr,
+        //   icon: Icons.dashboard_outlined,
+        //   page: () => DeferredWidget(
+        //       dashboard_view.loadLibrary, () => dashboard_view.DashboardView()),
+        //   binding: DashboardBinding(),
+        // ),
         GetPageMenu(
           name: _Paths.CONSOLE,
           page: () => ConsoleView(),
@@ -225,7 +236,7 @@ class AppPages {
           name: _Paths.AGENT,
           label: 'agent_management'.tr,
           icon: Icons.assignment,
-          page: () => const AuthManagementView(),
+          page: () => const AgentManagementView(),
           preventDuplicates: true,
           middlewares: [
             EnsureAuthMiddleware(),
@@ -254,7 +265,6 @@ class AppPages {
           icon: Icons.person,
           page: () => const AuthManagementView(),
           preventDuplicates: true,
-          transition: Transition.noTransition,
           middlewares: [
             EnsureAuthMiddleware(),
           ],
