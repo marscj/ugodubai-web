@@ -86,6 +86,7 @@ class AppPages {
       page: () => RootView(),
       participatesInRootNavigator: true,
       preventDuplicates: true,
+      transition: Transition.noTransition,
       children: [
         GetPage(
           name: _Paths.HOME,
@@ -253,6 +254,7 @@ class AppPages {
           icon: Icons.person,
           page: () => const AuthManagementView(),
           preventDuplicates: true,
+          transition: Transition.noTransition,
           middlewares: [
             EnsureAuthMiddleware(),
           ],

@@ -6,6 +6,8 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:ugodubai/app/components/layout.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
+import 'package:ugodubai/app/modules/auth/role_detail/views/role_detail_view.dart';
+import 'package:ugodubai/app/routes/app_pages.dart';
 
 import '../controllers/role_list_controller.dart';
 
@@ -27,6 +29,14 @@ class RoleListView extends GetView<RoleListController> {
             footerFrozenColumnsCount: 1,
             source: controller.source,
             rowsPerPage: controller.source.rowsPerPage,
+            onCellTap: (details) {
+              // Get.to(RoleDetailView());
+              // Get.defaultDialog(
+              //     content: Card(
+              //   child: RoleDetailView(),
+              // ));
+              Get.rootDelegate.toNamed(Routes.ROLE_DETAIL);
+            },
             columnWidthMode: ColumnWidthMode.fill,
             rowHeight: 60,
             allowColumnsResizing: true,
