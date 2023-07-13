@@ -18,7 +18,7 @@ class CustomTab extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.text,
     this.icon,
-    this.iconMargin = const EdgeInsets.only(bottom: 10.0),
+    this.iconMargin = const EdgeInsets.only(left: 4.0),
     this.height,
     this.child,
   })  : assert(text != null || child != null || icon != null),
@@ -52,14 +52,15 @@ class CustomTab extends StatelessWidget implements PreferredSizeWidget {
       label = icon!;
     } else {
       calculatedHeight = _kTextAndIconTabHeight;
-      label = Column(
+      label = Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          _buildLabelText(),
           Container(
             margin: iconMargin,
             child: icon,
           ),
-          _buildLabelText(),
         ],
       );
     }
@@ -175,7 +176,12 @@ class _TabStyle extends AnimatedWidget {
           size: 24.0,
           color: color,
         ),
-        child: child,
+        child: Container(
+          color: isSelected
+              ? Theme.of(context).colorScheme.primaryContainer
+              : null,
+          child: child,
+        ),
       ),
     );
   }
@@ -537,6 +543,7 @@ class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
     this.automaticIndicatorColorAdjustment = true,
     this.indicatorWeight = 2.0,
     this.indicatorPadding = EdgeInsets.zero,
+    this.tabBackground,
     this.indicator,
     this.indicatorSize = TabBarIndicatorSize.tab,
     this.dividerColor,
@@ -554,39 +561,8 @@ class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
     this.splashFactory,
     this.splashBorderRadius,
     this.alignment = Alignment.centerLeft,
-  })  : _isPrimary = true,
-        assert(indicator != null || (indicatorWeight > 0.0));
-
-  ///     tab bar specification.
-  const CustomTabBar.secondary({
-    super.key,
-    required this.tabs,
-    this.controller,
-    this.isScrollable = false,
-    this.padding,
-    this.indicatorColor,
-    this.automaticIndicatorColorAdjustment = true,
-    this.indicatorWeight = 2.0,
-    this.indicatorPadding = EdgeInsets.zero,
-    this.indicator,
-    this.indicatorSize = TabBarIndicatorSize.tab,
-    this.dividerColor,
-    this.labelColor,
-    this.labelStyle,
-    this.labelPadding,
-    this.unselectedLabelColor,
-    this.unselectedLabelStyle,
-    this.dragStartBehavior = DragStartBehavior.start,
-    this.overlayColor,
-    this.mouseCursor,
-    this.enableFeedback,
-    this.onTap,
-    this.physics,
-    this.splashFactory,
-    this.splashBorderRadius,
-    this.alignment = Alignment.centerLeft,
-  })  : _isPrimary = false,
-        assert(indicator != null || (indicatorWeight > 0.0));
+  }) : _isPrimary = true;
+  // assert(indicator != null || (indicatorWeight > 0.0));
 
   final List<Widget> tabs;
 
@@ -613,6 +589,8 @@ class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
   final Color? dividerColor;
 
   final Color? labelColor;
+
+  final Color? tabBackground;
 
   final Color? unselectedLabelColor;
 
@@ -725,10 +703,12 @@ class _TabBarState extends State<CustomTabBar> {
               topRight: Radius.circular(3.0),
             )
           : null,
-      borderSide: BorderSide(
-        width: widget.indicatorWeight,
-        color: color,
-      ),
+      borderSide: widget.indicatorWeight > 0.0
+          ? BorderSide(
+              width: widget.indicatorWeight,
+              color: color,
+            )
+          : BorderSide.none,
     );
   }
 

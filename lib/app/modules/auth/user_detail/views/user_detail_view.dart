@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:ugodubai/app/components/layout.dart';
 import 'package:ugodubai/app/widgets/custom_tab.dart';
 import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 
@@ -11,18 +12,10 @@ class UserDetailView extends GetView<UserDetailController> {
   const UserDetailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('UserDetailView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'UserDetailView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    return Layout(
+        child: MyHomePage(
+      title: 'User Details',
+    ));
   }
 }
 
@@ -80,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage>
             //   collapseMode: CollapseMode.pin,
             //   background: FlutterLogo(),
             // ),
-            bottom: CustomTabBar.secondary(
+            bottom: CustomTabBar(
               isScrollable: true,
               controller: tabController,
               indicatorSize: TabBarIndicatorSize.label,
