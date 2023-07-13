@@ -6,6 +6,7 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 import 'package:ugodubai/app/components/layout.dart';
+import 'package:ugodubai/app/components/layout_tab.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/user_list_controller.dart';
@@ -72,8 +73,8 @@ class UserListView extends GetView<UserListController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        FilledButton(onPressed: () {}, child: Text('create_user'.tr))
-            .paddingSymmetric(vertical: 20),
+        // FilledButton(onPressed: () {}, child: Text('create_user'.tr))
+        //     .paddingSymmetric(vertical: 20),
         _buildDataGrid(context).expanded,
         Container(
           height: 60,
@@ -94,11 +95,9 @@ class UserListView extends GetView<UserListController> {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
+    return LayoutTab(
       child: FxCard(
         color: Colors.white,
-        padding: EdgeInsets.all(24),
-        margin: EdgeInsets.all(24),
         child: _buildLayoutBuilder(context),
       ),
     );

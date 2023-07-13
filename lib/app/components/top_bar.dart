@@ -15,12 +15,8 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FxCard(
-      shadow: FxShadow(position: FxShadowPosition.bottomRight, elevation: 0.5),
-      height: 60,
-      borderRadiusAll: 0,
-      padding: FxSpacing.x(24),
-      color: Theme.of(context).colorScheme.onPrimary,
+    return SizedBox(
+      height: 80,
       child: [
         [
           InkWell(
