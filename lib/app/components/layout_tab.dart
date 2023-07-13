@@ -11,7 +11,6 @@ import 'package:ugodubai/app/components/top_tab_bar.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 import 'package:ugodubai/app/extensions/widgets.dart';
 import 'package:ugodubai/app/modules/console/controllers/console_controller.dart';
-import 'package:ugodubai/app/widgets/sliver_header_delegate.dart';
 
 class LayoutTab extends StatefulWidget {
   const LayoutTab({super.key, required this.child});
