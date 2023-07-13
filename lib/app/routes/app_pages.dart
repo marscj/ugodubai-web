@@ -4,12 +4,10 @@ import 'package:get/get.dart';
 import 'package:ugodubai/app/components/layout_tab.dart';
 import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
-import 'package:ugodubai/app/modules/agent/agent_management_view.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
 
-import '../modules/auth/auth_management_view.dart';
 import '../modules/auth/role_detail/bindings/role_detail_binding.dart';
 import '../modules/auth/role_list/bindings/role_list_binding.dart';
 import '../modules/auth/user_detail/bindings/user_detail_binding.dart';
@@ -21,13 +19,11 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/order/order_detail/bindings/order_detail_binding.dart';
 import '../modules/order/order_list/bindings/order_list_binding.dart';
-import '../modules/order/order_management_view.dart';
 import '../modules/product/product_attribute/bindings/product_attribute_binding.dart';
 import '../modules/product/product_category/bindings/product_category_binding.dart';
 import '../modules/product/product_detail/bindings/product_detail_binding.dart';
 
 import '../modules/product/product_list/bindings/product_list_binding.dart';
-import '../modules/product/product_management_view.dart';
 import '../modules/product/product_tag/bindings/product_tag_binding.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/register/bindings/register_binding.dart';
