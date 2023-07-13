@@ -126,7 +126,7 @@ extension ExtensionWidget on Widget {
 
   Widget get expanded => Expanded(child: this);
 
-  Widget flex(flex, [fit = FlexFit.loose]) =>
+  Widget flexible(flex, [fit = FlexFit.loose]) =>
       Flexible(flex: flex, fit: fit, child: this);
 
   Widget align(alignment) => Align(alignment: alignment, child: this);
@@ -142,10 +142,4 @@ extension ExtensionWidget on Widget {
   Widget fadeInRight() => FadeInRight(child: this);
 
   Widget fadeInLeft() => FadeInLeft(child: this);
-}
-
-extension ExtensionContainer on Container {
-  Widget height(height) {
-    return Container();
-  }
 }

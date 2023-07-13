@@ -84,7 +84,7 @@ class LoginView extends GetView<LoginController> {
                   contentPadding: FxSpacing.all(16),
                   isCollapsed: true,
                   floatingLabelBehavior: FloatingLabelBehavior.never),
-            ).flex(3),
+            ).flexible(3),
             Obx(
               () => controller.capthcaImg64 != null
                   ? InkWell(
@@ -103,7 +103,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     )
                   : SizedBox.shrink(),
-            ).flex(2)
+            ).flexible(2)
           ].row(ca: CrossAxisAlignment.start),
           FxSpacing.height(46),
           FilledButton(

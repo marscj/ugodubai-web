@@ -45,7 +45,7 @@ extension ExtensionListWidget on List<Widget> {
   Widget stack({StackFit fit = StackFit.loose}) =>
       Stack(fit: fit, children: this);
 
-  Widget warp({mainAxisSpacing, crossAxisSpacing}) => Wrap(
-        children: this,
-      );
+  Widget warp({mainAxisSpacing, crossAxisSpacing}) => Wrap(children: this);
+
+  Widget flex() => Flex(direction: Axis.horizontal, children: this);
 }

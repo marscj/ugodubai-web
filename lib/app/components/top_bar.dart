@@ -18,18 +18,16 @@ class TopBar extends StatelessWidget {
     return SizedBox(
       height: 80,
       child: [
-        [
-          InkWell(
-            splashColor: colorScheme.onBackground,
-            highlightColor: colorScheme.onBackground,
-            onTap: () {
-              leftBarFun.call();
-            },
-            child: DrawerButtonIcon(),
-          ),
-          FxSpacing.width(24),
-          SearchMenu(),
-        ].row(),
+        InkWell(
+          splashColor: colorScheme.onBackground,
+          highlightColor: colorScheme.onBackground,
+          onTap: () {
+            leftBarFun.call();
+          },
+          child: DrawerButtonIcon(),
+        ),
+        FxSpacing.width(24),
+        SearchMenu(),
         [
           LanguageMenu(),
           FxSpacing.width(6),
