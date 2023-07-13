@@ -10,12 +10,10 @@ class ProductAttributeView extends GetView<ProductAttributeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: Center(
-        child: ElevatedButton(
-          child: Text('ProductAttributeView'),
-          onPressed: () {},
-        ),
+    return Center(
+      child: ElevatedButton(
+        child: Text('ProductAttributeView'),
+        onPressed: () {},
       ),
     );
   }

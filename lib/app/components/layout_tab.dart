@@ -47,7 +47,6 @@ class _LayoutTabState extends State<LayoutTab>
 
     Get.rootDelegate.addListener(
       () {
-        print(Get.rootDelegate.history[0].location);
         Get.rootDelegate.history.toList().map((e) {
           print(e.location);
         });
@@ -67,6 +66,10 @@ class _LayoutTabState extends State<LayoutTab>
         },
       ),
     ));
+
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   void addPage() {}

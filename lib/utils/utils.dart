@@ -85,7 +85,7 @@ class Utils {
   }
 
   static getCurrentUrl(context) {
-    print('======, ${Get.rootDelegate.currentConfiguration?.location}');
+    // print('======, ${Get.rootDelegate.currentConfiguration?.location}');
     // return ModalRoute.of(context)?.settings.name ?? Uri.base.path;
     return Get.rootDelegate.currentConfiguration?.location;
   }

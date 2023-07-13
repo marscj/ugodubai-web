@@ -246,6 +246,8 @@ class _MenuItemState extends State<MenuItem> {
   Widget build(BuildContext context) {
     bool isActive = Utils.getCurrentUrl(context) == widget.route;
 
+    print('$isActive, ${Utils.getCurrentUrl(context)}=====${widget.route}');
+
     return GestureDetector(
       onTap: () {
         if (widget.route != null) {

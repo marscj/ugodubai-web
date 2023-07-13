@@ -12,27 +12,25 @@ class RoleDetailView extends GetView<RoleDetailController> {
   const RoleDetailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: Container(
-        child: [
-          FxFlex(
-            children: [
-              FxFlexItem(
-                sizes: "xl-3 lg-6 sm-12",
-                child: TextFormField(
-                  decoration: InputDecoration(label: Text('ID')),
-                ),
+    return Container(
+      child: [
+        FxFlex(
+          children: [
+            FxFlexItem(
+              sizes: "xl-3 lg-6 sm-12",
+              child: TextFormField(
+                decoration: InputDecoration(label: Text('ID')),
               ),
-              FxFlexItem(
-                sizes: "xl-3 lg-6 sm-12",
-                child: TextFormField(
-                  decoration: InputDecoration(label: Text('ID')),
-                ),
-              )
-            ],
-          )
-        ].col().list,
-      ),
+            ),
+            FxFlexItem(
+              sizes: "xl-3 lg-6 sm-12",
+              child: TextFormField(
+                decoration: InputDecoration(label: Text('ID')),
+              ),
+            )
+          ],
+        )
+      ].col().list,
     );
   }
 }

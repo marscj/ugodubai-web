@@ -13,10 +13,6 @@ class UserDetailView extends GetView<UserDetailController> {
   @override
   Widget build(BuildContext context) {
     return Text('data');
-    // return Layout(
-    //     child: MyHomePage(
-    //   title: 'User Details',
-    // ));
   }
 }
 
