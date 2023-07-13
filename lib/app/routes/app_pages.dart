@@ -126,10 +126,7 @@ class AppPages {
 
         GetPageMenu(
           name: _Paths.CONSOLE,
-          page: () => LayoutTab(
-            initialRoute: Routes.DASHBOARD,
-            anchorRoute: Routes.CONSOLE,
-          ),
+          page: () => ConsoleView(),
           icon: Icons.dashboard_outlined,
           label: 'console'.tr,
           preventDuplicates: true,

@@ -62,7 +62,7 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
 
   //product
-  static const PRODUCT = '/console/product';
+  static const PRODUCT = '/product';
   static const PRODUCT_LIST = '/list';
   static const PRODUCT_DETAIL = '/detail';
   static const PRODUCT_CATEGORY = '/category';
@@ -70,23 +70,23 @@ abstract class _Paths {
   static const PRODUCT_TAG = '/tag';
 
   //order
-  static const ORDER = '/console/order';
+  static const ORDER = '/order';
   static const ORDER_LIST = '/list';
   static const ORDER_DETAIL = '/detail';
 
   //auth
-  static const AUTH = '/console/auth';
+  static const AUTH = '/auth';
   static const USER_LIST = '/user/list';
   static const USER_DETAIL = '/user/detail';
   static const ROLE_LIST = '/role/list';
   static const ROLE_DETAIL = '/role/detail';
 
   //agent
-  static const AGENT = '/console/agent';
+  static const AGENT = '/agent';
   static const AGENT_LIST = '/agent/list';
   static const AGENT_DETAIL = '/agent/detail';
 
   //settings
-  static const SETTING = '/console/setting';
-  static const PROFILE = '/console/profile';
+  static const SETTING = '/setting';
+  static const PROFILE = '/profile';
 }

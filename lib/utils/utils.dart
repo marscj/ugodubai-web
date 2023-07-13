@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ugodubai/app/extensions/date_time_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -84,6 +85,8 @@ class Utils {
   }
 
   static getCurrentUrl(context) {
-    return ModalRoute.of(context)?.settings.name ?? Uri.base.path;
+    print('======, ${Get.rootDelegate.currentConfiguration?.location}');
+    // return ModalRoute.of(context)?.settings.name ?? Uri.base.path;
+    return Get.rootDelegate.currentConfiguration?.location;
   }
 }

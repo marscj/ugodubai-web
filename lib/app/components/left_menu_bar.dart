@@ -245,12 +245,13 @@ class _MenuItemState extends State<MenuItem> {
   @override
   Widget build(BuildContext context) {
     bool isActive = Utils.getCurrentUrl(context) == widget.route;
+
     return GestureDetector(
       onTap: () {
         if (widget.route != null) {
           // RootController controller = Get.find<RootController>();
           // controller.delegate.offNamed(widget.route!, arguments: 1);
-          Get.rootDelegate.offNamed(widget.route!, arguments: 1);
+          Get.rootDelegate.toNamed(widget.route!, arguments: 1);
         }
       },
       child: MouseRegion(
