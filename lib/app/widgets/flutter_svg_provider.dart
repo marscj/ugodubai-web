@@ -4,7 +4,7 @@ import 'dart:ui' as ui show Image, Picture;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as httpC;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -97,7 +97,7 @@ class SvgProvider extends ImageProvider<SvgImageKey> {
     }
     switch (key.source) {
       case SvgSource.network:
-        return await http.read(Uri.parse(key.path));
+        return await httpC.read(Uri.parse(key.path));
       case SvgSource.asset:
         return await rootBundle.loadString(key.path);
       case SvgSource.file:

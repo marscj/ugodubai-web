@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ugodubai/app/components/layout.dart';
 
 import '../controllers/agent_detail_controller.dart';
 

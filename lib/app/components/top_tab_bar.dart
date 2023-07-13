@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/flutx.dart';
-
-import 'package:get/get.dart';
 
 import 'package:ugodubai/app/widgets/custom_tab.dart';
 import 'package:ugodubai/app/widgets/page_tabbar.dart';

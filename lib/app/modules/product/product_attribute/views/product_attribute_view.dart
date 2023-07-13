@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ugodubai/app/components/layout.dart';
-import 'package:ugodubai/app/routes/app_pages.dart';
 
 import '../controllers/product_attribute_controller.dart';
 
