@@ -15,9 +15,7 @@ class ProductTagView extends GetView<ProductTagController> {
       child: Center(
         child: ElevatedButton(
           child: Text('ProductTagView'),
-          onPressed: () {
-            Get.rootDelegate.toNamed(Routes.CONSOLE);
-          },
+          onPressed: () {},
         ),
       ),
     );

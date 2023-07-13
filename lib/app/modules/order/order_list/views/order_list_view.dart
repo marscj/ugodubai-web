@@ -15,9 +15,7 @@ class OrderListView extends GetView<OrderListController> {
       child: Center(
         child: ElevatedButton(
           child: Text('OrderListView'),
-          onPressed: () {
-            Get.rootDelegate.toNamed(Routes.CONSOLE);
-          },
+          onPressed: () {},
         ),
       ),
     );

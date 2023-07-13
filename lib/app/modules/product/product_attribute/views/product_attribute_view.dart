@@ -15,9 +15,7 @@ class ProductAttributeView extends GetView<ProductAttributeController> {
       child: Center(
         child: ElevatedButton(
           child: Text('ProductAttributeView'),
-          onPressed: () {
-            Get.rootDelegate.toNamed(Routes.CONSOLE);
-          },
+          onPressed: () {},
         ),
       ),
     );

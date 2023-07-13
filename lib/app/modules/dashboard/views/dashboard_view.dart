@@ -16,9 +16,7 @@ class DashboardView extends GetView<DashboardController> {
       child: Center(
         child: ElevatedButton(
           child: Text('Dashboard View'),
-          onPressed: () {
-            Get.rootDelegate.toNamed(Routes.ORDER);
-          },
+          onPressed: () {},
         ),
       ),
     );

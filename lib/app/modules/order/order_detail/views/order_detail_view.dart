@@ -15,9 +15,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
       child: Center(
         child: ElevatedButton(
           child: Text('OrderDetailView'),
-          onPressed: () {
-            Get.rootDelegate.toNamed(Routes.CONSOLE);
-          },
+          onPressed: () {},
         ),
       ),
     );

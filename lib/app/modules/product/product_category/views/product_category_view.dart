@@ -15,9 +15,7 @@ class ProductCategoryView extends GetView<ProductCategoryController> {
       child: Center(
         child: ElevatedButton(
           child: Text('ProductCategoryView'),
-          onPressed: () {
-            Get.rootDelegate.toNamed(Routes.CONSOLE);
-          },
+          onPressed: () {},
         ),
       ),
     );

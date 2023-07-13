@@ -28,14 +28,7 @@ class RoleListView extends GetView<RoleListController> {
             footerFrozenColumnsCount: 1,
             source: controller.source,
             rowsPerPage: controller.source.rowsPerPage,
-            onCellTap: (details) {
-              // Get.to(RoleDetailView());
-              // Get.defaultDialog(
-              //     content: Card(
-              //   child: RoleDetailView(),
-              // ));
-              Get.rootDelegate.toNamed(Routes.ROLE_DETAIL);
-            },
+            onCellTap: (details) {},
             columnWidthMode: ColumnWidthMode.fill,
             rowHeight: 60,
             allowColumnsResizing: true,
