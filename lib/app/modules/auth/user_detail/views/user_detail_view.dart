@@ -12,10 +12,11 @@ class UserDetailView extends GetView<UserDetailController> {
   const UserDetailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Layout(
-        child: MyHomePage(
-      title: 'User Details',
-    ));
+    return Text('data');
+    // return Layout(
+    //     child: MyHomePage(
+    //   title: 'User Details',
+    // ));
   }
 }
 

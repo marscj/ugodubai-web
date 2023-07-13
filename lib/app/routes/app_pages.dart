@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ugodubai/app/components/layout_tab.dart';
 import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_management_view.dart';
@@ -14,7 +15,7 @@ import '../modules/auth/role_list/bindings/role_list_binding.dart';
 import '../modules/auth/user_detail/bindings/user_detail_binding.dart';
 import '../modules/auth/user_list/bindings/user_list_binding.dart';
 import '../modules/console/views/console_view.dart';
-import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/console/dashboard/bindings/dashboard_binding.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -71,7 +72,7 @@ import '../modules/auth/role_list/views/role_list_view.dart'
 import '../modules/auth/user_list/views/user_list_view.dart'
     deferred as user_list_view;
 
-import '../modules/dashboard/views/dashboard_view.dart'
+import '../modules/console/dashboard/views/dashboard_view.dart'
     deferred as dashboard_view;
 
 part 'app_routes.dart';
@@ -123,18 +124,12 @@ class AppPages {
           binding: ResetPasswordBinding(),
         ),
 
-        //console
-        // GetPageMenu(
-        //   name: _Paths.DASHBOARD,
-        //   label: 'dashboard'.tr,
-        //   icon: Icons.dashboard_outlined,
-        //   page: () => DeferredWidget(
-        //       dashboard_view.loadLibrary, () => dashboard_view.DashboardView()),
-        //   binding: DashboardBinding(),
-        // ),
         GetPageMenu(
           name: _Paths.CONSOLE,
-          page: () => ConsoleView(),
+          page: () => LayoutTab(
+            initialRoute: Routes.DASHBOARD,
+            anchorRoute: Routes.CONSOLE,
+          ),
           icon: Icons.dashboard_outlined,
           label: 'console'.tr,
           preventDuplicates: true,
@@ -158,7 +153,10 @@ class AppPages {
           name: _Paths.ORDER,
           label: 'order_management'.tr,
           icon: Icons.list_alt_outlined,
-          page: () => const OrderManagementView(),
+          page: () => LayoutTab(
+            initialRoute: Routes.ORDER_LIST,
+            anchorRoute: Routes.ORDER,
+          ),
           preventDuplicates: true,
           middlewares: [
             EnsureAuthMiddleware(),
@@ -187,7 +185,10 @@ class AppPages {
           name: _Paths.PRODUCT,
           label: 'product_management'.tr,
           icon: Icons.production_quantity_limits,
-          page: () => const ProductManagementView(),
+          page: () => LayoutTab(
+            initialRoute: Routes.PRODUCT_LIST,
+            anchorRoute: Routes.PRODUCT,
+          ),
           preventDuplicates: true,
           middlewares: [
             EnsureAuthMiddleware(),
@@ -230,11 +231,15 @@ class AppPages {
           ],
         ),
 
+        //agent
         GetPageMenu(
           name: _Paths.AGENT,
           label: 'agent_management'.tr,
           icon: Icons.assignment,
-          page: () => const AgentManagementView(),
+          page: () => LayoutTab(
+            initialRoute: Routes.AGENT_LIST,
+            anchorRoute: Routes.AGENT,
+          ),
           preventDuplicates: true,
           middlewares: [
             EnsureAuthMiddleware(),
@@ -261,7 +266,10 @@ class AppPages {
           name: _Paths.AUTH,
           label: 'auth_management'.tr,
           icon: Icons.person,
-          page: () => const AuthManagementView(),
+          page: () => LayoutTab(
+            initialRoute: Routes.USER_LIST,
+            anchorRoute: Routes.AUTH,
+          ),
           preventDuplicates: true,
           middlewares: [
             EnsureAuthMiddleware(),

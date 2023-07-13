@@ -3,15 +3,24 @@ import 'package:flutx/flutx.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ugodubai/app/extensions/widgets.dart';
 import 'package:ugodubai/app/widgets/custom_tab.dart';
+import 'package:ugodubai/app/widgets/page_tabbar.dart';
 
 class TopTabBar extends StatelessWidget {
-  const TopTabBar({super.key});
+  const TopTabBar({
+    super.key,
+    this.tabs = const [],
+    required this.controller,
+  });
+
+  final TabController controller;
+  final List<PageTabBar> tabs;
 
   @override
   Widget build(BuildContext context) {
     return CustomTabBar(
+      controller: this.controller,
+      physics: NeverScrollableScrollPhysics(),
       isScrollable: true,
       dividerColor: Colors.transparent,
       indicatorColor: Colors.transparent,
@@ -21,30 +30,10 @@ class TopTabBar extends StatelessWidget {
       indicatorWeight: 0,
       labelPadding: EdgeInsets.symmetric(horizontal: 16),
       tabs: [
-        CustomTab(
-          height: 30,
-          text: '代理商列表',
-          iconMargin: EdgeInsets.zero,
-          icon: InkWell(
-            child: Icon(
-              Icons.close,
-              size: 14,
-            ),
-            onTap: () {},
-          ).paddingOnly(left: 8),
+        PageTabBar(
+          title: '工作台',
         ),
-        CustomTab(
-          height: 30,
-          text: '代理商列表',
-          iconMargin: EdgeInsets.zero,
-          icon: InkWell(
-            child: Icon(
-              Icons.close,
-              size: 14,
-            ),
-            onTap: () {},
-          ).paddingOnly(left: 8),
-        ),
+        ...tabs
       ],
     );
   }

@@ -324,7 +324,7 @@ class _NavigationItemState extends State<NavigationMenuItem> {
 
     return InkWell(
       onTap: () {
-        Get.rootDelegate.offNamed(widget.route, arguments: 1);
+        Get.rootDelegate.toNamed(widget.route);
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

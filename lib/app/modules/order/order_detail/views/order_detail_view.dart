@@ -11,12 +11,10 @@ class OrderDetailView extends GetView<OrderDetailController> {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: Center(
-        child: ElevatedButton(
-          child: Text('OrderDetailView'),
-          onPressed: () {},
-        ),
+    return Center(
+      child: ElevatedButton(
+        child: Text('OrderDetailView'),
+        onPressed: () {},
       ),
     );
   }

@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ugodubai/app/routes/app_pages.dart';
-import 'package:ugodubai/app/components/layout.dart';
-
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
@@ -12,12 +9,10 @@ class DashboardView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: Center(
-        child: ElevatedButton(
-          child: Text('Dashboard View'),
-          onPressed: () {},
-        ),
+    return Center(
+      child: ElevatedButton(
+        child: Text('Dashboard View'),
+        onPressed: () {},
       ),
     );
   }

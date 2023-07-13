@@ -11,12 +11,10 @@ class ProductTagView extends GetView<ProductTagController> {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: Center(
-        child: ElevatedButton(
-          child: Text('ProductTagView'),
-          onPressed: () {},
-        ),
+    return Center(
+      child: ElevatedButton(
+        child: Text('ProductTagView'),
+        onPressed: () {},
       ),
     );
   }

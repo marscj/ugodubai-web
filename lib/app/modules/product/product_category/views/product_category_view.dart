@@ -11,12 +11,10 @@ class ProductCategoryView extends GetView<ProductCategoryController> {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: Center(
-        child: ElevatedButton(
-          child: Text('ProductCategoryView'),
-          onPressed: () {},
-        ),
+    return Center(
+      child: ElevatedButton(
+        child: Text('ProductCategoryView'),
+        onPressed: () {},
       ),
     );
   }

@@ -90,11 +90,9 @@ class AgentListView extends GetView<AgentListController> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutTab(
-      child: FxCard(
-        color: Colors.white,
-        child: _buildLayoutBuilder(context),
-      ),
+    return FxCard(
+      color: Colors.white,
+      child: _buildLayoutBuilder(context),
     );
   }
 }
