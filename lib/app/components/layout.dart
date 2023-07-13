@@ -51,7 +51,14 @@ class _LayoutState extends State<Layout> {
       body: [
         LeftBar(leftBarCondensed: consoleController.leftBarCondensed),
         [
-          TopBar(leftBarFun: toggleLeftBarCondensed),
+          FxCard(
+            borderRadiusAll: 0,
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            shadow:
+                FxShadow(position: FxShadowPosition.bottomRight, elevation: 1),
+            color: Theme.of(context).colorScheme.onPrimary,
+            child: TopBar(leftBarFun: toggleLeftBarCondensed),
+          ),
           widget.child.expanded,
         ].col().expanded
       ].row(),
