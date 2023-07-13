@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:ugodubai/app/components/layout.dart';
 import 'package:ugodubai/app/widgets/custom_tab.dart';
 import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 

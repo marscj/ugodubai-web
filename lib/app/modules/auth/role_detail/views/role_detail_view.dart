@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
-
 import 'package:get/get.dart';
-import 'package:ugodubai/app/components/layout.dart';
+
 import 'package:ugodubai/app/extensions/widget.dart';
 import 'package:ugodubai/app/extensions/widgets.dart';
 
