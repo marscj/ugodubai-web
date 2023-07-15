@@ -81,6 +81,13 @@ class _DesktopScreenState extends State<DesktopScreen> {
                       PageTabBar(
                         title: '网站设置',
                         route: Routes.SETTING,
+                        onClosed: () {
+                          setState(() {
+                            index = 1;
+                            tabs.removeLast();
+                            pages.removeLast();
+                          });
+                        },
                       ),
                     );
                     pages.add(AppPages.findPage('/setting'));

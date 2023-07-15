@@ -12,10 +12,14 @@ class DashboardView extends GetView<DashboardController> {
     return GetBuilder(
       init: DashboardController(),
       builder: (DashboardController controller) {
-        return Center(
-          child: ElevatedButton(
-            child: Text('Dashboard View'),
-            onPressed: () {},
+        return Obx(
+          () => Center(
+            child: ElevatedButton(
+              child: Text('Dashboard View ${controller.count}'),
+              onPressed: () {
+                controller.count.value++;
+              },
+            ),
           ),
         );
       },

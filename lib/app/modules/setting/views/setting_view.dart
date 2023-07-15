@@ -8,17 +8,20 @@ class SettingView extends GetView<SettingController> {
   const SettingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('SettingView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'SettingView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+    return GetBuilder(
+      init: SettingController(),
+      builder: (SettingController controller) {
+        return Obx(
+          () => Center(
+            child: ElevatedButton(
+              child: Text('Setting View ${controller.count}'),
+              onPressed: () {
+                controller.count.value++;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }
