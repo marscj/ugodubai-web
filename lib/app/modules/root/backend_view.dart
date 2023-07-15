@@ -119,17 +119,6 @@ class _DesktopScreenState extends State<DesktopScreen> {
                   return e.page();
                 }).toList(),
               ).expanded
-              // IndexedStack(
-              //   index: 0,
-              //   children: [
-              //     GetRouterOutlet(
-              //       key: Get.nestedKey(Routes.BACKEND),
-              //       initialRoute: Routes.CONSOLE,
-              //       anchorRoute: Routes.BACKEND,
-              //       filterPages: (afterAnchor) => afterAnchor.take(1),
-              //     )
-              //   ],
-              // ).expanded
               // GetRouterOutlet(
               //   key: Get.nestedKey(Routes.BACKEND),
               //   initialRoute: Routes.CONSOLE,
