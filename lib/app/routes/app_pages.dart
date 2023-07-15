@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ugodubai/app/components/layout_tab.dart';
 import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
 import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
+import 'package:ugodubai/app/modules/root/backend_view.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
@@ -28,7 +29,7 @@ import '../modules/product/product_tag/bindings/product_tag_binding.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
-import '../modules/root/views/root_view.dart';
+import '../modules/root/root_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
 import '../widgets/deferred_widget.dart';
 
@@ -120,201 +121,228 @@ class AppPages {
           binding: ResetPasswordBinding(),
         ),
 
-        GetPageMenu(
-          name: _Paths.CONSOLE,
-          page: () => ConsoleView(),
-          icon: Icons.dashboard_outlined,
-          label: 'console'.tr,
+        GetPage(
+          name: _Paths.BACKEND,
+          page: () => BackendView(),
           preventDuplicates: true,
-          middlewares: [
-            EnsureAuthMiddleware(),
-          ],
           children: [
             GetPageMenu(
-              name: _Paths.DASHBOARD,
-              label: 'dashboard'.tr,
+              name: _Paths.CONSOLE,
+              page: () => ConsoleView(),
               icon: Icons.dashboard_outlined,
-              page: () => DeferredWidget(dashboard_view.loadLibrary,
-                  () => dashboard_view.DashboardView()),
-              binding: DashboardBinding(),
+              label: 'console'.tr,
+              preventDuplicates: true,
+              middlewares: [
+                EnsureAuthMiddleware(),
+              ],
+              children: [
+                GetPageMenu(
+                  name: _Paths.DASHBOARD,
+                  label: 'dashboard'.tr,
+                  icon: Icons.dashboard_outlined,
+                  page: () => DeferredWidget(dashboard_view.loadLibrary,
+                      () => dashboard_view.DashboardView()),
+                  binding: DashboardBinding(),
+                ),
+              ],
+            ),
+
+            //profile
+            GetPageMenu(
+              name: _Paths.PROFILE,
+              label: 'profile'.tr,
+              icon: Icons.file_copy,
+              page: () => DeferredWidget(
+                  profile_view.loadLibrary, () => profile_view.ProfileView()),
+              binding: ProfileBinding(),
+            ),
+
+            //setting
+            GetPageMenu(
+              name: _Paths.SETTING,
+              label: 'setting'.tr,
+              icon: Icons.settings,
+              page: () => DeferredWidget(
+                  setting_view.loadLibrary, () => setting_view.SettingView()),
+              binding: SettingBinding(),
             ),
           ],
         ),
 
-        //order
-        GetPageMenu(
-          name: _Paths.ORDER,
-          label: 'order_management'.tr,
-          icon: Icons.list_alt_outlined,
-          page: () => LayoutTab(
-            initialRoute: Routes.ORDER_LIST,
-            anchorRoute: Routes.ORDER,
-          ),
-          preventDuplicates: true,
-          middlewares: [
-            EnsureAuthMiddleware(),
-          ],
-          children: [
-            GetPageMenu(
-              name: _Paths.ORDER_LIST,
-              label: 'order_list'.tr,
-              page: () => DeferredWidget(order_list_view.loadLibrary,
-                  () => order_list_view.OrderListView()),
-              binding: OrderListBinding(),
-            ),
-            GetPageMenu(
-              name: _Paths.ORDER_DETAIL,
-              label: 'order_detail'.tr,
-              hide: true,
-              page: () => DeferredWidget(order_detail_view.loadLibrary,
-                  () => order_detail_view.OrderDetailView()),
-              binding: OrderDetailBinding(),
-            ),
-          ],
-        ),
+        // //order
+        // GetPageMenu(
+        //   name: _Paths.ORDER,
+        //   label: 'order_management'.tr,
+        //   icon: Icons.list_alt_outlined,
+        //   page: () => LayoutTab(
+        //     initialRoute: Routes.ORDER_LIST,
+        //     anchorRoute: Routes.ORDER,
+        //   ),
+        //   preventDuplicates: true,
+        //   middlewares: [
+        //     EnsureAuthMiddleware(),
+        //   ],
+        //   children: [
+        //     GetPageMenu(
+        //       name: _Paths.ORDER_LIST,
+        //       label: 'order_list'.tr,
+        //       page: () => DeferredWidget(order_list_view.loadLibrary,
+        //           () => order_list_view.OrderListView()),
+        //       binding: OrderListBinding(),
+        //     ),
+        //     GetPageMenu(
+        //       name: _Paths.ORDER_DETAIL,
+        //       label: 'order_detail'.tr,
+        //       hide: true,
+        //       page: () => DeferredWidget(order_detail_view.loadLibrary,
+        //           () => order_detail_view.OrderDetailView()),
+        //       binding: OrderDetailBinding(),
+        //     ),
+        //   ],
+        // ),
 
-        //product
-        GetPageMenu(
-          name: _Paths.PRODUCT,
-          label: 'product_management'.tr,
-          icon: Icons.production_quantity_limits,
-          page: () => LayoutTab(
-            initialRoute: Routes.PRODUCT_LIST,
-            anchorRoute: Routes.PRODUCT,
-          ),
-          preventDuplicates: true,
-          middlewares: [
-            EnsureAuthMiddleware(),
-          ],
-          children: [
-            GetPageMenu(
-              name: _Paths.PRODUCT_LIST,
-              label: 'product_list'.tr,
-              page: () => DeferredWidget(product_list_view.loadLibrary,
-                  () => product_list_view.ProductListView()),
-              binding: ProductListBinding(),
-            ),
-            GetPage(
-              name: _Paths.PRODUCT_DETAIL,
-              page: () => DeferredWidget(product_detail_view.loadLibrary,
-                  () => product_detail_view.ProductDetailView()),
-              binding: ProductDetailBinding(),
-            ),
-            GetPageMenu(
-              name: _Paths.PRODUCT_CATEGORY,
-              label: 'product_category'.tr,
-              page: () => DeferredWidget(product_category_view.loadLibrary,
-                  () => product_category_view.ProductCategoryView()),
-              binding: ProductCategoryBinding(),
-            ),
-            GetPageMenu(
-              name: _Paths.PRODUCT_TAG,
-              label: 'product_tag'.tr,
-              page: () => DeferredWidget(product_tag_view.loadLibrary,
-                  () => product_tag_view.ProductTagView()),
-              binding: ProductTagBinding(),
-            ),
-            GetPageMenu(
-              name: _Paths.PRODUCT_ATTRIBUTE,
-              label: 'product_attribute'.tr,
-              page: () => DeferredWidget(product_attribute_view.loadLibrary,
-                  () => product_attribute_view.ProductAttributeView()),
-              binding: ProductAttributeBinding(),
-            ),
-          ],
-        ),
+        // //product
+        // GetPageMenu(
+        //   name: _Paths.PRODUCT,
+        //   label: 'product_management'.tr,
+        //   icon: Icons.production_quantity_limits,
+        //   page: () => LayoutTab(
+        //     initialRoute: Routes.PRODUCT_LIST,
+        //     anchorRoute: Routes.PRODUCT,
+        //   ),
+        //   preventDuplicates: true,
+        //   middlewares: [
+        //     EnsureAuthMiddleware(),
+        //   ],
+        //   children: [
+        //     GetPageMenu(
+        //       name: _Paths.PRODUCT_LIST,
+        //       label: 'product_list'.tr,
+        //       page: () => DeferredWidget(product_list_view.loadLibrary,
+        //           () => product_list_view.ProductListView()),
+        //       binding: ProductListBinding(),
+        //     ),
+        //     GetPage(
+        //       name: _Paths.PRODUCT_DETAIL,
+        //       page: () => DeferredWidget(product_detail_view.loadLibrary,
+        //           () => product_detail_view.ProductDetailView()),
+        //       binding: ProductDetailBinding(),
+        //     ),
+        //     GetPageMenu(
+        //       name: _Paths.PRODUCT_CATEGORY,
+        //       label: 'product_category'.tr,
+        //       page: () => DeferredWidget(product_category_view.loadLibrary,
+        //           () => product_category_view.ProductCategoryView()),
+        //       binding: ProductCategoryBinding(),
+        //     ),
+        //     GetPageMenu(
+        //       name: _Paths.PRODUCT_TAG,
+        //       label: 'product_tag'.tr,
+        //       page: () => DeferredWidget(product_tag_view.loadLibrary,
+        //           () => product_tag_view.ProductTagView()),
+        //       binding: ProductTagBinding(),
+        //     ),
+        //     GetPageMenu(
+        //       name: _Paths.PRODUCT_ATTRIBUTE,
+        //       label: 'product_attribute'.tr,
+        //       page: () => DeferredWidget(product_attribute_view.loadLibrary,
+        //           () => product_attribute_view.ProductAttributeView()),
+        //       binding: ProductAttributeBinding(),
+        //     ),
+        //   ],
+        // ),
 
-        //agent
-        GetPageMenu(
-          name: _Paths.AGENT,
-          label: 'agent_management'.tr,
-          icon: Icons.assignment,
-          page: () => LayoutTab(
-            initialRoute: Routes.AGENT_LIST,
-            anchorRoute: Routes.AGENT,
-          ),
-          preventDuplicates: true,
-          middlewares: [
-            EnsureAuthMiddleware(),
-          ],
-          children: [
-            GetPageMenu(
-              label: 'agent_list'.tr,
-              name: _Paths.AGENT_LIST,
-              page: () => DeferredWidget(agent_list_view.loadLibrary,
-                  () => agent_list_view.AgentListView()),
-              binding: AgentListBinding(),
-            ),
-            GetPage(
-              name: _Paths.AGENT_DETAIL,
-              page: () => DeferredWidget(agent_detail_view.loadLibrary,
-                  () => agent_detail_view.AgentDetailView()),
-              binding: AgentDetailBinding(),
-            ),
-          ],
-        ),
+        // //agent
+        // GetPageMenu(
+        //   name: _Paths.AGENT,
+        //   label: 'agent_management'.tr,
+        //   icon: Icons.assignment,
+        //   page: () => LayoutTab(
+        //     initialRoute: Routes.AGENT_LIST,
+        //     anchorRoute: Routes.AGENT,
+        //   ),
+        //   preventDuplicates: true,
+        //   middlewares: [
+        //     EnsureAuthMiddleware(),
+        //   ],
+        //   children: [
+        //     GetPageMenu(
+        //       label: 'agent_list'.tr,
+        //       name: _Paths.AGENT_LIST,
+        //       page: () => DeferredWidget(agent_list_view.loadLibrary,
+        //           () => agent_list_view.AgentListView()),
+        //       binding: AgentListBinding(),
+        //     ),
+        //     GetPage(
+        //       name: _Paths.AGENT_DETAIL,
+        //       page: () => DeferredWidget(agent_detail_view.loadLibrary,
+        //           () => agent_detail_view.AgentDetailView()),
+        //       binding: AgentDetailBinding(),
+        //     ),
+        //   ],
+        // ),
 
-        //auth
-        GetPageMenu(
-          name: _Paths.AUTH,
-          label: 'auth_management'.tr,
-          icon: Icons.person,
-          page: () => LayoutTab(
-            initialRoute: Routes.USER_LIST,
-            anchorRoute: Routes.AUTH,
-          ),
-          preventDuplicates: true,
-          middlewares: [
-            EnsureAuthMiddleware(),
-          ],
-          children: [
-            GetPageMenu(
-              name: _Paths.USER_LIST,
-              label: 'user_list'.tr,
-              page: () => DeferredWidget(user_list_view.loadLibrary,
-                  () => user_list_view.UserListView()),
-              binding: UserListBinding(),
-            ),
-            GetPage(
-              name: _Paths.USER_DETAIL,
-              page: () => DeferredWidget(user_detail_view.loadLibrary,
-                  () => user_detail_view.UserDetailView()),
-              binding: UserDetailBinding(),
-            ),
-            GetPageMenu(
-              name: _Paths.ROLE_LIST,
-              label: 'role_list'.tr,
-              page: () => DeferredWidget(role_list_view.loadLibrary,
-                  () => role_list_view.RoleListView()),
-              binding: RoleListBinding(),
-            ),
-            GetPage(
-              name: _Paths.ROLE_DETAIL,
-              page: () => DeferredWidget(role_detail_view.loadLibrary,
-                  () => role_detail_view.RoleDetailView()),
-              binding: RoleDetailBinding(),
-            ),
-          ],
-        ),
+        // //auth
+        // GetPageMenu(
+        //   name: _Paths.AUTH,
+        //   label: 'auth_management'.tr,
+        //   icon: Icons.person,
+        //   page: () => LayoutTab(
+        //     initialRoute: Routes.USER_LIST,
+        //     anchorRoute: Routes.AUTH,
+        //   ),
+        //   preventDuplicates: true,
+        //   middlewares: [
+        //     EnsureAuthMiddleware(),
+        //   ],
+        //   children: [
+        //     GetPageMenu(
+        //       name: _Paths.USER_LIST,
+        //       label: 'user_list'.tr,
+        //       page: () => DeferredWidget(user_list_view.loadLibrary,
+        //           () => user_list_view.UserListView()),
+        //       binding: UserListBinding(),
+        //     ),
+        //     GetPage(
+        //       name: _Paths.USER_DETAIL,
+        //       page: () => DeferredWidget(user_detail_view.loadLibrary,
+        //           () => user_detail_view.UserDetailView()),
+        //       binding: UserDetailBinding(),
+        //     ),
+        //     GetPageMenu(
+        //       name: _Paths.ROLE_LIST,
+        //       label: 'role_list'.tr,
+        //       page: () => DeferredWidget(role_list_view.loadLibrary,
+        //           () => role_list_view.RoleListView()),
+        //       binding: RoleListBinding(),
+        //     ),
+        //     GetPage(
+        //       name: _Paths.ROLE_DETAIL,
+        //       page: () => DeferredWidget(role_detail_view.loadLibrary,
+        //           () => role_detail_view.RoleDetailView()),
+        //       binding: RoleDetailBinding(),
+        //     ),
+        //   ],
+        // ),
 
-        GetPageMenu(
-          name: _Paths.PROFILE,
-          label: 'profile'.tr,
-          icon: Icons.file_copy,
-          page: () => DeferredWidget(
-              profile_view.loadLibrary, () => profile_view.ProfileView()),
-          binding: ProfileBinding(),
-        ),
+        // GetPageMenu(
+        //   name: _Paths.PROFILE,
+        //   label: 'profile'.tr,
+        //   icon: Icons.file_copy,
+        //   page: () => DeferredWidget(
+        //       profile_view.loadLibrary, () => profile_view.ProfileView()),
+        //   binding: ProfileBinding(),
+        // ),
 
-        //setting
-        GetPageMenu(
-          name: _Paths.SETTING,
-          label: 'setting'.tr,
-          icon: Icons.settings,
-          page: () => DeferredWidget(
-              setting_view.loadLibrary, () => setting_view.SettingView()),
-          binding: SettingBinding(),
-        ),
+        // //setting
+        // GetPageMenu(
+        //   name: _Paths.SETTING,
+        //   label: 'setting'.tr,
+        //   icon: Icons.settings,
+        //   page: () => DeferredWidget(
+        //       setting_view.loadLibrary, () => setting_view.SettingView()),
+        //   binding: SettingBinding(),
+        // ),
       ],
     ),
   ];

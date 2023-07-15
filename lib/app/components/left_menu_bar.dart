@@ -18,9 +18,12 @@ class LeftMenuBar extends StatelessWidget {
 
   final bool leftBarCondensed;
 
+  GetPage get backend => AppPages.routes.first.children
+      .lastWhere((element) => element.name == Routes.BACKEND);
+
   @override
   Widget build(BuildContext context) {
-    var menus = AppPages.routes.first.children
+    var menus = backend.children
         .whereType<GetPageMenu>()
         .where((element) => !element.hide)
         .map<Widget>((e) {
@@ -35,7 +38,7 @@ class LeftMenuBar extends StatelessWidget {
               .map<MenuItem>(
                 (e1) => MenuItem(
                   title: e1.label.tr,
-                  route: e.name + e1.name,
+                  route: backend.name + e.name + e1.name,
                 ),
               )
               .toList(),
@@ -44,14 +47,8 @@ class LeftMenuBar extends StatelessWidget {
         return NavigationMenuItem(
           iconData: e.icon ?? Icons.abc,
           title: e.label.tr,
-          route: e.name,
+          route: backend.name + e.name,
           isCondensed: leftBarCondensed,
-          menus: [
-            MenuItem(
-              title: e.label,
-              route: e.name,
-            ),
-          ],
         );
       }
     }).toList();
@@ -174,7 +171,7 @@ class _MenuWidgetState extends State<MenuWidget> {
         },
         child: FxContainer.transparent(
           margin: FxSpacing.fromLTRB(16, 0, 16, 0),
-          paddingAll: 0,
+          padding: FxSpacing.xy(8, 8),
           child: ListTileTheme(
             contentPadding: EdgeInsets.all(0),
             dense: false,
@@ -295,14 +292,12 @@ class NavigationMenuItem extends StatefulWidget {
     required this.title,
     required this.route,
     required this.isCondensed,
-    required this.menus,
   }) : super(key: key);
 
   final IconData? iconData;
   final String title;
   final String route;
   final bool isCondensed;
-  final List<Widget> menus;
 
   @override
   _NavigationItemState createState() => _NavigationItemState();
@@ -342,7 +337,7 @@ class _NavigationItemState extends State<NavigationMenuItem> {
           color: isActive || isHover
               ? LeftBarTheme.of(context).activeItemBackground
               : Colors.transparent,
-          padding: FxSpacing.xy(0, 8),
+          padding: FxSpacing.xy(8, 8),
           child: Row(
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: widget.isCondensed

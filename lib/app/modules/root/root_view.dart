@@ -4,17 +4,15 @@ import 'package:get/get.dart';
 
 import 'package:ugodubai/app/routes/app_pages.dart';
 
-import '../controllers/root_controller.dart';
-
-class RootView extends GetView<RootController> {
+class RootView extends StatelessWidget {
   const RootView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetRouterOutlet.builder(
       builder: (context, delegate, current) {
-        // controller.delegate = delegate;
         return GetRouterOutlet(
+          key: Get.nestedKey(Routes.HOME),
           initialRoute: Routes.HOME,
           anchorRoute: '/',
           filterPages: (afterAnchor) => afterAnchor.take(1),
