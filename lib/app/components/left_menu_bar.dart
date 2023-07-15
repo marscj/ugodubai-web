@@ -58,7 +58,6 @@ class MenuWidget extends StatefulWidget {
   final IconData iconData;
   final String title;
   final bool isCondensed;
-  final bool active;
   final List<MenuItem> children;
 
   const MenuWidget({
@@ -66,7 +65,6 @@ class MenuWidget extends StatefulWidget {
     required this.iconData,
     required this.title,
     this.isCondensed = false,
-    this.active = false,
     this.children = const [],
   });
 
@@ -81,9 +79,23 @@ class _MenuWidgetState extends State<MenuWidget> {
   bool popupShowing = true;
   Function? hideFn;
 
+  ExpansionTileController controller = ExpansionTileController();
+
   @override
   void initState() {
     super.initState();
+
+    Get.rootDelegate.addListener(() {
+      var route = Utils.getCurrentUrl(context);
+      setState(() {
+        if (widget.children.any((element) => element.route == route)) {
+          controller.expand();
+        }
+      });
+    });
+
+    isActive = widget.children
+        .any((element) => element.route == Utils.getCurrentUrl(context));
   }
 
   @override
@@ -94,8 +106,6 @@ class _MenuWidgetState extends State<MenuWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var route = Utils.getCurrentUrl(context);
-    isActive = widget.children.any((element) => element.route == route);
 
     if (hideFn != null) {
       hideFn!();
@@ -176,38 +186,41 @@ class _MenuWidgetState extends State<MenuWidget> {
             minLeadingWidth: 30,
             style: ListTileStyle.drawer,
             child: ExpansionTile(
-                initiallyExpanded: isActive,
-                maintainState: true,
-                collapsedIconColor: isHover || isActive
+              controller: controller,
+              onExpansionChanged: (value) {},
+              initiallyExpanded: isActive,
+              maintainState: true,
+              collapsedIconColor: isHover || isActive
+                  ? LeftBarTheme.of(context).activeItemColor
+                  : LeftBarTheme.of(context).onBackground,
+              leading: IconTheme(
+                  data: IconThemeData(
+                    size: 16,
+                    color: isHover || isActive
+                        ? LeftBarTheme.of(context).activeItemColor
+                        : LeftBarTheme.of(context).onBackground,
+                  ),
+                  child: Icon(
+                    widget.iconData,
+                  )),
+              iconColor: LeftBarTheme.of(context).activeItemColor,
+              childrenPadding: FxSpacing.x(10),
+              title: FxText.labelLarge(
+                widget.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.start,
+                color: isHover || isActive
                     ? LeftBarTheme.of(context).activeItemColor
                     : LeftBarTheme.of(context).onBackground,
-                leading: IconTheme(
-                    data: IconThemeData(
-                      size: 16,
-                      color: isHover || isActive
-                          ? LeftBarTheme.of(context).activeItemColor
-                          : LeftBarTheme.of(context).onBackground,
-                    ),
-                    child: Icon(
-                      widget.iconData,
-                    )),
-                iconColor: LeftBarTheme.of(context).activeItemColor,
-                childrenPadding: FxSpacing.x(10),
-                title: FxText.labelLarge(
-                  widget.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.start,
-                  color: isHover || isActive
-                      ? LeftBarTheme.of(context).activeItemColor
-                      : LeftBarTheme.of(context).onBackground,
-                ),
-                collapsedBackgroundColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide.none,
-                ),
-                backgroundColor: Colors.transparent,
-                children: widget.children),
+              ),
+              collapsedBackgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                side: BorderSide.none,
+              ),
+              backgroundColor: Colors.transparent,
+              children: widget.children,
+            ),
           ),
         ),
       );
@@ -239,6 +252,8 @@ class _MenuItemState extends State<MenuItem> {
   @override
   Widget build(BuildContext context) {
     bool isActive = Utils.getCurrentUrl(context) == widget.route;
+
+    print('${Utils.getCurrentUrl(context)}======${widget.route}');
 
     return GestureDetector(
       onTap: () {
