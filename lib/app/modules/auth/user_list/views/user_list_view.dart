@@ -95,6 +95,8 @@ class UserListView extends GetView<UserListController> {
   Widget build(BuildContext context) {
     return FxCard(
       color: Colors.white,
+      // padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(24),
       child: _buildLayoutBuilder(context),
     );
   }

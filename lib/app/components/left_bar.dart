@@ -41,7 +41,11 @@ class LeftBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FxCard(
       paddingAll: 0,
-      shadow: FxShadow(position: FxShadowPosition.centerRight, elevation: 0.5),
+      margin: EdgeInsets.only(right: 1),
+      shadow: FxShadow(
+        position: FxShadowPosition.centerRight,
+        elevation: 0.5,
+      ),
       child: AnimatedContainer(
         color: LeftBarTheme.of(context).background,
         width: leftBarCondensed ? 70 : 244,

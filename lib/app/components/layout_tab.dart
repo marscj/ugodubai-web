@@ -30,7 +30,8 @@ class _LayoutTabState extends State<LayoutTab>
   ConsoleController consoleController = Get.find<ConsoleController>();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final List<PageTabBar> _tabs = [];
-  final List<Widget> _pages = [];
+  final List<GetPage> _pages = [];
+
   late TabController _tabController;
 
   int currentPageIndex = 0;
@@ -43,36 +44,51 @@ class _LayoutTabState extends State<LayoutTab>
     _tabController =
         TabController(vsync: this, length: 2, animationDuration: Duration.zero);
 
-    _tabController.addListener(() {});
-
     Get.rootDelegate.addListener(
       () {
-        Get.rootDelegate.history.toList().map((e) {
-          print(e.location);
-        });
+        print(Get.rootDelegate.currentConfiguration?.location);
+        if (mounted) setState(() {});
       },
     );
 
+    _pages.add(AppPages.routes.first.children
+        .lastWhere((element) => element.name == Routes.CONSOLE)
+        .children
+        .first);
+
     _tabs.add(PageTabBar(
-      title: '代理商列表',
-      onClosed: () {},
+      title: '工作台',
     ));
 
-    _pages.add(Container(
-      child: TextButton(
-        child: Text('data2'),
-        onPressed: () {
-          Get.rootDelegate.offNamed(Routes.USER_DETAIL);
-        },
-      ),
-    ));
+    addPage(true);
 
     if (mounted) {
       setState(() {});
     }
+    print('initState');
   }
 
-  void addPage() {}
+  void addPage(bool b) {
+    _tabs.add(PageTabBar(
+      title: '代理商列表 + ${_tabs.length + 1}',
+      onClosed: () {},
+    ));
+
+    if (b) {
+      _pages.add(GetPage(
+          name: '/agent/agent/list',
+          page: () => Container(
+                child: TextButton(
+                  child: Text('data2'),
+                  onPressed: () {
+                    addPage(true);
+                  },
+                ),
+              )));
+    }
+
+    setState(() {});
+  }
 
   void openRightBar(bool opened) {
     setState(() {
@@ -113,30 +129,14 @@ class _LayoutTabState extends State<LayoutTab>
               ),
             ].col(),
           ),
-          GetRouterOutlet.builder(
-            builder: (context, delegate, current) {
-              return GetRouterOutlet(
-                delegate: delegate,
-                initialRoute: widget.initialRoute,
-                anchorRoute: widget.anchorRoute,
-                filterPages: (afterAnchor) => afterAnchor.take(1),
-              );
-            },
-          ).expanded,
-          // TabBarView(
-          //     controller: _tabController,
-          //     physics: NeverScrollableScrollPhysics(),
-          //     children: [
-          //       Container(
-          //         child: TextButton(
-          //           child: Text('data1'),
-          //           onPressed: () {
-          //             _tabController.animateTo(1);
-          //           },
-          //         ),
-          //       ),
-          //       ..._pages
-          //     ]).expanded
+
+          TabBarView(
+            controller: _tabController,
+            physics: NeverScrollableScrollPhysics(),
+            children: _pages.map<Widget>((page) {
+              return page.page();
+            }).toList(),
+          ).expanded
           // widget.child.paddingAll(24).expanded
         ].col().expanded
       ].row(),

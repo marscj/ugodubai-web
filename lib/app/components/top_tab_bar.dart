@@ -26,12 +26,7 @@ class TopTabBar extends StatelessWidget {
       labelStyle: TextStyle(fontSize: 12),
       indicatorWeight: 0,
       labelPadding: EdgeInsets.symmetric(horizontal: 16),
-      tabs: [
-        PageTabBar(
-          title: '工作台',
-        ),
-        ...tabs
-      ],
+      tabs: tabs,
     );
   }
 }
