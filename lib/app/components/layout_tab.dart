@@ -58,6 +58,7 @@ class _LayoutTabState extends State<LayoutTab>
 
     _tabs.add(PageTabBar(
       title: '工作台',
+      route: '',
     ));
 
     addPage(true);
@@ -71,6 +72,7 @@ class _LayoutTabState extends State<LayoutTab>
   void addPage(bool b) {
     _tabs.add(PageTabBar(
       title: '代理商列表 + ${_tabs.length + 1}',
+      route: '',
       onClosed: () {},
     ));
 
@@ -124,6 +126,7 @@ class _LayoutTabState extends State<LayoutTab>
               TopTabBar(
                 tabs: _tabs,
                 controller: _tabController,
+                onChange: (value) {},
               ),
             ].col(),
           ),

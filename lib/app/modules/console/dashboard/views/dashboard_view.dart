@@ -9,11 +9,16 @@ class DashboardView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text('Dashboard View'),
-        onPressed: () {},
-      ),
+    return GetBuilder(
+      init: DashboardController(),
+      builder: (DashboardController controller) {
+        return Center(
+          child: ElevatedButton(
+            child: Text('Dashboard View'),
+            onPressed: () {},
+          ),
+        );
+      },
     );
   }
 }

@@ -3,11 +3,16 @@ import 'package:get/get.dart';
 import 'package:ugodubai/app/widgets/custom_tab.dart';
 
 class PageTabBar extends StatelessWidget {
-  const PageTabBar({Key? key, required this.title, this.onClosed})
-      : super(key: key);
+  const PageTabBar({
+    Key? key,
+    required this.title,
+    required this.route,
+    this.onClosed,
+  }) : super(key: key);
 
   final String title;
   final VoidCallback? onClosed;
+  final String route;
 
   @override
   Widget build(BuildContext context) {

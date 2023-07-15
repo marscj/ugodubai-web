@@ -18,12 +18,9 @@ class LeftMenuBar extends StatelessWidget {
 
   final bool leftBarCondensed;
 
-  GetPage get backend => AppPages.routes.first.children
-      .lastWhere((element) => element.name == Routes.BACKEND);
-
   @override
   Widget build(BuildContext context) {
-    var menus = backend.children
+    var menus = AppPages.backend.children
         .whereType<GetPageMenu>()
         .where((element) => !element.hide)
         .map<Widget>((e) {
@@ -38,7 +35,7 @@ class LeftMenuBar extends StatelessWidget {
               .map<MenuItem>(
                 (e1) => MenuItem(
                   title: e1.label.tr,
-                  route: backend.name + e.name + e1.name,
+                  route: AppPages.backend.name + e.name + e1.name,
                 ),
               )
               .toList(),
@@ -47,7 +44,7 @@ class LeftMenuBar extends StatelessWidget {
         return NavigationMenuItem(
           iconData: e.icon ?? Icons.abc,
           title: e.label.tr,
-          route: backend.name + e.name,
+          route: AppPages.backend.name + e.name,
           isCondensed: leftBarCondensed,
         );
       }

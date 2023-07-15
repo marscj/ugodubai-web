@@ -79,6 +79,24 @@ class AppPages {
 
   static const INITIAL = _Paths.HOME;
 
+  static GetPage get backend => routes.first.children
+      .singleWhere((element) => element.name == Routes.BACKEND);
+
+  static List<GetPage> flattenPage(List<GetPage> arr) {
+    return arr.fold([], (result, element) {
+      result.add(element);
+      if (element.children.isNotEmpty) {
+        result.addAll(flattenPage(element.children));
+      }
+      return result;
+    });
+  }
+
+  static GetPage findPage(name) {
+    return flattenPage(backend.children)
+        .singleWhere((element) => element.name == name);
+  }
+
   static final routes = [
     GetPage(
       name: '/',
