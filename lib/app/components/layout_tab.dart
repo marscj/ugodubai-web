@@ -46,7 +46,7 @@ class _LayoutTabState extends State<LayoutTab>
 
     Get.rootDelegate.addListener(
       () {
-        print(Get.rootDelegate.currentConfiguration?.location);
+        // print(Get.rootDelegate.currentConfiguration?.location);
         if (mounted) setState(() {});
       },
     );
@@ -65,7 +65,7 @@ class _LayoutTabState extends State<LayoutTab>
     if (mounted) {
       setState(() {});
     }
-    print('initState');
+    // print('initState');
   }
 
   void addPage(bool b) {
@@ -77,13 +77,11 @@ class _LayoutTabState extends State<LayoutTab>
     if (b) {
       _pages.add(GetPage(
           name: '/agent/agent/list',
-          page: () => Container(
-                child: TextButton(
-                  child: Text('data2'),
-                  onPressed: () {
-                    addPage(true);
-                  },
-                ),
+          page: () => TextButton(
+                child: Text('data2'),
+                onPressed: () {
+                  addPage(true);
+                },
               )));
     }
 

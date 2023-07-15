@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'dart:async';
-import 'dart:ui' as ui show Image, Picture;
+import 'dart:ui' as ui show Image;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+// ignore: depend_on_referenced_packages, library_prefixes
 import 'package:http/http.dart' as httpC;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -84,7 +85,7 @@ class SvgProvider extends ImageProvider<SvgImageKey> {
   }
 
   @override
-  ImageStreamCompleter load(SvgImageKey key, nil) {
+  ImageStreamCompleter loadImage(SvgImageKey key, ImageDecoderCallback decode) {
     return OneFrameImageStreamCompleter(_loadAsync(key));
   }
 
