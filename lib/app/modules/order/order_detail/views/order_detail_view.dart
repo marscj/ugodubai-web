@@ -4,16 +4,25 @@ import 'package:get/get.dart';
 
 import '../controllers/order_detail_controller.dart';
 
-class OrderDetailView extends GetView<OrderDetailController> {
+class OrderDetailView extends StatelessWidget {
   const OrderDetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text('OrderDetailView'),
-        onPressed: () {},
-      ),
+    return GetBuilder(
+      init: OrderDetailController(),
+      builder: (OrderDetailController controller) {
+        return Obx(
+          () => Center(
+            child: ElevatedButton(
+              child: Text('OrderDetailView ${controller.count}'),
+              onPressed: () {
+                controller.count.value++;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

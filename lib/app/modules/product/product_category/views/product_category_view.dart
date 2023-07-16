@@ -14,17 +14,11 @@ class ProductCategoryView extends StatelessWidget {
       builder: (ProductCategoryController controller) {
         return Obx(
           () => Center(
-            child: MaterialButton(
-              color: Colors.blue,
-              onPressed: () => () {},
-              splashColor: Colors.blueGrey,
-              child: Text(
-                'ProductCategoryView ${controller.count.value}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
-              ),
+            child: ElevatedButton(
+              child: Text('ProductCategoryView ${controller.count}'),
+              onPressed: () {
+                controller.count.value++;
+              },
             ),
           ),
         );

@@ -4,16 +4,25 @@ import 'package:get/get.dart';
 
 import '../controllers/product_list_controller.dart';
 
-class ProductListView extends GetView<ProductListController> {
+class ProductListView extends StatelessWidget {
   const ProductListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text('ProductListView${controller.count.value.toString()}'),
-        onPressed: () {},
-      ),
+    return GetBuilder(
+      init: ProductListController(),
+      builder: (ProductListController controller) {
+        return Obx(
+          () => Center(
+            child: ElevatedButton(
+              child: Text('ProductListView ${controller.count}'),
+              onPressed: () {
+                controller.count.value++;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

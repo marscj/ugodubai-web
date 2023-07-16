@@ -4,21 +4,24 @@ import 'package:get/get.dart';
 
 import '../controllers/product_detail_controller.dart';
 
-class ProductDetailView extends GetView<ProductDetailController> {
+class ProductDetailView extends StatelessWidget {
   const ProductDetailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProductDetailView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'ProductDetailView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+    return GetBuilder(
+      init: ProductDetailController(),
+      builder: (ProductDetailController controller) {
+        return Obx(
+          () => Center(
+            child: ElevatedButton(
+              child: Text('ProductDetailView ${controller.count}'),
+              onPressed: () {
+                controller.count.value++;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }
