@@ -16,6 +16,7 @@ class RoleListController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+
     unawaited(getSource({'pageSize': 100, 'pageNum': 1}));
   }
 
