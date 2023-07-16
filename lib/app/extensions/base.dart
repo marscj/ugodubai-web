@@ -13,6 +13,8 @@ extension StringExtension on String {
       replaceAll('_', ' ').split(' ').map((str) => str.toCapitalized).join(' ');
 
   Text get text => Text(this);
+
+  get sprint => print(this);
 }
 
 extension InterExtension on int {

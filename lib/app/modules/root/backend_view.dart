@@ -36,28 +36,46 @@ class _DesktopScreenState extends State<DesktopScreen> {
   bool leftBarCondensed = false;
   final List<PageTabBar> tabs = [];
   final List<GetPage> pages = [];
+  final GlobalKey<TopTabBarState> tabKey = GlobalKey<TopTabBarState>();
   int index = 0;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     tabs.addAll([
       PageTabBar(
-        title: '工作台',
+        title: 'dashboard'.tr,
         route: Routes.DASHBOARD,
-      ),
-      PageTabBar(
-        title: '个人中心',
-        route: Routes.PROFILE,
+        name: Routes.DASHBOARD,
       ),
     ]);
 
-    pages.addAll(
-        [AppPages.findPage('/dashboard'), AppPages.findPage('/profile')]);
+    pages.addAll([AppPages.findPage('/dashboard')]);
 
-    Get.rootDelegate.addListener(() {});
+    Get.rootDelegate.addListener(() {
+      GetPage? page = Get.rootDelegate.currentConfiguration?.currentPage;
+      String? location = Get.rootDelegate.currentConfiguration!.location;
+      if (page != null && location != null) {
+        addPage(page, location);
+      }
+    });
+  }
+
+  void addPage(GetPage page, String route) {
+    if (!tabs.any((element) => element.name == page.name)) {
+      setState(() {
+        tabs.add(
+          PageTabBar(
+            title: page.title!.tr,
+            route: route,
+            name: page.name,
+          ),
+        );
+        pages.add(page);
+        tabKey.currentState?.changeIndex(++index);
+      });
+    } else {}
   }
 
   void openRightBar(bool opened) {
@@ -74,60 +92,42 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GetRouterOutlet.builder(
-      builder: (context, delegate, currentRoute) {
-        return Scaffold(
-          body: [
-            LeftBar(leftBarCondensed: leftBarCondensed),
-            [
-              FilledButton(
-                  onPressed: () {
-                    tabs.add(
-                      PageTabBar(
-                        title: '网站设置',
-                        route: Routes.SETTING,
-                        onClosed: () {
-                          setState(() {
-                            index = 1;
-                            tabs.removeLast();
-                            pages.removeLast();
-                          });
-                        },
-                      ),
-                    );
-                    pages.add(AppPages.findPage('/setting'));
-                    setState(() {});
+    return GetRouterOutlet.builder(builder: (context, delegate, current) {
+      return Scaffold(
+        body: [
+          LeftBar(leftBarCondensed: leftBarCondensed),
+          [
+            FxCard(
+              borderRadiusAll: 0,
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              shadow: FxShadow(
+                  position: FxShadowPosition.bottomRight, elevation: 1),
+              color: Theme.of(context).colorScheme.onPrimary,
+              child: [
+                TopBar(leftBarFun: toggleLeftBarCondensed),
+                TopTabBar(
+                  key: tabKey,
+                  tabs: tabs,
+                  initialIndex: 0,
+                  onChange: (value) {
+                    setState(() {
+                      index = value;
+                      delegate.offNamed(tabs[value].route);
+                    });
                   },
-                  child: Text('add tab')),
-              FxCard(
-                borderRadiusAll: 0,
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                shadow: FxShadow(
-                    position: FxShadowPosition.bottomRight, elevation: 1),
-                color: Theme.of(context).colorScheme.onPrimary,
-                child: [
-                  TopBar(leftBarFun: toggleLeftBarCondensed),
-                  TopTabBar(
-                      tabs: tabs,
-                      onChange: (value) {
-                        setState(() {
-                          index = value;
-                          delegate.offNamed(tabs[value].route);
-                        });
-                      }),
-                ].col(),
-              ),
-              IndexedStack(
-                index: index,
-                children: pages.map((e) {
-                  return e.page();
-                }).toList(),
-              ).expanded
-            ].col().expanded
-          ].row(),
-        );
-      },
-    );
+                )
+              ].col(),
+            ),
+            IndexedStack(
+              index: index,
+              children: pages.map((e) {
+                return e.page();
+              }).toList(),
+            ).expanded
+          ].col().expanded
+        ].row(),
+      );
+    });
   }
 }
 
