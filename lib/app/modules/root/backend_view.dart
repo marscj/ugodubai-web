@@ -100,7 +100,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
             ),
           );
           pages.add(page);
-          tabKey.currentState?.changeIndex(tabs.length - 1);
+          tabKey.currentState?.changeIndex(tabs.length - 1, tabs);
         });
       } else {
         index = tabs.indexWhere((element) =>
@@ -108,7 +108,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
             equals(element.arguments, page.arguments) &&
             equals(element.parameters, page.parameters));
         index.toString().sprint;
-        tabKey.currentState?.changeIndex(index);
+        tabKey.currentState?.changeIndex(index, tabs);
       }
     }
   }
@@ -118,14 +118,14 @@ class _DesktopScreenState extends State<DesktopScreen> {
       tabs.removeAt(value);
       pages.removeAt(value);
 
-      if (value == index) {
+      if (value <= index) {
         index--;
-      } else if (value < index) {
-        index--;
-      } else {}
-      Get.rootDelegate.toNamed(tabs[index].route,
-          arguments: tabs[index].arguments, parameters: tabs[index].parameters);
-      // tabKey.currentState?.changeIndex(index);
+        Get.rootDelegate.toNamed(tabs[index].route,
+            arguments: tabs[index].arguments,
+            parameters: tabs[index].parameters);
+      } else {
+        tabKey.currentState?.changeIndex(index, tabs);
+      }
     });
   }
 

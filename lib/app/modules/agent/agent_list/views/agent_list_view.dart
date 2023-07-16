@@ -3,15 +3,16 @@ import 'package:flutx/flutx.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:ugodubai/pack/syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/agent_list_controller.dart';
 
-class AgentListView extends GetView<AgentListController> {
+class AgentListView extends StatelessWidget {
   const AgentListView({Key? key}) : super(key: key);
-  Widget _buildDataGrid(context) {
+  Widget _buildDataGrid(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
+
     return Obx(
       () {
         return SfDataGridTheme(
@@ -41,7 +42,7 @@ class AgentListView extends GetView<AgentListController> {
     );
   }
 
-  Widget _buildDataPager(context) {
+  Widget _buildDataPager(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Obx(() => controller.source.dataGridRows.isNotEmpty
@@ -65,10 +66,10 @@ class AgentListView extends GetView<AgentListController> {
         : SizedBox.shrink());
   }
 
-  Widget _buildLayoutBuilder(context) {
+  Widget _buildLayoutBuilder(context, controller) {
     return Column(
       children: <Widget>[
-        _buildDataGrid(context).expanded,
+        _buildDataGrid(context, controller).expanded,
         Container(
           height: 60,
           decoration: BoxDecoration(
@@ -80,7 +81,7 @@ class AgentListView extends GetView<AgentListController> {
               ),
             ),
           ),
-          child: Align(child: _buildDataPager(context)),
+          child: Align(child: _buildDataPager(context, controller)),
         )
       ],
     );
@@ -95,7 +96,7 @@ class AgentListView extends GetView<AgentListController> {
           color: Colors.white,
           // padding: EdgeInsets.all(16),
           margin: EdgeInsets.all(24),
-          child: _buildLayoutBuilder(context),
+          child: _buildLayoutBuilder(context, controller),
         );
       },
     );

@@ -24,7 +24,7 @@ dependencies:
   dartz: 0.10.1
   intl: 0.18.0
   sticky_headers: 0.3.0+2
-  syncfusion_flutter_datagrid: 22.1.37
+  # syncfusion_flutter_datagrid: 22.1.37
   syncfusion_flutter_core: 22.1.37
   vertical_scrollable_tabview: 0.1.0
   scroll_to_index: 3.0.1
@@ -47,5 +47,14 @@ flutter:
     - assets/datas/
     - assets/lang/
     - assets/locales/
+  
+  fonts:
+      - family: UnsortIcon
+        fonts:
+          - asset: assets/font/UnsortIcon.ttf
+      - family: FilterIcon
+        fonts:
+          - asset: assets/font/FilterIcon.ttf
+
   uses-material-design: true
 

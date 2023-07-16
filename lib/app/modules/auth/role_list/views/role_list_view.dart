@@ -3,7 +3,7 @@ import 'package:flutx/flutx.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:ugodubai/pack/syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/role_list_controller.dart';
