@@ -53,29 +53,33 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
     pages.addAll([AppPages.findPage('/dashboard')]);
 
+    addPage();
+
     Get.rootDelegate.addListener(() {
-      GetPage? page = Get.rootDelegate.currentConfiguration?.currentPage;
-      String? location = Get.rootDelegate.currentConfiguration!.location;
-      if (page != null && location != null) {
-        addPage(page, location);
-      }
+      addPage();
     });
   }
 
-  void addPage(GetPage page, String route) {
-    if (!tabs.any((element) => element.name == page.name)) {
-      setState(() {
-        tabs.add(
-          PageTabBar(
-            title: page.title!.tr,
-            route: route,
-            name: page.name,
-          ),
-        );
-        pages.add(page);
-        tabKey.currentState?.changeIndex(++index);
-      });
-    } else {}
+  void addPage() {
+    GetPage? page = Get.rootDelegate.currentConfiguration?.currentPage;
+    String? route = Get.rootDelegate.currentConfiguration!.location;
+
+    if (page != null && route != null) {
+      if (!tabs.any((element) => element.name == page.name)) {
+        setState(() {
+          tabs.add(
+            PageTabBar(
+              title: page.title!.tr,
+              route: route,
+              name: page.name,
+            ),
+          );
+          pages.add(page);
+          Future.delayed(Duration(microseconds: 500))
+              .then((value) => tabKey.currentState?.changeIndex(++index));
+        });
+      } else {}
+    }
   }
 
   void openRightBar(bool opened) {
@@ -108,7 +112,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
                 TopTabBar(
                   key: tabKey,
                   tabs: tabs,
-                  initialIndex: 0,
+                  initialIndex: index,
                   onChange: (value) {
                     setState(() {
                       index = value;

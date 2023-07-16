@@ -29,12 +29,17 @@ class TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
     // TODO: implement initState
     super.initState();
 
-    changeIndex(0);
+    tabController = TabController(
+        length: widget.tabs.length,
+        vsync: this,
+        initialIndex: widget.initialIndex);
   }
 
   void changeIndex(index) {
-    tabController = TabController(length: widget.tabs.length, vsync: this);
+    tabController = TabController(
+        length: widget.tabs.length, vsync: this, initialIndex: index);
     tabController.index = index;
+    setState(() {});
   }
 
   @override
