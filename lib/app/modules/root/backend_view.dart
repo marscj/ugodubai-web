@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:collection/collection.dart';
@@ -66,6 +67,17 @@ class _DesktopScreenState extends State<DesktopScreen> {
     String? route = Get.rootDelegate.currentConfiguration!.location;
     var equals = DeepCollectionEquality().equals;
 
+    tabs.map((element) {
+      if (kDebugMode) {
+        print(
+            'arguments = ${element.arguments}, ${page?.arguments}, ${equals(element.arguments, page?.arguments)}');
+      }
+      if (kDebugMode) {
+        print(
+            'parameters = ${element.parameters}, ${page?.parameters}, ${equals(element.parameters, page?.parameters)}');
+      }
+    }).toList();
+
     if (page != null && route != null) {
       if (!tabs.any((element) =>
           element.route == page.name &&
@@ -82,7 +94,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
           );
           pages.add(page);
           index++;
-          tabKey.currentState?.changeIndex(index);
+          tabKey.currentState?.changeIndex(tabs.length - 1);
         });
       } else {
         index = tabs.indexWhere((element) =>

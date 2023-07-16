@@ -8,7 +8,7 @@ class PageTabBar extends StatelessWidget {
     required this.title,
     required this.route,
     this.arguments,
-    this.parameters,
+    this.parameters = const {},
     this.onClosed,
   }) : super(key: key);
 

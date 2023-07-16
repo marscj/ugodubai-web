@@ -12,6 +12,7 @@ class RoleListView extends GetView<RoleListController> {
   const RoleListView({Key? key}) : super(key: key);
   Widget _buildDataGrid(context) {
     final colorScheme = Theme.of(context).colorScheme;
+
     return Obx(
       () {
         return SfDataGridTheme(
@@ -92,9 +93,16 @@ class RoleListView extends GetView<RoleListController> {
 
   @override
   Widget build(BuildContext context) {
-    return FxCard(
-      color: Colors.white,
-      child: _buildLayoutBuilder(context),
+    return GetBuilder(
+      init: RoleListController(),
+      builder: (RoleListController controller) {
+        return FxCard(
+          color: Colors.white,
+          // padding: EdgeInsets.all(16),
+          margin: EdgeInsets.all(24),
+          child: _buildLayoutBuilder(context),
+        );
+      },
     );
   }
 }
