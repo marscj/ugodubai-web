@@ -4,6 +4,7 @@ import 'package:flutx/flutx.dart';
 import 'package:collection/collection.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ugodubai/app/components/account_menu.dart';
 import 'package:ugodubai/app/components/language_menu.dart';
 import 'package:ugodubai/app/components/left_bar.dart';
@@ -50,6 +51,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
       PageTabBar(
         title: 'dashboard'.tr,
         route: Routes.DASHBOARD,
+        index: 0,
       ),
     ]);
 
@@ -84,16 +86,20 @@ class _DesktopScreenState extends State<DesktopScreen> {
           equals(element.arguments, page.arguments) &&
           equals(element.parameters, page.parameters))) {
         setState(() {
+          index++;
           tabs.add(
             PageTabBar(
+              index: index,
               title: page.title!.tr,
               route: route,
               arguments: page.arguments,
               parameters: page.parameters,
+              onClosed: (value) {
+                removePage(value);
+              },
             ),
           );
           pages.add(page);
-          index++;
           tabKey.currentState?.changeIndex(tabs.length - 1);
         });
       } else {
@@ -101,9 +107,26 @@ class _DesktopScreenState extends State<DesktopScreen> {
             element.route == page.name &&
             equals(element.arguments, page.arguments) &&
             equals(element.parameters, page.parameters));
+        index.toString().sprint;
         tabKey.currentState?.changeIndex(index);
       }
     }
+  }
+
+  void removePage(value) {
+    setState(() {
+      tabs.removeAt(value);
+      pages.removeAt(value);
+
+      if (value == index) {
+        index--;
+      } else if (value < index) {
+        index--;
+      } else {}
+      Get.rootDelegate.toNamed(tabs[index].route,
+          arguments: tabs[index].arguments, parameters: tabs[index].parameters);
+      // tabKey.currentState?.changeIndex(index);
+    });
   }
 
   void openRightBar(bool opened) {

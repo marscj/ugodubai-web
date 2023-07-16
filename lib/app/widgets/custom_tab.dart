@@ -5,6 +5,7 @@
 import 'dart:math' as math;
 import 'dart:ui' show lerpDouble;
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 import 'package:flutter/material.dart';
@@ -65,11 +66,14 @@ class CustomTab extends StatelessWidget implements PreferredSizeWidget {
       );
     }
 
-    return SizedBox(
-      height: height ?? calculatedHeight,
-      child: Center(
-        widthFactor: 1.0,
-        child: label,
+    return FadeInLeft(
+      duration: Duration(milliseconds: 300),
+      child: SizedBox(
+        height: height ?? calculatedHeight,
+        child: Center(
+          widthFactor: 1.0,
+          child: label,
+        ),
       ),
     );
   }

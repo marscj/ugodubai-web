@@ -7,15 +7,17 @@ class PageTabBar extends StatelessWidget {
     Key? key,
     required this.title,
     required this.route,
+    required this.index,
     this.arguments,
     this.parameters = const {},
     this.onClosed,
   }) : super(key: key);
 
   final String title;
-  final VoidCallback? onClosed;
+  final ValueChanged<int>? onClosed;
   final String route;
   final Object? arguments;
+  final int index;
   final Map<String, String>? parameters;
 
   @override
@@ -26,13 +28,13 @@ class PageTabBar extends StatelessWidget {
       iconMargin: EdgeInsets.zero,
       icon: onClosed != null
           ? InkWell(
-              onTap: onClosed,
+              onTap: () => onClosed!(index),
               child: Icon(
                 Icons.close,
                 size: 14,
               ),
-            ).paddingOnly(left: 8)
+            ).paddingOnly(left: 4)
           : SizedBox.shrink(),
-    );
+    ).paddingOnly(left: 4);
   }
 }

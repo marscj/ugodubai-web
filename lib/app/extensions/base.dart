@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 extension StringExtension on String {
@@ -14,7 +15,11 @@ extension StringExtension on String {
 
   Text get text => Text(this);
 
-  get sprint => print(this);
+  void sprint([flg]) {
+    if (kDebugMode) {
+      print('${flg ?? '====='},$this');
+    }
+  }
 }
 
 extension InterExtension on int {

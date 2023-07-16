@@ -46,7 +46,7 @@ class TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return CustomTabBar(
       controller: tabController,
-      physics: NeverScrollableScrollPhysics(),
+      // physics: NeverScrollableScrollPhysics(),
       isScrollable: true,
       dividerColor: Colors.transparent,
       indicatorColor: Colors.transparent,
@@ -62,47 +62,3 @@ class TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
     );
   }
 }
-
-
-// class TopTabBar extends StatelessWidget {
-//   const TopTabBar({
-//     super.key,
-//     this.tabs = const [],
-//     this.controller,
-//     required this.onChange,
-//     required this.initialIndex,
-//   });
-
-//   final TabController? controller;
-//   final List<PageTabBar> tabs;
-//   final ValueChanged<int> onChange;
-//   final int initialIndex;
-
-//   Widget tab(context) => CustomTabBar(
-//         physics: NeverScrollableScrollPhysics(),
-//         isScrollable: true,
-//         dividerColor: Colors.transparent,
-//         indicatorColor: Colors.transparent,
-//         labelColor: Theme.of(context).colorScheme.primary,
-//         unselectedLabelColor: Colors.black,
-//         labelStyle: TextStyle(fontSize: 12),
-//         indicatorWeight: 0,
-//         labelPadding: EdgeInsets.symmetric(horizontal: 16),
-//         tabs: tabs,
-//         onTap: (index) {
-//           onChange(index);
-//         },
-//       );
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return controller != null
-//         ? tab(context)
-//         : DefaultTabController(
-//             key: key,
-//             length: tabs.length,
-//             initialIndex: initialIndex,
-//             child: tab(context),
-//           );
-//   }
-// }
