@@ -75,8 +75,9 @@ class _DesktopScreenState extends State<DesktopScreen> {
             ),
           );
           pages.add(page);
+          index++;
           Future.delayed(Duration(microseconds: 500))
-              .then((value) => tabKey.currentState?.changeIndex(++index));
+              .then((value) => tabKey.currentState?.changeIndex(index));
         });
       } else {}
     }
