@@ -150,12 +150,17 @@ class _DesktopScreenState extends State<DesktopScreen> {
           [
             FxCard(
               borderRadiusAll: 0,
-              padding: EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.zero,
               shadow: FxShadow(
-                  position: FxShadowPosition.bottomRight, elevation: 1),
+                  position: FxShadowPosition.bottomRight, elevation: 0.2),
               color: Theme.of(context).colorScheme.onPrimary,
               child: [
-                TopBar(leftBarFun: toggleLeftBarCondensed),
+                TopBar(leftBarFun: toggleLeftBarCondensed)
+                    .paddingSymmetric(horizontal: 24),
+                Divider(
+                  thickness: 2,
+                  color: Theme.of(context).dividerColor.withAlpha(128),
+                ),
                 TopTabBar(
                   key: tabKey,
                   tabs: tabs,
@@ -166,7 +171,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
                       delegate.offNamed(tabs[value].route);
                     });
                   },
-                )
+                ).paddingOnly(left: 24, right: 24, top: 2, bottom: 0)
               ].col(),
             ),
             IndexedStack(
