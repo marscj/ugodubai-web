@@ -13,12 +13,11 @@ class AgentListController extends GetxController {
   set source(value) => this._source.value = value;
 
   @override
-  void onReady() {
-    super.onReady();
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
 
     unawaited(getSource({'pageSize': 100, 'pageNum': 1}));
-
-    AgentProvider().getAgent(1);
   }
 
   Future<AgentListRes> getSource(Map<String, dynamic> payload) async {

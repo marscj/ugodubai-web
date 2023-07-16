@@ -83,11 +83,6 @@ class LoginController extends GetxController {
         label: "VerifyCode",
         validators: [FxLengthValidator(min: 4, max: 4)],
         controller: TextEditingController(text: ''));
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
 
     getCaptcha();
   }
