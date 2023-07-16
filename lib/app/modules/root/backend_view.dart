@@ -8,7 +8,6 @@ import 'package:ugodubai/app/components/left_bar.dart';
 import 'package:ugodubai/app/components/notification_menu.dart';
 import 'package:ugodubai/app/components/top_bar.dart';
 import 'package:ugodubai/app/components/top_tab_bar.dart';
-import 'package:ugodubai/app/extensions/get_page.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 import 'package:ugodubai/app/extensions/widgets.dart';
 import 'package:ugodubai/app/routes/app_pages.dart';

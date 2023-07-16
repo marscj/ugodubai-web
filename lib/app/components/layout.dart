@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
-import 'package:get/get.dart';
 
 import 'package:ugodubai/app/components/account_menu.dart';
 import 'package:ugodubai/app/components/language_menu.dart';
