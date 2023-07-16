@@ -1,51 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
-import 'package:ugodubai/app/modules/agent/agent_detail/controllers/agent_detail_controller.dart';
-import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
-import 'package:ugodubai/app/modules/agent/agent_list/controllers/agent_list_controller.dart';
-import 'package:ugodubai/app/modules/auth/role_detail/controllers/role_detail_controller.dart';
-import 'package:ugodubai/app/modules/auth/role_list/controllers/role_list_controller.dart';
-import 'package:ugodubai/app/modules/auth/user_detail/controllers/user_detail_controller.dart';
-import 'package:ugodubai/app/modules/auth/user_list/controllers/user_list_controller.dart';
-import 'package:ugodubai/app/modules/console/dashboard/controllers/dashboard_controller.dart';
-import 'package:ugodubai/app/modules/order/order_detail/controllers/order_detail_controller.dart';
-import 'package:ugodubai/app/modules/order/order_list/controllers/order_list_controller.dart';
-import 'package:ugodubai/app/modules/product/product_attribute/controllers/product_attribute_controller.dart';
-import 'package:ugodubai/app/modules/product/product_category/controllers/product_category_controller.dart';
-import 'package:ugodubai/app/modules/product/product_detail/controllers/product_detail_controller.dart';
-import 'package:ugodubai/app/modules/product/product_list/controllers/product_list_controller.dart';
-import 'package:ugodubai/app/modules/product/product_tag/controllers/product_tag_controller.dart';
-import 'package:ugodubai/app/modules/profile/controllers/profile_controller.dart';
-import 'package:ugodubai/app/modules/root/backend_view.dart';
-import 'package:ugodubai/app/modules/setting/controllers/setting_controller.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
-
-import '../modules/auth/role_detail/bindings/role_detail_binding.dart';
-import '../modules/auth/role_list/bindings/role_list_binding.dart';
-import '../modules/auth/user_detail/bindings/user_detail_binding.dart';
-import '../modules/auth/user_list/bindings/user_list_binding.dart';
+import '../modules/agent/agent_view.dart';
+import '../modules/auth/auth_view.dart';
+import '../modules/order/order_view.dart';
+import '../modules/product/product_view.dart';
+import '../modules/root/backend_view.dart';
 import '../modules/console/console_view.dart';
-import '../modules/console/dashboard/bindings/dashboard_binding.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/login/bindings/login_binding.dart';
-import '../modules/order/order_detail/bindings/order_detail_binding.dart';
-import '../modules/order/order_list/bindings/order_list_binding.dart';
-import '../modules/product/product_attribute/bindings/product_attribute_binding.dart';
-import '../modules/product/product_category/bindings/product_category_binding.dart';
-import '../modules/product/product_detail/bindings/product_detail_binding.dart';
-
-import '../modules/product/product_list/bindings/product_list_binding.dart';
-import '../modules/product/product_tag/bindings/product_tag_binding.dart';
-import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
 import '../modules/root/root_view.dart';
-import '../modules/setting/bindings/setting_binding.dart';
 import '../widgets/deferred_widget.dart';
 
 import '../modules/login/views/login_view.dart' deferred as login_view;
@@ -185,7 +155,7 @@ class AppPages {
               name: _Paths.ORDER,
               title: 'order_management'.tr,
               icon: Icons.list_alt_outlined,
-              page: () => SizedBox.shrink(),
+              page: () => OrderView(),
               preventDuplicates: true,
               middlewares: [
                 EnsureAuthMiddleware(),
@@ -212,7 +182,7 @@ class AppPages {
               name: _Paths.PRODUCT,
               title: 'product_management'.tr,
               icon: Icons.production_quantity_limits,
-              page: () => SizedBox.shrink(),
+              page: () => ProductView(),
               preventDuplicates: true,
               middlewares: [
                 EnsureAuthMiddleware(),
@@ -256,7 +226,7 @@ class AppPages {
               name: _Paths.AGENT,
               title: 'agent_management'.tr,
               icon: Icons.assignment,
-              page: () => SizedBox.shrink(),
+              page: () => AgentView(),
               preventDuplicates: true,
               middlewares: [
                 EnsureAuthMiddleware(),
@@ -282,7 +252,7 @@ class AppPages {
               name: _Paths.AUTH,
               title: 'auth_management'.tr,
               icon: Icons.person,
-              page: () => SizedBox.shrink(),
+              page: () => AuthView(),
               preventDuplicates: true,
               middlewares: [
                 EnsureAuthMiddleware(),

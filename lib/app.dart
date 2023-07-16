@@ -8,8 +8,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-import 'package:ugodubai/app/modules/console/controllers/console_controller.dart';
-
 import 'package:ugodubai/app/routes/app_pages.dart';
 import 'package:ugodubai/app/components/error_404.dart';
 
@@ -124,7 +122,6 @@ class App extends GetView<AppController> {
       initialBinding: BindingsBuilder(
         () {
           Get.put(AuthService());
-          Get.put(ConsoleController());
         },
       ),
 

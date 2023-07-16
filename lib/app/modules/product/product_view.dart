@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import 'package:ugodubai/app/routes/app_pages.dart';
 
-class ProductManagementView extends StatelessWidget {
-  const ProductManagementView({Key? key}) : super(key: key);
+class ProductView extends StatelessWidget {
+  const ProductView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetRouterOutlet.builder(
