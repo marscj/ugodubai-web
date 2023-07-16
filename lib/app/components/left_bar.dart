@@ -61,7 +61,7 @@ class LeftBar extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.rootDelegate.toNamed(Routes.CONSOLE);
+                      Get.rootDelegate.offNamed(Routes.DASHBOARD);
                     },
                     child: Image.asset(
                       Assets.logoIcon,

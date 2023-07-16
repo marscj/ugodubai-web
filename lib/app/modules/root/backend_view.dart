@@ -53,6 +53,8 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
     pages.addAll(
         [AppPages.findPage('/dashboard'), AppPages.findPage('/profile')]);
+
+    Get.rootDelegate.addListener(() {});
   }
 
   void openRightBar(bool opened) {

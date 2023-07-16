@@ -253,12 +253,10 @@ class _MenuItemState extends State<MenuItem> {
   Widget build(BuildContext context) {
     bool isActive = Utils.getCurrentUrl(context) == widget.route;
 
-    print('${Utils.getCurrentUrl(context)}======${widget.route}');
-
     return GestureDetector(
       onTap: () {
         if (widget.route != null) {
-          Get.rootDelegate.toNamed(widget.route!, arguments: 1);
+          Get.rootDelegate.offNamed(widget.route!, arguments: 1);
         }
       },
       child: MouseRegion(
@@ -330,7 +328,7 @@ class _NavigationItemState extends State<NavigationMenuItem> {
 
     return InkWell(
       onTap: () {
-        Get.rootDelegate.toNamed(widget.route);
+        Get.rootDelegate.offNamed(widget.route);
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

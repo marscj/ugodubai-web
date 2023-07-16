@@ -18,7 +18,7 @@ class HomeView extends GetView<HomeController> {
       body: Center(
         child: TextButton(
             onPressed: () {
-              Get.rootDelegate.toNamed(Routes.DASHBOARD);
+              Get.rootDelegate.offNamed(Routes.DASHBOARD);
             },
             child: Text(
               'HomeView is working',
