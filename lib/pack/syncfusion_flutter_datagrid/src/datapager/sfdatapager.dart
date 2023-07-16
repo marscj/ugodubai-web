@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_setters_without_getters, avoid_redundant_argument_values
+// ignore_for_file: avoid_setters_without_getters, avoid_redundant_argument_values, overridden_fields
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';

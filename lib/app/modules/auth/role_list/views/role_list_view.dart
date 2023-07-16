@@ -8,9 +8,9 @@ import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/role_list_controller.dart';
 
-class RoleListView extends GetView<RoleListController> {
+class RoleListView extends StatelessWidget {
   const RoleListView({Key? key}) : super(key: key);
-  Widget _buildDataGrid(context) {
+  Widget _buildDataGrid(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Obx(
@@ -43,7 +43,7 @@ class RoleListView extends GetView<RoleListController> {
     );
   }
 
-  Widget _buildDataPager(context) {
+  Widget _buildDataPager(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Obx(() => controller.source.dataGridRows.isNotEmpty
@@ -67,13 +67,13 @@ class RoleListView extends GetView<RoleListController> {
         : SizedBox.shrink());
   }
 
-  Widget _buildLayoutBuilder(context) {
+  Widget _buildLayoutBuilder(context, controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         FilledButton(onPressed: () {}, child: Text('create_user'.tr))
             .paddingSymmetric(vertical: 20),
-        _buildDataGrid(context).expanded,
+        _buildDataGrid(context, controller).expanded,
         Container(
           height: 60,
           decoration: BoxDecoration(
@@ -85,7 +85,7 @@ class RoleListView extends GetView<RoleListController> {
               ),
             ),
           ),
-          child: Align(child: _buildDataPager(context)),
+          child: Align(child: _buildDataPager(context, controller)),
         )
       ],
     );
@@ -100,7 +100,7 @@ class RoleListView extends GetView<RoleListController> {
           color: Colors.white,
           // padding: EdgeInsets.all(16),
           margin: EdgeInsets.all(24),
-          child: _buildLayoutBuilder(context),
+          child: _buildLayoutBuilder(context, controller),
         );
       },
     );

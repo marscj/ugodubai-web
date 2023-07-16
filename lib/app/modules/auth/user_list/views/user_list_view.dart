@@ -8,10 +8,10 @@ import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/user_list_controller.dart';
 
-class UserListView extends GetView<UserListController> {
+class UserListView extends StatelessWidget {
   const UserListView({Key? key}) : super(key: key);
 
-  Widget _buildDataGrid(context) {
+  Widget _buildDataGrid(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
     return Obx(
       () {
@@ -42,7 +42,7 @@ class UserListView extends GetView<UserListController> {
     );
   }
 
-  Widget _buildDataPager(context) {
+  Widget _buildDataPager(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Obx(() => controller.source.dataGridRows.isNotEmpty
@@ -66,13 +66,13 @@ class UserListView extends GetView<UserListController> {
         : SizedBox.shrink());
   }
 
-  Widget _buildLayoutBuilder(context) {
+  Widget _buildLayoutBuilder(context, controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         // FilledButton(onPressed: () {}, child: Text('create_user'.tr))
         //     .paddingSymmetric(vertical: 20),
-        _buildDataGrid(context).expanded,
+        _buildDataGrid(context, controller).expanded,
         Container(
           height: 60,
           decoration: BoxDecoration(
@@ -84,7 +84,7 @@ class UserListView extends GetView<UserListController> {
               ),
             ),
           ),
-          child: Align(child: _buildDataPager(context)),
+          child: Align(child: _buildDataPager(context, controller)),
         )
       ],
     );
@@ -99,7 +99,7 @@ class UserListView extends GetView<UserListController> {
           color: Colors.white,
           // padding: EdgeInsets.all(16),
           margin: EdgeInsets.all(24),
-          child: _buildLayoutBuilder(context),
+          child: _buildLayoutBuilder(context, controller),
         );
       },
     );

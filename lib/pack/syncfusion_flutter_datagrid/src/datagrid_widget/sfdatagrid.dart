@@ -2099,8 +2099,9 @@ class SfDataGridState extends State<SfDataGrid>
       _resetColumn();
     }
 
-    if (widget.selectionMode != SelectionMode.none)
+    if (widget.selectionMode != SelectionMode.none) {
       selection_manager.removeUnWantedDataGridRows(_dataGridConfiguration);
+    }
     if (widget.selectionMode != SelectionMode.none &&
         widget.navigationMode == GridNavigationMode.cell &&
         _rowSelectionManager != null) {

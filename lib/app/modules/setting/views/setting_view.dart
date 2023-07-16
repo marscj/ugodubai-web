@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../controllers/setting_controller.dart';
 
-class SettingView extends GetView<SettingController> {
+class SettingView extends StatelessWidget {
   const SettingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
