@@ -7,7 +7,6 @@ class GetPageMenu extends GetPage {
   GetPageMenu({
     required String name,
     required GetPageBuilder page,
-    this.controller,
     this.icon,
     this.hide = false,
     bool? popGesture,
@@ -59,5 +58,4 @@ class GetPageMenu extends GetPage {
 
   final IconData? icon;
   final bool hide;
-  final ControllerBuilderCallback? controller;
 }

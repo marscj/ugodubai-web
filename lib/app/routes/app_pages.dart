@@ -28,7 +28,7 @@ import '../modules/auth/role_detail/bindings/role_detail_binding.dart';
 import '../modules/auth/role_list/bindings/role_list_binding.dart';
 import '../modules/auth/user_detail/bindings/user_detail_binding.dart';
 import '../modules/auth/user_list/bindings/user_list_binding.dart';
-import '../modules/console/views/console_view.dart';
+import '../modules/console/console_view.dart';
 import '../modules/console/dashboard/bindings/dashboard_binding.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -162,7 +162,7 @@ class AppPages {
           children: [
             GetPageMenu(
               name: _Paths.CONSOLE,
-              page: () => SizedBox.shrink(),
+              page: () => ConsoleView(),
               icon: Icons.dashboard_outlined,
               title: 'console'.tr,
               preventDuplicates: true,
@@ -176,7 +176,6 @@ class AppPages {
                   icon: Icons.dashboard_outlined,
                   page: () => DeferredWidget(dashboard_view.loadLibrary,
                       () => dashboard_view.DashboardView()),
-                  controller: () => DashboardController(),
                 ),
               ],
             ),
@@ -197,7 +196,6 @@ class AppPages {
                   title: 'order_list'.tr,
                   page: () => DeferredWidget(order_list_view.loadLibrary,
                       () => order_list_view.OrderListView()),
-                  controller: () => OrderListController(),
                 ),
                 GetPageMenu(
                   name: _Paths.ORDER_DETAIL,
@@ -205,7 +203,6 @@ class AppPages {
                   hide: true,
                   page: () => DeferredWidget(order_detail_view.loadLibrary,
                       () => order_detail_view.OrderDetailView()),
-                  controller: () => OrderDetailController(),
                 ),
               ],
             ),
@@ -226,35 +223,30 @@ class AppPages {
                   title: 'product_list'.tr,
                   page: () => DeferredWidget(product_list_view.loadLibrary,
                       () => product_list_view.ProductListView()),
-                  controller: () => ProductListController(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(product_detail_view.loadLibrary,
                       () => product_detail_view.ProductDetailView()),
-                  controller: () => ProductDetailController(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_CATEGORY,
                   title: 'product_category'.tr,
                   page: () => DeferredWidget(product_category_view.loadLibrary,
                       () => product_category_view.ProductCategoryView()),
-                  controller: () => ProductCategoryController(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_TAG,
                   title: 'product_tag'.tr,
                   page: () => DeferredWidget(product_tag_view.loadLibrary,
                       () => product_tag_view.ProductTagView()),
-                  controller: () => ProductTagController(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_ATTRIBUTE,
                   title: 'product_attribute'.tr,
                   page: () => DeferredWidget(product_attribute_view.loadLibrary,
                       () => product_attribute_view.ProductAttributeView()),
-                  controller: () => ProductAttributeController(),
                 ),
               ],
             ),
@@ -275,14 +267,12 @@ class AppPages {
                   name: _Paths.AGENT_LIST,
                   page: () => DeferredWidget(agent_list_view.loadLibrary,
                       () => agent_list_view.AgentListView()),
-                  controller: () => AgentListController(),
                 ),
                 GetPageMenu(
                   name: _Paths.AGENT_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(agent_detail_view.loadLibrary,
                       () => agent_detail_view.AgentDetailView()),
-                  controller: () => AgentDetailController(),
                 ),
               ],
             ),
@@ -303,28 +293,24 @@ class AppPages {
                   title: 'user_list'.tr,
                   page: () => DeferredWidget(user_list_view.loadLibrary,
                       () => user_list_view.UserListView()),
-                  controller: () => UserListController(),
                 ),
                 GetPageMenu(
                   name: _Paths.USER_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(user_detail_view.loadLibrary,
                       () => user_detail_view.UserDetailView()),
-                  controller: () => UserDetailController(),
                 ),
                 GetPageMenu(
                   name: _Paths.ROLE_LIST,
                   title: 'role_list'.tr,
                   page: () => DeferredWidget(role_list_view.loadLibrary,
                       () => role_list_view.RoleListView()),
-                  controller: () => RoleListController(),
                 ),
                 GetPageMenu(
                   name: _Paths.ROLE_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(role_detail_view.loadLibrary,
                       () => role_detail_view.RoleDetailView()),
-                  controller: () => RoleDetailController(),
                 ),
               ],
             ),
@@ -336,7 +322,6 @@ class AppPages {
               icon: Icons.settings,
               page: () => DeferredWidget(
                   setting_view.loadLibrary, () => setting_view.SettingView()),
-              controller: () => SettingController(),
             ),
 
             //profile
@@ -346,7 +331,6 @@ class AppPages {
               icon: Icons.file_copy,
               page: () => DeferredWidget(
                   profile_view.loadLibrary, () => profile_view.ProfileView()),
-              controller: () => ProfileController(),
             ),
           ],
         ),

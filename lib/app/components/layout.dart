@@ -9,7 +9,6 @@ import 'package:ugodubai/app/components/notification_menu.dart';
 import 'package:ugodubai/app/components/top_bar.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 import 'package:ugodubai/app/extensions/widgets.dart';
-import 'package:ugodubai/app/modules/console/controllers/console_controller.dart';
 
 class Layout extends StatefulWidget {
   const Layout({super.key, required this.child});
@@ -20,21 +19,20 @@ class Layout extends StatefulWidget {
 }
 
 class _LayoutState extends State<Layout> {
-  ConsoleController consoleController = Get.find<ConsoleController>();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  int currentPageIndex = 0;
-  bool extended = false;
+  bool rightBarOpen = false;
+  bool leftBarCondensed = false;
 
   void openRightBar(bool opened) {
     setState(() {
-      consoleController.rightBarOpen = opened;
+      rightBarOpen = opened;
     });
   }
 
   void toggleLeftBarCondensed() {
     setState(() {
-      consoleController.leftBarCondensed = !consoleController.leftBarCondensed;
+      leftBarCondensed = !leftBarCondensed;
     });
   }
 
@@ -49,7 +47,7 @@ class _LayoutState extends State<Layout> {
     return Scaffold(
       key: scaffoldKey,
       body: [
-        LeftBar(leftBarCondensed: consoleController.leftBarCondensed),
+        LeftBar(leftBarCondensed: leftBarCondensed),
         [
           FxCard(
             borderRadiusAll: 0,
@@ -78,7 +76,7 @@ class _LayoutState extends State<Layout> {
           AccountMenu(),
         ],
       ),
-      drawer: LeftBar(leftBarCondensed: consoleController.leftBarCondensed),
+      drawer: LeftBar(leftBarCondensed: leftBarCondensed),
       body: widget.child,
     );
   }
