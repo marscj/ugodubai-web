@@ -27,14 +27,14 @@ class LeftMenuBar extends StatelessWidget {
       if (e.children.isNotEmpty) {
         return MenuWidget(
           iconData: e.icon ?? Icons.abc,
-          title: e.label.tr,
+          title: e.title?.tr ?? '',
           isCondensed: leftBarCondensed,
           children: e.children
               .whereType<GetPageMenu>()
               .where((element) => !element.hide)
               .map<MenuItem>(
                 (e1) => MenuItem(
-                  title: e1.label.tr,
+                  title: e1.title?.tr ?? '',
                   route: AppPages.backend.name + e.name + e1.name,
                 ),
               )
@@ -43,7 +43,7 @@ class LeftMenuBar extends StatelessWidget {
       } else {
         return NavigationMenuItem(
           iconData: e.icon ?? Icons.abc,
-          title: e.label.tr,
+          title: e.title?.tr ?? '',
           route: AppPages.backend.name + e.name,
           isCondensed: leftBarCondensed,
         );
@@ -178,7 +178,7 @@ class _MenuWidgetState extends State<MenuWidget> {
         },
         child: FxContainer.transparent(
           margin: FxSpacing.fromLTRB(16, 0, 16, 0),
-          padding: FxSpacing.xy(8, 8),
+          padding: FxSpacing.xy(8, 0),
           child: ListTileTheme(
             contentPadding: EdgeInsets.all(0),
             dense: false,

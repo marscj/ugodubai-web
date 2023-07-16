@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+typedef ControllerBuilderCallback = GetxController Function();
+
 class GetPageMenu extends GetPage {
   GetPageMenu({
     required String name,
     required GetPageBuilder page,
-    required this.label,
+    this.controller,
     this.icon,
     this.hide = false,
     bool? popGesture,
@@ -56,6 +58,6 @@ class GetPageMenu extends GetPage {
         );
 
   final IconData? icon;
-  final String label;
   final bool hide;
+  final ControllerBuilderCallback? controller;
 }
