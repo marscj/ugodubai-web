@@ -256,7 +256,7 @@ class _MenuItemState extends State<MenuItem> {
     return GestureDetector(
       onTap: () {
         if (widget.route != null) {
-          Get.rootDelegate.offNamed(widget.route!, arguments: 1);
+          Get.rootDelegate.offNamed(widget.route!);
         }
       },
       child: MouseRegion(

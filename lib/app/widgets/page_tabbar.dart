@@ -7,14 +7,16 @@ class PageTabBar extends StatelessWidget {
     Key? key,
     required this.title,
     required this.route,
-    required this.name,
+    this.arguments,
+    this.parameters,
     this.onClosed,
   }) : super(key: key);
 
   final String title;
   final VoidCallback? onClosed;
   final String route;
-  final String name;
+  final Object? arguments;
+  final Map<String, String>? parameters;
 
   @override
   Widget build(BuildContext context) {

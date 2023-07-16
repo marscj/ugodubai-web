@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
+import 'package:collection/collection.dart';
 
 import 'package:get/get.dart';
 import 'package:ugodubai/app/components/account_menu.dart';
@@ -8,6 +9,7 @@ import 'package:ugodubai/app/components/left_bar.dart';
 import 'package:ugodubai/app/components/notification_menu.dart';
 import 'package:ugodubai/app/components/top_bar.dart';
 import 'package:ugodubai/app/components/top_tab_bar.dart';
+import 'package:ugodubai/app/extensions/base.dart';
 import 'package:ugodubai/app/extensions/widget.dart';
 import 'package:ugodubai/app/extensions/widgets.dart';
 import 'package:ugodubai/app/routes/app_pages.dart';
@@ -47,7 +49,6 @@ class _DesktopScreenState extends State<DesktopScreen> {
       PageTabBar(
         title: 'dashboard'.tr,
         route: Routes.DASHBOARD,
-        name: Routes.DASHBOARD,
       ),
     ]);
 
@@ -63,23 +64,33 @@ class _DesktopScreenState extends State<DesktopScreen> {
   void addPage() {
     GetPage? page = Get.rootDelegate.currentConfiguration?.currentPage;
     String? route = Get.rootDelegate.currentConfiguration!.location;
+    var equals = DeepCollectionEquality().equals;
 
     if (page != null && route != null) {
-      if (!tabs.any((element) => element.name == page.name)) {
+      if (!tabs.any((element) =>
+          element.route == page.name &&
+          equals(element.arguments, page.arguments) &&
+          equals(element.parameters, page.parameters))) {
         setState(() {
           tabs.add(
             PageTabBar(
               title: page.title!.tr,
               route: route,
-              name: page.name,
+              arguments: page.arguments,
+              parameters: page.parameters,
             ),
           );
           pages.add(page);
           index++;
-          Future.delayed(Duration(microseconds: 500))
-              .then((value) => tabKey.currentState?.changeIndex(index));
+          tabKey.currentState?.changeIndex(index);
         });
-      } else {}
+      } else {
+        index = tabs.indexWhere((element) =>
+            element.route == page.name &&
+            equals(element.arguments, page.arguments) &&
+            equals(element.parameters, page.parameters));
+        tabKey.currentState?.changeIndex(index);
+      }
     }
   }
 
