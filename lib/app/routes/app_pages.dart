@@ -144,6 +144,7 @@ class AppPages {
                   name: _Paths.DASHBOARD,
                   title: 'dashboard'.tr,
                   icon: Icons.dashboard_outlined,
+                  parameters: {},
                   page: () => DeferredWidget(dashboard_view.loadLibrary,
                       () => dashboard_view.DashboardView()),
                 ),

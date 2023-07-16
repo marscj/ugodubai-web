@@ -46,15 +46,15 @@ class _DesktopScreenState extends State<DesktopScreen> {
   void initState() {
     super.initState();
 
+    pages.addAll([AppPages.findPage('/dashboard')]);
+
     tabs.addAll([
       PageTabBar(
         title: 'dashboard'.tr,
         route: Routes.DASHBOARD,
-        index: 0,
+        page: pages.first,
       ),
     ]);
-
-    pages.addAll([AppPages.findPage('/dashboard')]);
 
     addPage();
 
@@ -71,28 +71,26 @@ class _DesktopScreenState extends State<DesktopScreen> {
     tabs.map((element) {
       if (kDebugMode) {
         print(
-            'arguments = ${element.arguments}, ${page?.arguments}, ${equals(element.arguments, page?.arguments)}');
+            'arguments = ${element.page.arguments}, ${page?.arguments}, ${equals(element.page.arguments, page?.arguments)}');
       }
       if (kDebugMode) {
         print(
-            'parameters = ${element.parameters}, ${page?.parameters}, ${equals(element.parameters, page?.parameters)}');
+            'parameters = ${element.page.parameters}, ${page?.parameters}, ${equals(element.page.parameters, page?.parameters)}');
       }
     }).toList();
 
     if (page != null && route != null) {
       if (!tabs.any((element) =>
           element.route == page.name &&
-          equals(element.arguments, page.arguments) &&
-          equals(element.parameters, page.parameters))) {
+          equals(element.page.arguments, page.arguments) &&
+          equals(element.page.parameters, page.parameters))) {
         setState(() {
           index++;
           tabs.add(
             PageTabBar(
-              index: index,
               title: page.title!.tr,
               route: route,
-              arguments: page.arguments,
-              parameters: page.parameters,
+              page: page,
               onClosed: (value) {
                 removePage(value);
               },
@@ -104,28 +102,30 @@ class _DesktopScreenState extends State<DesktopScreen> {
       } else {
         index = tabs.indexWhere((element) =>
             element.route == page.name &&
-            equals(element.arguments, page.arguments) &&
-            equals(element.parameters, page.parameters));
+            equals(element.page.arguments, page.arguments) &&
+            equals(element.page.parameters, page.parameters));
         index.toString().sprint;
         tabKey.currentState?.changeIndex(index, tabs);
       }
     }
   }
 
-  void removePage(value) {
-    setState(() {
-      tabs.removeAt(value);
-      pages.removeAt(value);
+  void removePage(GetPage page) {
+    int _index = pages.indexOf(page);
 
-      if (value <= index) {
+    if (_index > 0) {
+      tabs.removeAt(_index);
+      pages.removeAt(_index);
+
+      if (_index <= index) {
         index--;
         Get.rootDelegate.toNamed(tabs[index].route,
-            arguments: tabs[index].arguments,
-            parameters: tabs[index].parameters);
+            arguments: page.arguments, parameters: page.parameters);
       } else {
         tabKey.currentState?.changeIndex(index, tabs);
       }
-    });
+      setState(() {});
+    }
   }
 
   void openRightBar(bool opened) {
