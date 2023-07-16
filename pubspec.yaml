@@ -29,6 +29,7 @@ dependencies:
   vertical_scrollable_tabview: 0.1.0
   scroll_to_index: 3.0.1
   syncfusion_localizations: 22.1.37
+  collection: ^1.17.1
   flutter: 
     sdk: flutter
   flutter_localizations: 
@@ -44,7 +45,6 @@ flutter:
     - assets/images/
     - assets/images/logo/
     - assets/images/dummy/
-    - assets/datas/
     - assets/lang/
     - assets/locales/
   

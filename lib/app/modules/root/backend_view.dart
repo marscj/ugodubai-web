@@ -4,7 +4,6 @@ import 'package:flutx/flutx.dart';
 import 'package:collection/collection.dart';
 
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ugodubai/app/components/account_menu.dart';
 import 'package:ugodubai/app/components/language_menu.dart';
 import 'package:ugodubai/app/components/left_bar.dart';
