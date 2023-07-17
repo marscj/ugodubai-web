@@ -4,25 +4,20 @@ import 'package:get/get.dart';
 
 import '../controllers/dashboard_controller.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: DashboardController(),
-      builder: (DashboardController controller) {
-        return Obx(
-          () => Center(
-            child: ElevatedButton(
-              child: Text('Dashboard View ${controller.count}'),
-              onPressed: () {
-                controller.count.value++;
-              },
-            ),
-          ),
-        );
-      },
+    return Obx(
+      () => Center(
+        child: ElevatedButton(
+          child: Text('Dashboard View ${controller.count}'),
+          onPressed: () {
+            controller.count.value++;
+          },
+        ),
+      ),
     );
   }
 }

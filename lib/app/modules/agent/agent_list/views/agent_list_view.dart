@@ -8,7 +8,7 @@ import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/agent_list_controller.dart';
 
-class AgentListView extends StatelessWidget {
+class AgentListView extends GetView<AgentListController> {
   const AgentListView({Key? key}) : super(key: key);
   Widget _buildDataGrid(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -89,16 +89,11 @@ class AgentListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: AgentListController(),
-      builder: (AgentListController controller) {
-        return FxCard(
-          color: Colors.white,
-          // padding: EdgeInsets.all(16),
-          margin: EdgeInsets.all(24),
-          child: _buildLayoutBuilder(context, controller),
-        );
-      },
+    return FxCard(
+      color: Colors.white,
+      // padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(24),
+      child: _buildLayoutBuilder(context, controller),
     );
   }
 }

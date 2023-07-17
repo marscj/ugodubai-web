@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:collection/collection.dart';
@@ -97,7 +96,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
             ),
           );
           pages.add(page);
-          page.binding?.dependencies();
+          // page.binding?.dependencies();
           tabKey.currentState?.changeIndex(tabs.length - 1, tabs);
         });
       } else {
@@ -168,17 +167,28 @@ class _DesktopScreenState extends State<DesktopScreen> {
                   onChange: (value) {
                     setState(() {
                       index = value;
-                      delegate.offNamed(tabs[value].route);
+                      delegate.toNamed(tabs[value].route);
                     });
                   },
                 ).paddingOnly(left: 24, right: 24, top: 2, bottom: 0)
               ].col(),
             ),
-            IndexedStack(
-              index: index,
-              children: pages.map((e) {
-                return e.page();
-              }).toList(),
+            // IndexedStack(
+            //   index: index,
+            //   children: pages.map((e) {
+            //     return e.page();
+            //   }).toList(),
+            // ).expanded
+            // GetNavigator(
+            //   key: Get.nestedKey(Routes.BACKEND),
+            //   pages: pages,
+            // ).expanded
+            GetRouterOutlet(
+              key: Get.nestedKey(Routes.BACKEND),
+              delegate: delegate,
+              initialRoute: Routes.CONSOLE,
+              anchorRoute: Routes.BACKEND,
+              filterPages: (afterAnchor) => afterAnchor.take(1),
             ).expanded
           ].col().expanded
         ].row(),

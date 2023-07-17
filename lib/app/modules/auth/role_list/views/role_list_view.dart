@@ -8,7 +8,7 @@ import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/role_list_controller.dart';
 
-class RoleListView extends StatelessWidget {
+class RoleListView extends GetView<RoleListController> {
   const RoleListView({Key? key}) : super(key: key);
   Widget _buildDataGrid(context, controller) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -93,16 +93,11 @@ class RoleListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: RoleListController(),
-      builder: (RoleListController controller) {
-        return FxCard(
-          color: Colors.white,
-          // padding: EdgeInsets.all(16),
-          margin: EdgeInsets.all(24),
-          child: _buildLayoutBuilder(context, controller),
-        );
-      },
+    return FxCard(
+      color: Colors.white,
+      // padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(24),
+      child: _buildLayoutBuilder(context, controller),
     );
   }
 }

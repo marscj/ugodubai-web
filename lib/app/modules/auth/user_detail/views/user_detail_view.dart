@@ -7,24 +7,19 @@ import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 
 import '../controllers/user_detail_controller.dart';
 
-class UserDetailView extends StatelessWidget {
+class UserDetailView extends GetView<UserDetailController> {
   const UserDetailView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: UserDetailController(),
-      builder: (UserDetailController controller) {
-        return Obx(
-          () => Center(
-            child: ElevatedButton(
-              child: Text('UserDetailView ${controller.count}'),
-              onPressed: () {
-                controller.count.value++;
-              },
-            ),
-          ),
-        );
-      },
+    return Obx(
+      () => Center(
+        child: ElevatedButton(
+          child: Text('UserDetailView ${controller.count}'),
+          onPressed: () {
+            controller.count.value++;
+          },
+        ),
+      ),
     );
   }
 }
