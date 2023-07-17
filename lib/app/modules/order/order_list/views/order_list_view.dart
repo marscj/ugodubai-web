@@ -8,6 +8,10 @@ class OrderListView extends GetView<OrderListController> {
   const OrderListView({Key? key}) : super(key: key);
 
   @override
+  // TODO: implement tag
+  String? get tag => 'OrderListController';
+
+  @override
   Widget build(BuildContext context) {
     return Obx(
       () => Center(

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../controllers/product_list_controller.dart';
 
-class ProductListView extends GetView<ProductListController> {
+class ProductListView extends GetWidget<ProductListController> {
   const ProductListView({Key? key}) : super(key: key);
 
   @override

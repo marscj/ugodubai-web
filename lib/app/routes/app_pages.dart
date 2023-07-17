@@ -16,6 +16,7 @@ import 'package:ugodubai/app/modules/product/product_detail/bindings/product_det
 import 'package:ugodubai/app/modules/product/product_list/bindings/product_list_binding.dart';
 import 'package:ugodubai/app/modules/product/product_tag/bindings/product_tag_binding.dart';
 import 'package:ugodubai/app/modules/profile/bindings/profile_binding.dart';
+import 'package:ugodubai/app/modules/root/backend_view.dart';
 import 'package:ugodubai/app/modules/setting/bindings/setting_binding.dart';
 
 import '../../middlewares/auth_guard.dart';
@@ -24,7 +25,6 @@ import '../modules/agent/agent_view.dart';
 import '../modules/auth/auth_view.dart';
 import '../modules/order/order_view.dart';
 import '../modules/product/product_view.dart';
-import '../modules/root/backend_view.dart';
 import '../modules/console/console_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
