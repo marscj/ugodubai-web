@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
+import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
+import 'package:ugodubai/app/modules/auth/role_detail/bindings/role_detail_binding.dart';
+import 'package:ugodubai/app/modules/auth/role_list/bindings/role_list_binding.dart';
+import 'package:ugodubai/app/modules/auth/user_detail/bindings/user_detail_binding.dart';
+import 'package:ugodubai/app/modules/auth/user_list/bindings/user_list_binding.dart';
+import 'package:ugodubai/app/modules/console/dashboard/bindings/dashboard_binding.dart';
+import 'package:ugodubai/app/modules/order/order_detail/bindings/order_detail_binding.dart';
+import 'package:ugodubai/app/modules/order/order_list/bindings/order_list_binding.dart';
+import 'package:ugodubai/app/modules/product/product_attribute/bindings/product_attribute_binding.dart';
+import 'package:ugodubai/app/modules/product/product_category/bindings/product_category_binding.dart';
+import 'package:ugodubai/app/modules/product/product_detail/bindings/product_detail_binding.dart';
+import 'package:ugodubai/app/modules/product/product_list/bindings/product_list_binding.dart';
+import 'package:ugodubai/app/modules/product/product_tag/bindings/product_tag_binding.dart';
+import 'package:ugodubai/app/modules/profile/bindings/profile_binding.dart';
+import 'package:ugodubai/app/modules/setting/bindings/setting_binding.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
@@ -147,6 +163,7 @@ class AppPages {
                   parameters: {},
                   page: () => DeferredWidget(dashboard_view.loadLibrary,
                       () => dashboard_view.DashboardView()),
+                  binding: DashboardBinding(),
                 ),
               ],
             ),
@@ -167,6 +184,7 @@ class AppPages {
                   title: 'order_list'.tr,
                   page: () => DeferredWidget(order_list_view.loadLibrary,
                       () => order_list_view.OrderListView()),
+                  binding: OrderListBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.ORDER_DETAIL,
@@ -174,6 +192,7 @@ class AppPages {
                   hide: true,
                   page: () => DeferredWidget(order_detail_view.loadLibrary,
                       () => order_detail_view.OrderDetailView()),
+                  binding: OrderDetailBinding(),
                 ),
               ],
             ),
@@ -194,30 +213,35 @@ class AppPages {
                   title: 'product_list'.tr,
                   page: () => DeferredWidget(product_list_view.loadLibrary,
                       () => product_list_view.ProductListView()),
+                  binding: ProductListBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(product_detail_view.loadLibrary,
                       () => product_detail_view.ProductDetailView()),
+                  binding: ProductDetailBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_CATEGORY,
                   title: 'product_category'.tr,
                   page: () => DeferredWidget(product_category_view.loadLibrary,
                       () => product_category_view.ProductCategoryView()),
+                  binding: ProductCategoryBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_TAG,
                   title: 'product_tag'.tr,
                   page: () => DeferredWidget(product_tag_view.loadLibrary,
                       () => product_tag_view.ProductTagView()),
+                  binding: ProductTagBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.PRODUCT_ATTRIBUTE,
                   title: 'product_attribute'.tr,
                   page: () => DeferredWidget(product_attribute_view.loadLibrary,
                       () => product_attribute_view.ProductAttributeView()),
+                  binding: ProductAttributeBinding(),
                 ),
               ],
             ),
@@ -238,12 +262,14 @@ class AppPages {
                   name: _Paths.AGENT_LIST,
                   page: () => DeferredWidget(agent_list_view.loadLibrary,
                       () => agent_list_view.AgentListView()),
+                  binding: AgentListBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.AGENT_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(agent_detail_view.loadLibrary,
                       () => agent_detail_view.AgentDetailView()),
+                  binding: AgentDetailBinding(),
                 ),
               ],
             ),
@@ -264,24 +290,28 @@ class AppPages {
                   title: 'user_list'.tr,
                   page: () => DeferredWidget(user_list_view.loadLibrary,
                       () => user_list_view.UserListView()),
+                  binding: UserListBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.USER_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(user_detail_view.loadLibrary,
                       () => user_detail_view.UserDetailView()),
+                  binding: UserDetailBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.ROLE_LIST,
                   title: 'role_list'.tr,
                   page: () => DeferredWidget(role_list_view.loadLibrary,
                       () => role_list_view.RoleListView()),
+                  binding: RoleListBinding(),
                 ),
                 GetPageMenu(
                   name: _Paths.ROLE_DETAIL,
                   hide: true,
                   page: () => DeferredWidget(role_detail_view.loadLibrary,
                       () => role_detail_view.RoleDetailView()),
+                  binding: RoleDetailBinding(),
                 ),
               ],
             ),
@@ -293,6 +323,7 @@ class AppPages {
               icon: Icons.settings,
               page: () => DeferredWidget(
                   setting_view.loadLibrary, () => setting_view.SettingView()),
+              binding: SettingBinding(),
             ),
 
             //profile
@@ -302,6 +333,7 @@ class AppPages {
               icon: Icons.file_copy,
               page: () => DeferredWidget(
                   profile_view.loadLibrary, () => profile_view.ProfileView()),
+              binding: ProfileBinding(),
             ),
           ],
         ),

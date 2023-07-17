@@ -97,6 +97,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
             ),
           );
           pages.add(page);
+          page.binding?.dependencies();
           tabKey.currentState?.changeIndex(tabs.length - 1, tabs);
         });
       } else {
