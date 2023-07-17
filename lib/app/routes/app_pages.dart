@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ugodubai/app/modules/agent/agent_detail/bindings/agent_detail_binding.dart';
-import 'package:ugodubai/app/modules/agent/agent_list/bindings/agent_list_binding.dart';
-import 'package:ugodubai/app/modules/auth/role_detail/bindings/role_detail_binding.dart';
-import 'package:ugodubai/app/modules/auth/role_list/bindings/role_list_binding.dart';
-import 'package:ugodubai/app/modules/auth/user_detail/bindings/user_detail_binding.dart';
-import 'package:ugodubai/app/modules/auth/user_list/bindings/user_list_binding.dart';
-import 'package:ugodubai/app/modules/console/dashboard/bindings/dashboard_binding.dart';
-import 'package:ugodubai/app/modules/order/order_detail/bindings/order_detail_binding.dart';
-import 'package:ugodubai/app/modules/order/order_list/bindings/order_list_binding.dart';
-import 'package:ugodubai/app/modules/product/product_attribute/bindings/product_attribute_binding.dart';
-import 'package:ugodubai/app/modules/product/product_category/bindings/product_category_binding.dart';
-import 'package:ugodubai/app/modules/product/product_detail/bindings/product_detail_binding.dart';
-import 'package:ugodubai/app/modules/product/product_list/bindings/product_list_binding.dart';
-import 'package:ugodubai/app/modules/product/product_tag/bindings/product_tag_binding.dart';
-import 'package:ugodubai/app/modules/profile/bindings/profile_binding.dart';
-import 'package:ugodubai/app/modules/root/backend_view.dart';
-import 'package:ugodubai/app/modules/setting/bindings/setting_binding.dart';
+import 'package:ugodubai/app/modules/backend/agent/agent_detail/bindings/agent_detail_binding.dart';
+import 'package:ugodubai/app/modules/backend/agent/agent_list/bindings/agent_list_binding.dart';
+import 'package:ugodubai/app/modules/backend/auth/role_detail/bindings/role_detail_binding.dart';
+import 'package:ugodubai/app/modules/backend/auth/role_list/bindings/role_list_binding.dart';
+import 'package:ugodubai/app/modules/backend/auth/user_detail/bindings/user_detail_binding.dart';
+import 'package:ugodubai/app/modules/backend/auth/user_list/bindings/user_list_binding.dart';
+import 'package:ugodubai/app/modules/backend/backend_view.dart';
+import 'package:ugodubai/app/modules/backend/console/dashboard/bindings/dashboard_binding.dart';
+import 'package:ugodubai/app/modules/backend/order/order_detail/bindings/order_detail_binding.dart';
+import 'package:ugodubai/app/modules/backend/order/order_list/bindings/order_list_binding.dart';
+import 'package:ugodubai/app/modules/backend/product/product_attribute/bindings/product_attribute_binding.dart';
+import 'package:ugodubai/app/modules/backend/product/product_category/bindings/product_category_binding.dart';
+import 'package:ugodubai/app/modules/backend/product/product_detail/bindings/product_detail_binding.dart';
+import 'package:ugodubai/app/modules/backend/product/product_list/bindings/product_list_binding.dart';
+import 'package:ugodubai/app/modules/backend/product/product_tag/bindings/product_tag_binding.dart';
+import 'package:ugodubai/app/modules/backend/profile/bindings/profile_binding.dart';
+import 'package:ugodubai/app/modules/backend/setting/bindings/setting_binding.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
-import '../modules/agent/agent_view.dart';
-import '../modules/auth/auth_view.dart';
-import '../modules/order/order_view.dart';
-import '../modules/product/product_view.dart';
-import '../modules/console/console_view.dart';
+import '../modules/backend/agent/agent_view.dart';
+import '../modules/backend/auth/auth_view.dart';
+import '../modules/backend/order/order_view.dart';
+import '../modules/backend/product/product_view.dart';
+import '../modules/backend/console/console_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -36,41 +36,43 @@ import '../widgets/deferred_widget.dart';
 
 import '../modules/login/views/login_view.dart' deferred as login_view;
 import '../modules/home/views/home_view.dart' deferred as home_view;
-import '../modules/profile/views/profile_view.dart' deferred as profile_view;
+import '../modules/backend/profile/views/profile_view.dart'
+    deferred as profile_view;
 import '../modules/register/views/register_view.dart' deferred as register_view;
-import '../modules/setting/views/setting_view.dart' deferred as setting_view;
-import '../modules/auth/user_detail/views/user_detail_view.dart'
+import '../modules/backend/setting/views/setting_view.dart'
+    deferred as setting_view;
+import '../modules/backend/auth/user_detail/views/user_detail_view.dart'
     deferred as user_detail_view;
-import '../modules/auth/role_detail/views/role_detail_view.dart'
+import '../modules/backend/auth/role_detail/views/role_detail_view.dart'
     deferred as role_detail_view;
-import '../modules/agent/agent_detail/views/agent_detail_view.dart'
+import '../modules/backend/agent/agent_detail/views/agent_detail_view.dart'
     deferred as agent_detail_view;
-import '../modules/agent/agent_list/views/agent_list_view.dart'
+import '../modules/backend/agent/agent_list/views/agent_list_view.dart'
     deferred as agent_list_view;
-import '../modules/product/product_detail/views/product_detail_view.dart'
+import '../modules/backend/product/product_detail/views/product_detail_view.dart'
     deferred as product_detail_view;
 import '../modules/forgot_password/views/forgot_password_view.dart'
     deferred as forgot_password_view;
 import '../modules/reset_password/views/reset_password_view.dart'
     deferred as reset_password_view;
-import '../modules/order/order_detail/views/order_detail_view.dart'
+import '../modules/backend/order/order_detail/views/order_detail_view.dart'
     deferred as order_detail_view;
-import '../modules/order/order_list/views/order_list_view.dart'
+import '../modules/backend/order/order_list/views/order_list_view.dart'
     deferred as order_list_view;
-import '../modules/product/product_attribute/views/product_attribute_view.dart'
+import '../modules/backend/product/product_attribute/views/product_attribute_view.dart'
     deferred as product_attribute_view;
-import '../modules/product/product_category/views/product_category_view.dart'
+import '../modules/backend/product/product_category/views/product_category_view.dart'
     deferred as product_category_view;
-import '../modules/product/product_list/views/product_list_view.dart'
+import '../modules/backend/product/product_list/views/product_list_view.dart'
     deferred as product_list_view;
-import '../modules/product/product_tag/views/product_tag_view.dart'
+import '../modules/backend/product/product_tag/views/product_tag_view.dart'
     deferred as product_tag_view;
-import '../modules/auth/role_list/views/role_list_view.dart'
+import '../modules/backend/auth/role_list/views/role_list_view.dart'
     deferred as role_list_view;
-import '../modules/auth/user_list/views/user_list_view.dart'
+import '../modules/backend/auth/user_list/views/user_list_view.dart'
     deferred as user_list_view;
 
-import '../modules/console/dashboard/views/dashboard_view.dart'
+import '../modules/backend/console/dashboard/views/dashboard_view.dart'
     deferred as dashboard_view;
 
 part 'app_routes.dart';
