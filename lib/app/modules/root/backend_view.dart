@@ -68,16 +68,16 @@ class _DesktopScreenState extends State<DesktopScreen> {
     String? route = Get.rootDelegate.currentConfiguration!.location;
     var equals = DeepCollectionEquality().equals;
 
-    tabs.map((element) {
-      if (kDebugMode) {
-        print(
-            'arguments = ${element.page.arguments}, ${page?.arguments}, ${equals(element.page.arguments, page?.arguments)}');
-      }
-      if (kDebugMode) {
-        print(
-            'parameters = ${element.page.parameters}, ${page?.parameters}, ${equals(element.page.parameters, page?.parameters)}');
-      }
-    }).toList();
+    // tabs.map((element) {
+    //   if (kDebugMode) {
+    //     print(
+    //         'arguments = ${element.page.arguments}, ${page?.arguments}, ${equals(element.page.arguments, page?.arguments)}');
+    //   }
+    //   if (kDebugMode) {
+    //     print(
+    //         'parameters = ${element.page.parameters}, ${page?.parameters}, ${equals(element.page.parameters, page?.parameters)}');
+    //   }
+    // }).toList();
 
     if (page != null && route != null) {
       if (!tabs.any((element) =>

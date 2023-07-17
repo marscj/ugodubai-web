@@ -5,8 +5,8 @@ import '../controllers/user_list_controller.dart';
 class UserListBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<UserListController>(
-      UserListController(),
+    Get.lazyPut<UserListController>(
+      () => UserListController(),
     );
   }
 }

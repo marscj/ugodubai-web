@@ -5,8 +5,8 @@ import '../controllers/agent_detail_controller.dart';
 class AgentDetailBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<AgentDetailController>(
-      AgentDetailController(),
+    Get.lazyPut<AgentDetailController>(
+      () => AgentDetailController(),
     );
   }
 }

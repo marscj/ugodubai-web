@@ -5,8 +5,8 @@ import '../controllers/product_list_controller.dart';
 class ProductListBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<ProductListController>(
-      ProductListController(),
+    Get.lazyPut<ProductListController>(
+      () => ProductListController(),
     );
   }
 }
