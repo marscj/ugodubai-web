@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ugodubai/app/extensions/widgets.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/dashboard_controller.dart';
 
@@ -16,6 +18,7 @@ class DashboardView extends GetView<DashboardController> {
           child: Text('Dashboard View ${controller.count}'),
           onPressed: () {
             controller.count.value++;
+            launchUrl(Uri(path: '/backend/order/list'));
           },
         ),
       ),
