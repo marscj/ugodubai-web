@@ -11,7 +11,7 @@ class DashboardView extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Center(
-        child: ElevatedButton(
+        child: TextButton(
           child: Text('Dashboard View ${controller.count}'),
           onPressed: () {
             controller.count.value++;
