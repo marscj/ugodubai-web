@@ -1,12 +1,11 @@
-import 'package:ugodubai/app/data/base_model.dart';
-
+import 'base_model.dart';
 import 'user_model.dart';
 
 class LoginRes extends BaseRes {
   LoginRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? UserData?.fromJson(json['data']) : null;
+    data = json['data'] != null ? LoginData?.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -20,14 +19,15 @@ class LoginRes extends BaseRes {
   }
 }
 
-class UserData {
+class LoginData {
   User? userInfo;
   String? token;
   List<MenuList>? menuList;
+  List<String>? permissions;
 
-  UserData({this.userInfo, this.token, this.menuList});
+  LoginData({this.userInfo, this.token, this.menuList, this.permissions});
 
-  UserData.fromJson(Map<String, dynamic> json) {
+  LoginData.fromJson(Map<String, dynamic> json) {
     userInfo =
         json['userInfo'] != null ? User?.fromJson(json['userInfo']) : null;
     token = json['token'];
@@ -37,6 +37,7 @@ class UserData {
         menuList?.add(MenuList.fromJson(v));
       });
     }
+    permissions = json['permissions'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -48,7 +49,7 @@ class UserData {
     if (menuList != null) {
       data['menuList'] = menuList?.map((v) => v.toJson()).toList();
     }
-
+    data['permissions'] = permissions;
     return data;
   }
 }
@@ -60,15 +61,16 @@ class MenuList {
   String? component;
   String? path;
   Meta? meta;
+  List<MenuList>? children;
 
-  MenuList({
-    this.id,
-    this.pid,
-    this.name,
-    this.component,
-    this.path,
-    this.meta,
-  });
+  MenuList(
+      {this.id,
+      this.pid,
+      this.name,
+      this.component,
+      this.path,
+      this.meta,
+      this.children});
 
   MenuList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -77,6 +79,12 @@ class MenuList {
     component = json['component'];
     path = json['path'];
     meta = json['meta'] != null ? Meta?.fromJson(json['meta']) : null;
+    if (json['children'] != null) {
+      children = <MenuList>[];
+      json['children'].forEach((v) {
+        children?.add(MenuList.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -88,6 +96,9 @@ class MenuList {
     data['path'] = path;
     if (meta != null) {
       data['meta'] = meta?.toJson();
+    }
+    if (children != null) {
+      data['children'] = children?.map((v) => v.toJson()).toList();
     }
     return data;
   }

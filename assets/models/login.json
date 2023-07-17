@@ -3,17 +3,17 @@
     "message": "",
     "data": {
         "userInfo": {
-            "id": 31,
-            "userName": "demo",
-            "userNickname": "李四",
+            "id": 3,
+            "userName": "zs",
+            "userNickname": "张三",
             "userPassword": "",
-            "userSalt": "46PvWe1Sl7",
+            "userSalt": "redoHIj524",
             "userStatus": 1,
             "isAdmin": 1,
-            "avatar": "upload_file/2022-11-11/co9copop81co0gysbz.jpg",
-            "deptId": 109
+            "avatar": "https://yxh-1301841944.cos.ap-chongqing.myqcloud.com/gfast/2021-08-02/cd8nif79egjg9kbkgk.jpeg",
+            "deptId": 101
         },
-        "token": "7ZUSfVIf2HyYjcv86SKPPs29v003ECPEScsdYsYYqO1Z+pGJMEPQkxIwg4KK+7UINzAjuwqEe8PUxxPc4uikHSoTgD0n/cpB9ck9GpDew4vD1Th4bbfOzMhflY+1UnRzEPfIdaE0j12yrTZVyRoPpw==",
+        "token": "9iJQ+6E0VacXmVYpnpt7wVh35W7PQr08q+eQuqZa3dMPYTmhgxSNv83rmSNce4hhZuOsoGGQvcz1gCz7rPS8EEKipjKZkSTjIXeuv2Djnv92OzFU3Xgy8olE4Cr+Oe92uocAT50f7sWK7DNSKXgocg==",
         "menuList": [
             {
                 "id": 27,
@@ -47,10 +47,247 @@
                             "isIframe": false
                         },
                         "children": []
+                    },
+                    {
+                        "id": 29,
+                        "pid": 27,
+                        "name": "apiV1SystemDictDataList",
+                        "component": "system/dict/dataList",
+                        "path": "/system/dict/data/list/:dictType",
+                        "meta": {
+                            "icon": "iconfont icon-putong",
+                            "title": "字典数据管理",
+                            "isLink": "",
+                            "isHide": true,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 30,
+                        "pid": 27,
+                        "name": "apiV1SystemConfigList",
+                        "component": "system/config/index",
+                        "path": "/system/config/list",
+                        "meta": {
+                            "icon": "ele-Cherry",
+                            "title": "参数管理",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "pid": 0,
+                "name": "apiV1SystemAuth",
+                "component": "layout/routerView/parent",
+                "path": "/system/auth",
+                "meta": {
+                    "icon": "ele-Stamp",
+                    "title": "权限管理",
+                    "isLink": "",
+                    "isHide": false,
+                    "isKeepAlive": true,
+                    "isAffix": false,
+                    "isIframe": false
+                },
+                "children": [
+                    {
+                        "id": 2,
+                        "pid": 1,
+                        "name": "apiV1SystemAuthMenuList",
+                        "component": "system/menu/index",
+                        "path": "/system/auth/menuList",
+                        "meta": {
+                            "icon": "ele-Calendar",
+                            "title": "菜单管理",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 10,
+                        "pid": 1,
+                        "name": "apiV1SystemRoleList",
+                        "component": "system/role/index",
+                        "path": "/system/auth/roleList",
+                        "meta": {
+                            "icon": "iconfont icon-juxingkaobei",
+                            "title": "角色管理",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 15,
+                        "pid": 1,
+                        "name": "apiV1SystemDeptList",
+                        "component": "system/dept/index",
+                        "path": "/system/auth/deptList",
+                        "meta": {
+                            "icon": "iconfont icon-siweidaotu",
+                            "title": "部门管理",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 22,
+                        "pid": 1,
+                        "name": "apiV1SystemPostList",
+                        "component": "system/post/index",
+                        "path": "/system/auth/postList",
+                        "meta": {
+                            "icon": "iconfont icon-neiqianshujuchucun",
+                            "title": "岗位管理",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 26,
+                        "pid": 1,
+                        "name": "apiV1SystemUserList",
+                        "component": "system/user/index",
+                        "path": "/system/auth/user/list",
+                        "meta": {
+                            "icon": "ele-User",
+                            "title": "用户管理",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 31,
+                "pid": 0,
+                "name": "apiV1SystemMonitor",
+                "component": "layout/routerView/parent",
+                "path": "/system/monitor",
+                "meta": {
+                    "icon": "iconfont icon-xuanzeqi",
+                    "title": "系统监控",
+                    "isLink": "",
+                    "isHide": false,
+                    "isKeepAlive": true,
+                    "isAffix": false,
+                    "isIframe": false
+                },
+                "children": [
+                    {
+                        "id": 32,
+                        "pid": 31,
+                        "name": "apiV1SystemMonitorServer",
+                        "component": "system/monitor/server/index",
+                        "path": "/system/monitor/server",
+                        "meta": {
+                            "icon": "iconfont icon-shuju",
+                            "title": "服务监控",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 34,
+                        "pid": 31,
+                        "name": "apiV1SystemLoginLogList",
+                        "component": "system/monitor/loginLog/index",
+                        "path": "/system/monitor/loginLog",
+                        "meta": {
+                            "icon": "ele-Finished",
+                            "title": "登录日志",
+                            "isLink": "",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": false
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 35,
+                "pid": 0,
+                "name": "apiV1SystemTools",
+                "component": "layout/routerView/parent",
+                "path": "/system/tools",
+                "meta": {
+                    "icon": "iconfont icon-zujian",
+                    "title": "系统工具",
+                    "isLink": "",
+                    "isHide": false,
+                    "isKeepAlive": true,
+                    "isAffix": false,
+                    "isIframe": false
+                },
+                "children": [
+                    {
+                        "id": 33,
+                        "pid": 35,
+                        "name": "apiSwagger",
+                        "component": "layout/routerView/iframes",
+                        "path": "/system/swagger",
+                        "meta": {
+                            "icon": "iconfont icon--chaifenlie",
+                            "title": "api文档",
+                            "isLink": "http://localhost:8808/swagger",
+                            "isHide": false,
+                            "isKeepAlive": true,
+                            "isAffix": false,
+                            "isIframe": true
+                        },
+                        "children": []
                     }
                 ]
             }
         ],
-        "permissions": []
+        "permissions": [
+            "api/v1/system/menu/add",
+            "api/v1/system/menu/update",
+            "api/v1/system/menu/delete",
+            "api/v1/system/role/add",
+            "/api/v1/system/role/edit",
+            "/api/v1/system/role/delete",
+            "api/v1/system/dept/add",
+            "api/v1/system/dept/edit",
+            "api/v1/system/dept/delete",
+            "api/v1/system/post/add",
+            "api/v1/system/post/edit",
+            "api/v1/system/post/delete"
+        ]
     }
 }
