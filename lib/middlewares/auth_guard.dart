@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ugodubai/app/routes/app_pages.dart';
 import 'package:ugodubai/services/auth_service.dart';
@@ -21,11 +22,21 @@ class EnsureNotAuthedMiddleware extends GetMiddleware {
   @override
   Future<GetNavConfig?> redirectDelegate(GetNavConfig route) async {
     if (AuthService.to.isLoggedIn()) {
-      //NEVER navigate to auth screen, when user is already authed
       return null;
+    }
+    return await super.redirectDelegate(route);
+  }
+}
 
-      //OR redirect user to another screen
-      //return GetNavConfig.fromRoute(Routes.PROFILE);
+class RedirectMiddleware extends GetMiddleware {
+  final String path;
+
+  RedirectMiddleware(this.path);
+
+  @override
+  Future<GetNavConfig?> redirectDelegate(GetNavConfig route) async {
+    if (path.contains(route.location!)) {
+      return GetNavConfig.fromRoute(path);
     }
     return await super.redirectDelegate(route);
   }

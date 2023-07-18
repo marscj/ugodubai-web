@@ -23,11 +23,9 @@
   "your_password_will_be_reset": "Your password will be reset",
   "confirm_password": "Confirm Password",
   "confirm": "Confirm",
-
   "order_management": "Orders",
   "order_list": "All Orders",
   "order_detail": "Order Detail",
-  
   "product_management": "Products",
   "product_list": "All Products",
   "product_edit": "Product Edit",
@@ -35,13 +33,12 @@
   "product_category": "Product Categories",
   "product_tag": "Product Tags",
   "product_attribute": "Product Attributes",
-
   "auth_management": "Auth",
   "user_list": "All User",
   "user_edit": "User Edit",
   "role_list": "Role List",
   "role": "Role",
-  
+  "menu_list":"Menu List",
   "agent_management": "Agents",
   "agent":"Agent",
   "agent_list":"Agent List",
@@ -51,10 +48,10 @@
   "credit_limit":"Credit Limit",
   "outstanding_balance":"Outstanding Blance",
   "account_blance":"Account Blance",
-  
   "profile": "profile",
   "setting": "Setting",
-
   "active": "Active",
-  "actions": "Actions"
+  "actions": "Actions",
+  "scope": "Scope",
+  "recharge": "Recharge"
 }

@@ -50,6 +50,7 @@ class LocaleKeys {
   static const user_edit = 'user_edit';
   static const role_list = 'role_list';
   static const role = 'role';
+  static const menu_list = 'menu_list';
   static const agent_management = 'agent_management';
   static const agent = 'agent';
   static const agent_list = 'agent_list';
@@ -63,6 +64,8 @@ class LocaleKeys {
   static const actions = 'actions';
   static const profile = 'profile';
   static const setting = 'setting';
+  static const scope = 'scope';
+  static const recharge = 'recharge';
 }
 
 class Locales {
@@ -106,6 +109,7 @@ class Locales {
     'user_edit': '编辑用户',
     'role_list': '角色列表',
     'role': '角色',
+    'menu_list': '菜单列表',
     'agent_management': '代理商管理',
     'agent': '代理商',
     'agent_list': '代理商列表',
@@ -119,6 +123,8 @@ class Locales {
     'actions': '操作',
     'profile': '个人中心',
     'setting': '网站设置',
+    'scope': '权限范围',
+    'recharge': '充值',
   };
   static const en_US = {
     'app_name': 'UGODUBAI',
@@ -162,6 +168,7 @@ class Locales {
     'user_edit': 'User Edit',
     'role_list': 'Role List',
     'role': 'Role',
+    'menu_list': 'Menu List',
     'agent_management': 'Agents',
     'agent': 'Agent',
     'agent_list': 'Agent List',
@@ -175,5 +182,7 @@ class Locales {
     'setting': 'Setting',
     'active': 'Active',
     'actions': 'Actions',
+    'scope': 'Scope',
+    'recharge': 'Recharge',
   };
 }

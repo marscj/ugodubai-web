@@ -23,11 +23,9 @@
   "your_password_will_be_reset": "你的密码将被重置",
   "confirm_password": "确认密码",
   "confirm": "确认",
-
   "order_management": "订单管理",
   "order_list": "全部订单",
   "order_detail": "订单详情",
-  
   "product_management": "产品管理",
   "product_list": "产品列表",
   "product_edit": "编辑产品",
@@ -41,7 +39,7 @@
   "user_edit": "编辑用户",
   "role_list": "角色列表",
   "role": "角色",
-
+  "menu_list":"菜单列表",
   "agent_management": "代理商管理",
   "agent":"代理商",
   "agent_list":"代理商列表",
@@ -51,10 +49,10 @@
   "credit_limit":"信用额度",
   "outstanding_balance":"未结算金额",
   "account_blance":"账户余额",
-
   "active": "可用",
-  "actions": "操作",
-  
+  "actions": "操作", 
   "profile": "个人中心",
-  "setting": "网站设置"
+  "setting": "网站设置",
+  "scope": "权限范围",
+  "recharge": "充值"
 }

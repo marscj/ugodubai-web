@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ugodubai/app/modules/backend/agent/agent_detail/bindings/agent_detail_binding.dart';
-import 'package:ugodubai/app/modules/backend/agent/agent_list/bindings/agent_list_binding.dart';
-import 'package:ugodubai/app/modules/backend/auth/role_detail/bindings/role_detail_binding.dart';
-import 'package:ugodubai/app/modules/backend/auth/role_list/bindings/role_list_binding.dart';
-import 'package:ugodubai/app/modules/backend/auth/user_detail/bindings/user_detail_binding.dart';
-import 'package:ugodubai/app/modules/backend/auth/user_list/bindings/user_list_binding.dart';
-import 'package:ugodubai/app/modules/backend/backend_view.dart';
-import 'package:ugodubai/app/modules/backend/console/dashboard/bindings/dashboard_binding.dart';
-import 'package:ugodubai/app/modules/backend/order/order_detail/bindings/order_detail_binding.dart';
-import 'package:ugodubai/app/modules/backend/order/order_list/bindings/order_list_binding.dart';
-import 'package:ugodubai/app/modules/backend/product/product_attribute/bindings/product_attribute_binding.dart';
-import 'package:ugodubai/app/modules/backend/product/product_category/bindings/product_category_binding.dart';
-import 'package:ugodubai/app/modules/backend/product/product_detail/bindings/product_detail_binding.dart';
-import 'package:ugodubai/app/modules/backend/product/product_list/bindings/product_list_binding.dart';
-import 'package:ugodubai/app/modules/backend/product/product_tag/bindings/product_tag_binding.dart';
-import 'package:ugodubai/app/modules/backend/profile/bindings/profile_binding.dart';
-import 'package:ugodubai/app/modules/backend/setting/bindings/setting_binding.dart';
 
 import '../../middlewares/auth_guard.dart';
 import '../extensions/get_page.dart';
+import '../modules/backend/agent/agent_detail/bindings/agent_detail_binding.dart';
+import '../modules/backend/agent/agent_list/bindings/agent_list_binding.dart';
 import '../modules/backend/agent/agent_view.dart';
 import '../modules/backend/auth/auth_view.dart';
-import '../modules/backend/order/order_view.dart';
-import '../modules/backend/product/product_view.dart';
+import '../modules/backend/auth/menu_list/bindings/menu_list_binding.dart';
+import '../modules/backend/auth/role_detail/bindings/role_detail_binding.dart';
+import '../modules/backend/auth/role_list/bindings/role_list_binding.dart';
+import '../modules/backend/auth/user_detail/bindings/user_detail_binding.dart';
+import '../modules/backend/auth/user_list/bindings/user_list_binding.dart';
+import '../modules/backend/backend_view.dart';
 import '../modules/backend/console/console_view.dart';
+import '../modules/backend/console/dashboard/bindings/dashboard_binding.dart';
+import '../modules/backend/order/order_detail/bindings/order_detail_binding.dart';
+import '../modules/backend/order/order_list/bindings/order_list_binding.dart';
+import '../modules/backend/order/order_view.dart';
+import '../modules/backend/product/product_attribute/bindings/product_attribute_binding.dart';
+import '../modules/backend/product/product_category/bindings/product_category_binding.dart';
+import '../modules/backend/product/product_detail/bindings/product_detail_binding.dart';
+import '../modules/backend/product/product_list/bindings/product_list_binding.dart';
+import '../modules/backend/product/product_tag/bindings/product_tag_binding.dart';
+import '../modules/backend/product/product_view.dart';
+import '../modules/backend/profile/bindings/profile_binding.dart';
+import '../modules/backend/setting/bindings/setting_binding.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -34,11 +35,11 @@ import '../modules/reset_password/bindings/reset_password_binding.dart';
 import '../modules/root/root_view.dart';
 import '../widgets/deferred_widget.dart';
 
-import '../modules/login/views/login_view.dart' deferred as login_view;
 import '../modules/home/views/home_view.dart' deferred as home_view;
+import '../modules/login/views/login_view.dart' deferred as login_view;
+import '../modules/register/views/register_view.dart' deferred as register_view;
 import '../modules/backend/profile/views/profile_view.dart'
     deferred as profile_view;
-import '../modules/register/views/register_view.dart' deferred as register_view;
 import '../modules/backend/setting/views/setting_view.dart'
     deferred as setting_view;
 import '../modules/backend/auth/user_detail/views/user_detail_view.dart'
@@ -74,6 +75,9 @@ import '../modules/backend/auth/user_list/views/user_list_view.dart'
 
 import '../modules/backend/console/dashboard/views/dashboard_view.dart'
     deferred as dashboard_view;
+
+import '../modules/backend/auth/menu_list/views/menu_list_view.dart'
+    deferred as menu_list_view;
 
 part 'app_routes.dart';
 
@@ -156,6 +160,7 @@ class AppPages {
               preventDuplicates: true,
               middlewares: [
                 EnsureAuthMiddleware(),
+                RedirectMiddleware(Routes.DASHBOARD),
               ],
               children: [
                 GetPageMenu(
@@ -208,6 +213,7 @@ class AppPages {
               preventDuplicates: true,
               middlewares: [
                 EnsureAuthMiddleware(),
+                RedirectMiddleware(Routes.PRODUCT_LIST),
               ],
               children: [
                 GetPageMenu(
@@ -314,6 +320,13 @@ class AppPages {
                   page: () => DeferredWidget(role_detail_view.loadLibrary,
                       () => role_detail_view.RoleDetailView()),
                   binding: RoleDetailBinding(),
+                ),
+                GetPageMenu(
+                  name: _Paths.MENU_LIST,
+                  title: 'menu_list'.tr,
+                  page: () => DeferredWidget(menu_list_view.loadLibrary,
+                      () => menu_list_view.MenuListView()),
+                  binding: MenuListBinding(),
                 ),
               ],
             ),

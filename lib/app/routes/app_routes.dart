@@ -55,6 +55,7 @@ abstract class Routes {
   //settings
   static const SETTING = _Paths.BACKEND + _Paths.SETTING;
   static const PROFILE = _Paths.BACKEND + _Paths.PROFILE;
+  static const MENU_LIST = _Paths.BACKEND + _Paths.AUTH + _Paths.MENU_LIST;
 }
 
 abstract class _Paths {
@@ -102,4 +103,5 @@ abstract class _Paths {
   //settings
   static const SETTING = '/setting';
   static const PROFILE = '/profile';
+  static const MENU_LIST = '/menu-list';
 }

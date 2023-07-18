@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 extension StringExtension on String {
   String get toCapitalized =>
@@ -14,6 +15,11 @@ extension StringExtension on String {
       replaceAll('_', ' ').split(' ').map((str) => str.toCapitalized).join(' ');
 
   Text get text => Text(this);
+
+  TextButton textButton(onPressed) =>
+      TextButton(onPressed: onPressed, child: Text(this));
+
+  TextButton url(href) => textButton(() => launchUrl(Uri(path: href)));
 
   void sprint([flg]) {
     if (kDebugMode) {

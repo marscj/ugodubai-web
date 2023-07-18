@@ -39,13 +39,12 @@ class RowDataSource {
       columnName: 'dataScope',
       label: 'scope'.tr.text.white.bold.paddingAll(16).align(Alignment.center),
       autoFitPadding: EdgeInsets.all(16),
-      width: 80,
+      width: 140,
     ),
     GridColumn(
       columnName: 'active',
       label: 'active'.tr.text.white.bold.align(Alignment.center),
-      columnWidthMode: ColumnWidthMode.fitByColumnName,
-      autoFitPadding: EdgeInsets.all(16),
+      width: 100,
     ),
   ];
 
