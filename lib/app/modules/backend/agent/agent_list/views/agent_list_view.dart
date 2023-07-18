@@ -29,12 +29,8 @@ class AgentListView extends GetView<AgentListController> {
             rowsPerPage: controller.source.rowsPerPage,
             columnWidthMode: ColumnWidthMode.auto,
             rowHeight: 60,
-            allowColumnsResizing: true,
-            columnResizeMode: ColumnResizeMode.onResize,
+            allowColumnsResizing: false,
             columnWidthCalculationRange: ColumnWidthCalculationRange.allRows,
-            onColumnResizeUpdate: (ColumnResizeUpdateDetails args) {
-              return true;
-            },
             columns: controller.source.dataGridColumn,
           ),
         );

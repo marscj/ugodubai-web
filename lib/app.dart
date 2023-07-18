@@ -40,14 +40,17 @@ ThemeData lightTheme(context) => FlexThemeData.light(
     ).copyWith(
         textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom().copyWith(
-                overlayColor: MaterialStateProperty.resolveWith((states) {
-      return Colors.transparent;
-    }), foregroundColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.hovered)) {
-        return Theme.of(context).colorScheme.secondary;
-      }
-      return null;
-    }))));
+      padding: MaterialStatePropertyAll(EdgeInsets.zero),
+      overlayColor: MaterialStateProperty.resolveWith((states) {
+        return Colors.transparent;
+      }),
+      foregroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return Theme.of(context).colorScheme.secondary;
+        }
+        return null;
+      }),
+    )));
 
 ThemeData darkTheme(context) => FlexThemeData.dark(
       scheme: FlexScheme.deepBlue,
@@ -73,14 +76,17 @@ ThemeData darkTheme(context) => FlexThemeData.dark(
     ).copyWith(
         textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom().copyWith(
-                overlayColor: MaterialStateProperty.resolveWith((states) {
-      return Colors.transparent;
-    }), foregroundColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.hovered)) {
-        return Theme.of(context).colorScheme.secondary;
-      }
-      return null;
-    }))));
+      padding: MaterialStatePropertyAll(EdgeInsets.zero),
+      overlayColor: MaterialStateProperty.resolveWith((states) {
+        return Colors.transparent;
+      }),
+      foregroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return Theme.of(context).colorScheme.secondary;
+        }
+        return null;
+      }),
+    )));
 
 class AppController extends GetxController {
   get localeStorage => ''.val('locale', defVal: 'zh');

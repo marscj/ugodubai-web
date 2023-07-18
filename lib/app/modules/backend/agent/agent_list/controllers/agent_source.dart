@@ -27,7 +27,7 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      columnWidthMode: ColumnWidthMode.fitByCellValue,
+      columnWidthMode: ColumnWidthMode.fill,
     ),
     GridColumn(
       columnName: 'email',
@@ -38,7 +38,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      columnWidthMode: ColumnWidthMode.fill,
     ),
     GridColumn(
       columnName: 'agentCode',
