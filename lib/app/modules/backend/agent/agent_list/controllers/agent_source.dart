@@ -27,6 +27,7 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
+      columnWidthMode: ColumnWidthMode.fitByCellValue,
     ),
     GridColumn(
       columnName: 'email',
@@ -133,7 +134,7 @@ class RowDataSource {
         case 'id':
           return dataCell.value
               .toString()
-              .url('${Routes.AGENT_DETAIL}/')
+              .url('${Routes.AGENT_DETAIL}/1234')
               .paddingSymmetric(vertical: 6, horizontal: 16)
               .align(Alignment.center);
         default:

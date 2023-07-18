@@ -11,7 +11,8 @@ class AgentDetailView extends GetView<AgentDetailController> {
     return Obx(
       () => Center(
         child: ElevatedButton(
-          child: Text('AgentDetailView ${controller.count}'),
+          child: Text(
+              'AgentDetailView ${controller.count}, ${Get.parameters}, ${Get.arguments}, ${Uri.base.queryParameters} '),
           onPressed: () {
             controller.count.value++;
           },
