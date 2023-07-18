@@ -1,23 +1,16 @@
 import 'package:get/get.dart';
+import 'package:ugodubai/app/data/providers/menu_provider.dart';
 
 class MenuListController extends GetxController {
-  //TODO: Implement MenuListController
-
   final count = 0.obs;
+
   @override
   void onInit() {
+    // TODO: implement onInit
     super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
+    MenuProvider().getMenus().then((value) {
+      print(value);
+    });
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

@@ -13,9 +13,9 @@ class MenuListView extends GetView<MenuListController> {
         title: const Text('MenuListView'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'MenuListView is working',
+          'MenuListView is working ${controller.count}',
           style: TextStyle(fontSize: 20),
         ),
       ),

@@ -70,7 +70,7 @@ class LoginController extends GetxController {
         required: true,
         label: "Username",
         validators: [FxLengthValidator(min: 2, max: 10)],
-        controller: TextEditingController(text: 'demo'));
+        controller: TextEditingController(text: 'zs'));
 
     basicValidator.addField('password',
         required: true,
