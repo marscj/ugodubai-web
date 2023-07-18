@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ugodubai/app/routes/app_pages.dart';
 import 'package:ugodubai/pack/syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:ugodubai/app/data/agent_list_model.dart';
 import 'package:ugodubai/app/data/agent_model.dart';
@@ -15,7 +16,6 @@ class RowDataSource {
     GridColumn(
       columnName: 'id',
       label: 'ID'.text.white.bold.align(Alignment.center),
-      autoFitPadding: EdgeInsets.all(16),
       width: 60,
     ),
     GridColumn(
@@ -27,7 +27,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'email',
@@ -38,7 +37,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
       columnWidthMode: ColumnWidthMode.fill,
     ),
     GridColumn(
@@ -50,7 +48,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'availableLimit',
@@ -61,7 +58,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'creditLimit',
@@ -72,7 +68,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'outstandingBalance',
@@ -83,7 +78,6 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'accountBlance',
@@ -94,18 +88,15 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'active',
       label: 'active'.tr.text.white.bold.align(Alignment.center),
-      columnWidthMode: ColumnWidthMode.fitByColumnName,
-      autoFitPadding: EdgeInsets.all(16),
+      width: 100,
     ),
     GridColumn(
       columnName: 'action',
       label: 'actions'.tr.text.white.bold.align(Alignment.center),
-      autoFitPadding: EdgeInsets.all(16),
       width: 100,
     ),
   ];
@@ -130,27 +121,19 @@ class RowDataSource {
   List<Widget> dataGridRowAdapter(List<DataGridCell> cell) {
     return cell.map<Widget>((dataCell) {
       switch (dataCell.columnName) {
-        // case 'availableLimit':
-        // case 'creditLimit':
-        // case 'outstandingBalance':
-        // case 'accountBlance':
-        //   return dataCell.value
-        //       .toString()
-        //       .text
-        //       .paddingSymmetric(vertical: 6, horizontal: 16)
-        //       .align(Alignment.center);
         case 'active':
           return Checkbox(value: dataCell.value, onChanged: null)
               .align(Alignment.center)
               .paddingSymmetric(vertical: 6, horizontal: 16);
         case 'action':
           return ButtonBar(
+            alignment: MainAxisAlignment.center,
             children: [TextButton(onPressed: () {}, child: 'recharge'.tr.text)],
           );
         case 'id':
           return dataCell.value
               .toString()
-              .text
+              .url('${Routes.AGENT_DETAIL}/')
               .paddingSymmetric(vertical: 6, horizontal: 16)
               .align(Alignment.center);
         default:
