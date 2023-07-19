@@ -54,5 +54,11 @@
   "profile": "个人中心",
   "setting": "网站设置",
   "scope": "权限范围",
-  "recharge": "充值"
+  "recharge": "充值",
+  "name":"姓名",
+  "remark": "备注",
+  "title":"名称",
+  "api": "API 接口",
+  "router": "路由",
+  "menu_type": "菜单类型"
 }

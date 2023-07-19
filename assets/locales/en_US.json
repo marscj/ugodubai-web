@@ -53,5 +53,11 @@
   "active": "Active",
   "actions": "Actions",
   "scope": "Scope",
-  "recharge": "Recharge"
+  "recharge": "Recharge",
+  "name":"Name",
+  "remark": "Remark",
+  "title":"Title",
+  "api": "API Interface",
+  "router": "Router",
+  "menu_type": "Menu Type"
 }

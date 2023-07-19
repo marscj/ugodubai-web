@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ExtensionListWidget on List<Widget> {
-  Iterable<Widget> divider(
-      {BuildContext? context, Color? color, Border? border}) {
+  List<Widget> divider({BuildContext? context, Color? color, Border? border}) {
     assert(color != null || context != null);
 
     if (isEmpty || length == 1) {
@@ -15,7 +14,7 @@ extension ExtensionListWidget on List<Widget> {
         decoration: BoxDecoration(
           border: border ??
               Border(
-                right: Divider.createBorderSide(context, color: color),
+                bottom: Divider.createBorderSide(context, color: color),
               ),
         ),
         child: child,
@@ -25,7 +24,7 @@ extension ExtensionListWidget on List<Widget> {
     return <Widget>[
       ...take(length - 1).map(wrapTile),
       last,
-    ];
+    ].toList();
   }
 
   Widget row({MainAxisAlignment? ma, CrossAxisAlignment? ca}) => Row(

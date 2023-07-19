@@ -19,15 +19,15 @@ class MenuListRes extends BaseRes {
 }
 
 class MenuListData {
-  List<AuthRule>? rules;
+  List<Menu>? rules;
 
   MenuListData({this.rules});
 
   MenuListData.fromJson(Map<String, dynamic> json) {
     if (json['rules'] != null) {
-      rules = <AuthRule>[];
+      rules = <Menu>[];
       json['rules'].forEach((v) {
-        rules?.add(AuthRule.fromJson(v));
+        rules?.add(Menu.fromJson(v));
       });
     }
   }
@@ -41,7 +41,7 @@ class MenuListData {
   }
 }
 
-class AuthRule {
+class Menu {
   int? id;
   int? pid;
   String? name;
@@ -60,9 +60,9 @@ class AuthRule {
   int? isIframe;
   int? isLink;
   String? linkUrl;
-  List<AuthRule>? children;
+  List<Menu>? children;
 
-  AuthRule(
+  Menu(
       {this.id,
       this.pid,
       this.name,
@@ -83,7 +83,7 @@ class AuthRule {
       this.linkUrl,
       this.children});
 
-  AuthRule.fromJson(Map<String, dynamic> json) {
+  Menu.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     pid = json['pid'];
     name = json['name'];
@@ -103,9 +103,9 @@ class AuthRule {
     isLink = json['isLink'];
     linkUrl = json['linkUrl'];
     if (json['children'] != null) {
-      children = <AuthRule>[];
+      children = <Menu>[];
       json['children'].forEach((v) {
-        children?.add(AuthRule.fromJson(v));
+        children?.add(Menu.fromJson(v));
       });
     }
   }

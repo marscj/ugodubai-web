@@ -5,7 +5,7 @@ import 'package:ugodubai/services/http_service.dart';
 import '../menu_model.dart';
 
 class MenuProvider extends HttpService {
-  Future<AuthRule?> getMenu(int id) async {
+  Future<Menu?> getMenu(int id) async {
     final response = await get('menu/get', query: {'id': id});
     return response.body;
   }
@@ -19,7 +19,6 @@ class MenuProvider extends HttpService {
     return MenuListRes.fromJson(res.body);
   }
 
-  Future<Response<AuthRule>> postMenu(AuthRule menu) async =>
-      await post('menu', menu);
+  Future<Response<Menu>> postMenu(Menu menu) async => await post('menu', menu);
   Future<Response> deleteMenu(int id) async => await delete('menu/$id');
 }

@@ -94,14 +94,14 @@ abstract class _Paths {
   static const USER_DETAIL = '/user/detail';
   static const ROLE_LIST = '/role/list';
   static const ROLE_DETAIL = '/role/detail';
+  static const MENU_LIST = '/menu/list';
 
   //agent
   static const AGENT = '/agent';
-  static const AGENT_LIST = '/agent/list';
-  static const AGENT_DETAIL = '/agent/detail';
+  static const AGENT_LIST = '/list';
+  static const AGENT_DETAIL = '/detail';
 
   //settings
   static const SETTING = '/setting';
   static const PROFILE = '/profile';
-  static const MENU_LIST = '/menu-list';
 }

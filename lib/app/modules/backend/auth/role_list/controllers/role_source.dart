@@ -15,14 +15,12 @@ class RowDataSource {
     GridColumn(
       columnName: 'id',
       label: 'ID'.tr.text.white.bold.align(Alignment.center),
-      autoFitPadding: EdgeInsets.all(16),
       width: 60,
     ),
     GridColumn(
       columnName: 'name',
       label:
           'name'.tr.text.white.bold.paddingAll(16).align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'remark',
@@ -33,12 +31,10 @@ class RowDataSource {
           .bold
           .paddingAll(16)
           .align(Alignment.centerLeft),
-      autoFitPadding: EdgeInsets.all(16),
     ),
     GridColumn(
       columnName: 'dataScope',
       label: 'scope'.tr.text.white.bold.paddingAll(16).align(Alignment.center),
-      autoFitPadding: EdgeInsets.all(16),
       width: 140,
     ),
     GridColumn(
