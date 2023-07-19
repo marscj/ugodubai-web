@@ -11,15 +11,15 @@ import 'package:ugodubai/pack/syncfusion_flutter_datagrid/datagrid.dart';
 class RowDataSource {
   final List<GridColumn> dataGridColumn = [
     GridColumn(
-        columnName: 'id',
-        label: 'ID'.tr.text.white.bold.align(Alignment.center),
-        width: 60,
-        columnWidthMode: ColumnWidthMode.fill),
+      columnName: 'id',
+      label: 'ID'.text.white.bold.align(Alignment.center),
+      width: 60,
+    ),
     GridColumn(
-        columnName: 'pid',
-        label: 'PID'.tr.text.white.bold.align(Alignment.center),
-        width: 60,
-        columnWidthMode: ColumnWidthMode.fill),
+      columnName: 'pid',
+      label: 'PID'.text.white.bold.align(Alignment.center),
+      width: 60,
+    ),
     GridColumn(
       columnName: 'title',
       label:
@@ -41,8 +41,8 @@ class RowDataSource {
           .align(Alignment.centerLeft),
     ),
     GridColumn(
-      columnName: 'menu_type',
-      label: 'meny_type'
+      columnName: 'redirect',
+      label: 'redirect'
           .tr
           .text
           .white
@@ -60,16 +60,12 @@ class RowDataSource {
           .paddingAll(16)
           .align(Alignment.centerLeft),
     ),
-    // GridColumn(
-    //   columnName: 'remark',
-    //   label: 'remark'
-    //       .tr
-    //       .text
-    //       .white
-    //       .bold
-    //       .paddingAll(16)
-    //       .align(Alignment.centerLeft),
-    // ),
+    GridColumn(
+      columnName: 'menu_type',
+      label:
+          'menu_type'.tr.text.white.bold.paddingAll(16).align(Alignment.center),
+      columnWidthMode: ColumnWidthMode.auto,
+    ),
   ];
 
   List<DataGridCell> dataGridCell(Menu data) => [
@@ -78,9 +74,11 @@ class RowDataSource {
         DataGridCell<String>(columnName: 'title', value: data.title),
         DataGridCell<String>(columnName: 'name', value: data.name),
         DataGridCell<String>(columnName: 'path', value: data.path),
-        DataGridCell<String>(
-            columnName: 'menu_type', value: data.menuType.toString()),
+        DataGridCell<String>(columnName: 'redirect', value: data.redirect),
         DataGridCell<String>(columnName: 'remark', value: data.remark),
+        DataGridCell<String>(
+            columnName: 'menu_type',
+            value: 'menu_type_data'.tr.list()[data.menuType!]),
       ];
 
   List<Widget> dataGridRowAdapter(List<DataGridCell> cell) {
@@ -93,6 +91,7 @@ class RowDataSource {
 
         case 'id':
         case 'pid':
+        case 'menu_type':
           return dataCell.value
               .toString()
               .text

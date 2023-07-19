@@ -14,7 +14,7 @@ class RowDataSource {
   final List<GridColumn> dataGridColumn = [
     GridColumn(
       columnName: 'id',
-      label: 'ID'.tr.text.white.bold.align(Alignment.center),
+      label: 'ID'.text.white.bold.align(Alignment.center),
       autoFitPadding: EdgeInsets.all(16),
       width: 60,
     ),

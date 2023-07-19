@@ -66,6 +66,13 @@ class LocaleKeys {
   static const setting = 'setting';
   static const scope = 'scope';
   static const recharge = 'recharge';
+  static const name = 'name';
+  static const remark = 'remark';
+  static const title = 'title';
+  static const api = 'api';
+  static const router = 'router';
+  static const menu_type = 'menu_type';
+  static const menu_type_data = 'menu_type_data';
 }
 
 class Locales {
@@ -125,6 +132,13 @@ class Locales {
     'setting': '网站设置',
     'scope': '权限范围',
     'recharge': '充值',
+    'name': '姓名',
+    'remark': '备注',
+    'title': '名称',
+    'api': 'API 接口',
+    'router': '路由',
+    'menu_type': '菜单类型',
+    'menu_type_data': '目录,菜单,按钮',
   };
   static const en_US = {
     'app_name': 'UGODUBAI',
@@ -184,5 +198,12 @@ class Locales {
     'actions': 'Actions',
     'scope': 'Scope',
     'recharge': 'Recharge',
+    'name': 'Name',
+    'remark': 'Remark',
+    'title': 'Title',
+    'api': 'API Interface',
+    'router': 'Router',
+    'menu_type': 'Menu Type',
+    'menu_type_data': 'Directory,Menu,Button',
   };
 }

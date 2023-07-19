@@ -26,6 +26,8 @@ extension StringExtension on String {
       print('${flg ?? '====='},$this');
     }
   }
+
+  List<String> list({flg = ','}) => this.split(flg);
 }
 
 extension InterExtension on int {

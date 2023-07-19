@@ -59,5 +59,6 @@
   "title":"Title",
   "api": "API Interface",
   "router": "Router",
-  "menu_type": "Menu Type"
+  "menu_type": "Menu Type",
+  "menu_type_data": "Directory,Menu,Button"
 }

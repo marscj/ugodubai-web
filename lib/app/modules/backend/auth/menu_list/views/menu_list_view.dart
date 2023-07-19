@@ -4,7 +4,6 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:ugodubai/pack/syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:ugodubai/app/extensions/widget.dart';
 
 import '../controllers/menu_list_controller.dart';
 
@@ -24,18 +23,11 @@ class MenuListView extends GetView<MenuListController> {
           child: SfDataGrid(
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
-            footerFrozenColumnsCount: 1,
             source: controller.source,
             rowsPerPage: controller.source.rowsPerPage,
             onCellTap: (details) {},
             columnWidthMode: ColumnWidthMode.fill,
             rowHeight: 60,
-            allowColumnsResizing: true,
-            columnResizeMode: ColumnResizeMode.onResize,
-            columnWidthCalculationRange: ColumnWidthCalculationRange.allRows,
-            onColumnResizeUpdate: (ColumnResizeUpdateDetails args) {
-              return true;
-            },
             columns: controller.source.dataGridColumn,
           ),
         );

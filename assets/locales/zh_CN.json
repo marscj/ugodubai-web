@@ -60,5 +60,6 @@
   "title":"名称",
   "api": "API 接口",
   "router": "路由",
-  "menu_type": "菜单类型"
+  "menu_type": "菜单类型",
+  "menu_type_data": "目录,菜单,按钮"
 }
