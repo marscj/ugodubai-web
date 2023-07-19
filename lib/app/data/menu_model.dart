@@ -1,4 +1,4 @@
-import 'base_model.dart';
+import 'package:ugodubai/app/data/base_model.dart';
 
 class MenuListRes extends BaseRes {
   MenuListRes.fromJson(Map<String, dynamic> json) {
@@ -19,23 +19,21 @@ class MenuListRes extends BaseRes {
 }
 
 class MenuListData {
-  List<Menu>? rules;
-
-  MenuListData({this.rules});
+  List<Menu>? menu;
 
   MenuListData.fromJson(Map<String, dynamic> json) {
-    if (json['rules'] != null) {
-      rules = <Menu>[];
-      json['rules'].forEach((v) {
-        rules?.add(Menu.fromJson(v));
+    if (json['menu'] != null) {
+      menu = <Menu>[];
+      json['menu'].forEach((v) {
+        menu?.add(Menu.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    if (rules != null) {
-      data['rules'] = rules?.map((v) => v.toJson()).toList();
+    if (menu != null) {
+      data['menu'] = menu?.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -60,7 +58,6 @@ class Menu {
   int? isIframe;
   int? isLink;
   String? linkUrl;
-  List<Menu>? children;
 
   Menu(
       {this.id,
@@ -80,8 +77,7 @@ class Menu {
       this.component,
       this.isIframe,
       this.isLink,
-      this.linkUrl,
-      this.children});
+      this.linkUrl});
 
   Menu.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -102,12 +98,6 @@ class Menu {
     isIframe = json['isIframe'];
     isLink = json['isLink'];
     linkUrl = json['linkUrl'];
-    if (json['children'] != null) {
-      children = <Menu>[];
-      json['children'].forEach((v) {
-        children?.add(Menu.fromJson(v));
-      });
-    }
   }
 
   Map<String, dynamic> toJson() {
@@ -130,9 +120,6 @@ class Menu {
     data['isIframe'] = isIframe;
     data['isLink'] = isLink;
     data['linkUrl'] = linkUrl;
-    if (children != null) {
-      data['children'] = children?.map((v) => v.toJson()).toList();
-    }
     return data;
   }
 }
