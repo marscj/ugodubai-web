@@ -17,6 +17,7 @@ class OrderProvider extends HttpService {
             .map((key, value) => MapEntry(key, value?.toString()))
             .cast());
 
+    print(res.bodyString);
     return OrderListRes.fromJson(res.body);
   }
 

@@ -48,8 +48,8 @@ class OrderListData {
 class Order {
   int? id;
   String? uuid;
-  String? name;
-  String? orderNumber;
+  String? relatedId;
+  String? fitNumber;
   String? actionDate;
   String? actionTime;
   int? agentId;
@@ -60,7 +60,8 @@ class Order {
   double? unitPrice;
   int? quantity;
   double? totalPrice;
-  int? status;
+  int? orderStatus;
+  int? paymentStatus;
   String? remark;
   String? currency;
   int? createdBy;
@@ -71,8 +72,8 @@ class Order {
   Order(
       {this.id,
       this.uuid,
-      this.name,
-      this.orderNumber,
+      this.relatedId,
+      this.fitNumber,
       this.actionDate,
       this.actionTime,
       this.agentId,
@@ -83,7 +84,8 @@ class Order {
       this.unitPrice,
       this.quantity,
       this.totalPrice,
-      this.status,
+      this.orderStatus,
+      this.paymentStatus,
       this.remark,
       this.currency,
       this.createdBy,
@@ -94,8 +96,8 @@ class Order {
   Order.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     uuid = json['uuid'];
-    name = json['name'];
-    orderNumber = json['orderNumber'];
+    relatedId = json['relatedId'];
+    fitNumber = json['fitNumber'];
     actionDate = json['actionDate'];
     actionTime = json['actionTime'];
     agentId = json['agentId'];
@@ -106,7 +108,8 @@ class Order {
     unitPrice = json['unitPrice'];
     quantity = json['quantity'];
     totalPrice = json['totalPrice'];
-    status = json['status'];
+    orderStatus = json['orderStatus'];
+    paymentStatus = json['paymentStatus'];
     remark = json['remark'];
     currency = json['currency'];
     createdBy = json['createdBy'];
@@ -119,8 +122,8 @@ class Order {
     final data = <String, dynamic>{};
     data['id'] = id;
     data['uuid'] = uuid;
-    data['name'] = name;
-    data['orderNumber'] = orderNumber;
+    data['relatedId'] = relatedId;
+    data['fitNumber'] = fitNumber;
     data['actionDate'] = actionDate;
     data['actionTime'] = actionTime;
     data['agentId'] = agentId;
@@ -131,7 +134,8 @@ class Order {
     data['unitPrice'] = unitPrice;
     data['quantity'] = quantity;
     data['totalPrice'] = totalPrice;
-    data['status'] = status;
+    data['orderStatus'] = orderStatus;
+    data['paymentStatus'] = paymentStatus;
     data['remark'] = remark;
     data['currency'] = currency;
     data['createdBy'] = createdBy;
